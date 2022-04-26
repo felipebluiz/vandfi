@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 import { Container } from './styles'
 
-interface Props {
+interface LogoProps {
   animation: boolean
 }
 
-const Logo: React.FC<Props> = ({ animation }) => {
+const Logo: React.FC<LogoProps> = ({ animation }) => {
   return (
     <Container className="logo-container" animation={animation}>
       <Link href="/">

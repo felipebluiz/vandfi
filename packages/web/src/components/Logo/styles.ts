@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-interface Props {
+interface ContainerProps {
   animation?: boolean
 }
 
-export const Container = styled.div<Props>`
+export const Container = styled.div<ContainerProps>`
   @keyframes zoomAnimation {
     0% {
       transform: scale(1, 1);

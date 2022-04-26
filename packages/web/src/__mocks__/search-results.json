@@ -1,0 +1,62 @@
+{
+  "items": [
+    {
+      "id": "0",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "CryptoPunk #8132",
+      "saleType": "Open for offers"
+    },
+    {
+      "id": "1",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "CryptoPunk #8132",
+      "saleType": "On auction"
+    },
+    {
+      "id": "2",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "CryptoPunk #8132",
+      "saleType": "On sale"
+    }
+  ],
+  "collections": [
+    {
+      "id": "0",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "CryptoPunk",
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+    },
+    {
+      "id": "1",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "Moonbirds",
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+    },
+    {
+      "id": "2",
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "Bored Ape Yatch Club",
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+    }
+  ],
+  "creators": [
+    {
+      "id": "0",
+      "avatarUrl": "/images/avatar.png",
+      "name": "Bored Man",
+      "followersQtd": 500
+    },
+    {
+      "id": "1",
+      "avatarUrl": "/images/avatar.png",
+      "name": "Sci Moon",
+      "followersQtd": 1500
+    },
+    {
+      "id": "2",
+      "avatarUrl": "/images/avatar.png",
+      "name": "kobplayer",
+      "followersQtd": 11500
+    }
+  ]
+}

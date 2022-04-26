@@ -25,14 +25,15 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'space-before-function-paren': 'off',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'react/display-name': 'off'
   },
   settings: {
     'import/resolver': {
       typescript: {}
     },
     react: {
-      version: 'detect',
+      version: 'detect'
     },
   }
 }

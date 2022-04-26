@@ -4,3 +4,7 @@ export const truncateAddress = (address: string): string => {
 
   return `${firstSix}...${lastFour}`
 }
+
+export const numberFormat = (number: number): string => {
+  return new Intl.NumberFormat('en', { notation: 'compact' }).format(number)
+}
