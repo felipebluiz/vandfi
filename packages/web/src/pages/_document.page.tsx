@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -8,6 +8,7 @@ import Document, {
   NextScript
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { v4 as uuid } from 'uuid'
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -23,14 +24,15 @@ class MyDocument extends Document {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
+
       return {
         ...initialProps,
-        styles: (
-          <>
+        styles: [
+          <Fragment key={uuid()}>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        )
+          </Fragment>
+        ]
       }
     } finally {
       sheet.seal()

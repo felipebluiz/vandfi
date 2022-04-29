@@ -15,6 +15,7 @@ import { searchResults } from '../../__mocks__'
 import { truncateAddress, numberFormat } from '../../utils'
 
 import { Container } from './styles'
+import { ImagePlaceholder } from '../ImagePlaceholder'
 
 export interface SearchInputHandle {
   setInputFocus: () => void
@@ -175,10 +176,14 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   <div className="section-list">
                     {items.map((item: ItemsProps, index: number) => (
                       <button type="button" key={item.id} className="list-item">
-                        <img
+                        <ImagePlaceholder
+                          width="40"
+                          height="40"
                           src={item.avatarUrl}
                           alt="NFT item"
                           className="item-image"
+                          placeholderColor="#232e43"
+                          borderRadius="6"
                         />
                         <div
                           className="info-container"
@@ -205,10 +210,14 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                           key={collection.id}
                           className="list-item"
                         >
-                          <img
+                          <ImagePlaceholder
+                            width="40"
+                            height="40"
                             src={collection.avatarUrl}
                             alt="Collection avatar"
                             className="collection-avatar"
+                            placeholderColor="#232e43"
+                            borderRadius="40"
                           />
                           <div
                             className="info-container"
@@ -239,10 +248,14 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                         key={creator.id}
                         className="list-item"
                       >
-                        <img
+                        <ImagePlaceholder
+                          width="40"
+                          height="40"
                           src={creator.avatarUrl}
                           alt="Creator avatar"
                           className="creator-avatar"
+                          placeholderColor="#232e43"
+                          borderRadius="40"
                         />
                         <div
                           className="info-container"

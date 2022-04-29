@@ -3,6 +3,7 @@
 module.exports = {
   reactStrictMode: true,
   compiler: { styledComponents: true },
+  pageExtensions: ['page.tsx', 'page.ts'],
   async redirects() {
     return [
       {

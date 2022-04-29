@@ -87,8 +87,8 @@ export const Container = styled.div`
         .item-image,
         .collection-avatar,
         .creator-avatar {
-          width: 40px;
-          height: 40px;
+          width: inherit;
+          height: inherit;
           border-radius: 40px;
         }
 
@@ -168,8 +168,38 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
+    position: relative;
+
     .not-found {
       height: 250px;
+    }
+
+    .search-results-container {
+      padding: 6px 6px 6px 0;
+      width: 100%;
+      position: absolute;
+      top: 85px;
+      left: 0;
+      background-color: var(--color-darker);
+      border: 1px solid var(--color-light);
+      border-radius: 10px;
+
+      .search-results {
+        min-height: 20px;
+        max-height: calc(100vh - 185px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-light) var(--color-darker);
+
+        ::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: var(--color-light);
+          border-radius: 5px;
+        }
+      }
     }
   }
 `

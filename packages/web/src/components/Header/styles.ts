@@ -123,34 +123,6 @@ export const Container = styled.div<ContainerProps>`
         transition: width 0.25s;
         overflow: hidden;
       }
-
-      .search-results-container {
-        padding: 6px 6px 6px 0;
-        width: 100%;
-        position: absolute;
-        top: 85px;
-        left: 0;
-        background-color: var(--color-darker);
-        border: 1px solid var(--color-light);
-        border-radius: 10px;
-
-        .search-results {
-          min-height: 20px;
-          max-height: calc(100vh - 185px);
-          overflow-y: auto;
-          scrollbar-width: thin;
-          scrollbar-color: var(--color-light) var(--color-darker);
-
-          ::-webkit-scrollbar {
-            width: 5px;
-          }
-
-          ::-webkit-scrollbar-thumb {
-            background: var(--color-light);
-            border-radius: 5px;
-          }
-        }
-      }
     }
 
     .navigation-button {
@@ -186,12 +158,17 @@ export const Container = styled.div<ContainerProps>`
           &:last-child > a {
             border-right: none;
           }
+
+          &.active > a {
+            color: #ffffff;
+          }
         }
       }
     }
 
     .connect-wallet {
       display: flex;
+      padding: 10px 19px 9px;
     }
 
     .avatar-container .avatar {
