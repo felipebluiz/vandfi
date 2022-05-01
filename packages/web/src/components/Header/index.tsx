@@ -48,11 +48,24 @@ const Header: React.FC = () => {
 
   return (
     <Container
-      loggedIn={loggedIn}
-      navigationVisibility={navigationVisibility}
-      searchVisibility={searchVisibility}
-      searchPosition={searchPosition}
-      searchContainerPadding={searchContainerPadding}
+      css={{
+        '.main-wrapper': {
+          gridTemplateColumns: loggedIn ? '1fr auto auto auto' : '1fr auto auto'
+        },
+        '@bp3': {
+          '.search-container': {
+            position: searchPosition ? 'relative' : 'absolute',
+            form: {
+              width: searchVisibility ? '100%' : '0px',
+              padding: searchContainerPadding ? '4px' : '0',
+              margin: searchContainerPadding ? '0' : '4px'
+            }
+          },
+          '.navigation-container': {
+            display: navigationVisibility ? 'initial' : 'none'
+          }
+        }
+      }}
     >
       <div className="main-wrapper">
         <Logo animation={true} />

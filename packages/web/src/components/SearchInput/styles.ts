@@ -1,205 +1,208 @@
-import styled from 'styled-components'
+import { styled } from '../../../stitches.config'
 
-export const Container = styled.div`
-  > form {
-    padding: 4px;
+export const Container = styled('div', {
+  form: {
+    padding: '4px',
 
-    > label {
-      position: relative;
+    label: {
+      position: 'relative',
 
-      .fa-search {
-        position: absolute;
-        top: 2px;
-        left: 15px;
-        color: var(--color-regular);
-      }
+      '.fa-search': {
+        position: 'absolute',
+        top: '2px',
+        left: '15px',
+        color: 'var(--colors-regular)'
+      },
 
-      > button {
-        position: absolute;
-        top: 1px;
-        right: 15px;
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
+      button: {
+        position: 'absolute',
+        top: '1px',
+        right: '15px',
+        background: 'none',
+        border: 'none',
+        padding: '0',
+        cursor: 'pointer',
 
-        .fa-times {
-          font-size: 19px;
-          color: var(--color-regular);
+        '.fa-times': {
+          fontSize: 'var(--fontSizes-lg)',
+          color: 'var(--colors-regular)'
+        },
+
+        '&:hover > .fa-times': {
+          color: 'var(--colors-white)'
         }
+      },
 
-        &:hover > .fa-times {
-          color: #ffffff;
+      input: {
+        width: '100%',
+        fontSize: 'var(--fontSizes-sm)',
+        fontFamily: 'var(--fonts-default)',
+        padding: '13px 42px 12px',
+        color: 'var(--colors-white)',
+        backgroundColor: '#232e43',
+        border: '1px solid #232e43',
+        borderRadius: '30px',
+        outline: 'none',
+
+        '&:focus': {
+          border: '1px solid #334154',
+          backgroundColor: 'var(--colors-dark)',
+          boxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px'
         }
-      }
-
-      > input {
-        width: 100%;
-        font-size: 14px;
-        font-family: 'Fira Sans', sans-serif;
-        padding: 13px 42px 12px;
-        color: #ffffff;
-        background-color: #232e43;
-        border: 1px solid #232e43;
-        border-radius: 30px;
-        outline: none;
-
-        &:focus {
-          border: 1px solid #334154;
-          background-color: var(--color-dark);
-          box-shadow: rgb(255 255 255 / 6%) 0px 0px 0px 3px;
-        }
-      }
-    }
-  }
-
-  .search-results {
-    .section-title {
-      padding-left: 20px;
-
-      &:first-child {
-        padding-top: 12px;
-      }
-
-      > span {
-        font-size: 14px;
-        font-weight: 500;
       }
     }
+  },
 
-    .section-list {
-      padding: 10px 20px;
-      display: flex;
-      flex-direction: column;
+  '.search-results-container': {
+    height: 'calc(100vh - 75px)',
 
-      .list-item {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        background: none;
-        border: none;
-        text-align: left;
+    '.search-results': {
+      '.section-title': {
+        paddingLeft: '20px',
 
-        &:last-child {
-          border-bottom: none;
+        '&:first-child': {
+          paddingTop: '12px'
+        },
+
+        span: {
+          fontSize: 'var(--fontSizes-sm)',
+          fontWeight: 'var(--fontWeights-medium)'
         }
+      },
 
-        .item-image,
-        .collection-avatar,
-        .creator-avatar {
-          width: inherit;
-          height: inherit;
-          border-radius: 40px;
-        }
+      '.section-list': {
+        padding: '10px 20px',
+        display: 'flex',
+        flexDirection: 'column',
 
-        .item-image {
-          border-radius: 6px;
-        }
+        '.list-item': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
+          background: 'none',
+          border: 'none',
+          textAlign: 'left',
 
-        .info-container {
-          display: grid;
-          gap: 3px;
-          width: 100%;
-          padding-top: 12px;
-          padding-bottom: 12px;
-          border-bottom: 1px solid var(--color-light);
+          '&:last-child': {
+            borderBottom: 'none'
+          },
 
-          .name {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            color: #ffffff;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
+          '.item-image, .collection-avatar, .creator-avatar': {
+            width: 'inherit',
+            height: 'inherit',
+            borderRadius: '40px'
+          },
+
+          '.item-image': {
+            borderRadius: '6px'
+          },
+
+          '.info-container': {
+            display: 'grid',
+            gap: '3px',
+            width: '100%',
+            paddingTop: '12px',
+            paddingBottom: '12px',
+            borderBottom: '1px solid var(--colors-background-tertiary)',
+
+            '.name': {
+              fontSize: 'var(--fontSizes-sm)',
+              fontWeight: 'var(--fontWeights-medium)',
+              letterSpacing: '0.3px',
+              color: 'var(--colors-white)',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden'
+            },
+
+            '.description': {
+              fontSize: 'var(--fontSizes-xs)',
+              fontWeight: 'var(--fontWeights-regular)',
+              color: 'var(--colors-regular)'
+            }
+          },
+
+          '&:hover': {
+            opacity: 'var(--opacity-semiOpaque)'
           }
-
-          .description {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--color-regular);
-          }
         }
+      },
 
-        &:hover {
-          opacity: 0.9;
+      '.button-container': {
+        padding: '15px 20px 20px',
+
+        button: {
+          width: '100%'
         }
       }
     }
+  },
 
-    .button-container {
-      padding: 15px 20px 20px;
+  '.not-found': {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: 'calc(100vh - 75px)',
+    padding: '20px',
+    textAlign: 'center',
 
-      > button {
-        width: 100%;
-      }
+    h2: {
+      fontSize: 'var(--fontSizes-lg)',
+      lineHeight: 'var(--lineHeights-base)',
+      color: 'var(--colors-white)'
+    },
+
+    p: {
+      marginTop: '5px'
+    },
+
+    button: {
+      marginTop: '20px',
+      marginLeft: 'auto',
+      marginRight: 'auto'
     }
-  }
+  },
 
-  .not-found {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: calc(100vh - 75px);
-    padding: 20px;
-    text-align: center;
+  /* @media screen and (max-width: 1023px) {
 
-    h2 {
-      font-size: 18px;
-      line-height: 20px;
-      color: #ffffff;
-    }
+  } */
 
-    p {
-      margin-top: 5px;
-    }
+  '@bp3': {
+    position: 'relative',
 
-    button {
-      margin-top: 20px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
+    '.not-found': {
+      height: '250px'
+    },
 
-  @media screen and (max-width: 1023px) {
-    .search-results-container {
-      height: calc(100vh - 75px);
-    }
-  }
+    '.search-results-container': {
+      padding: '6px 6px 6px 0',
+      width: '100%',
+      height: 'initial',
+      position: 'absolute',
+      top: '85px',
+      left: '0',
+      backgroundColor: 'var(--colors-background-primary)',
+      border: '1px solid var(--colors-background-tertiary)',
+      borderRadius: '10px',
 
-  @media screen and (min-width: 1024px) {
-    position: relative;
+      '.search-results': {
+        minHeight: '20px',
+        maxHeight: 'calc(100vh - 185px)',
+        overflowY: 'auto',
+        scrollbarWidth: 'thin',
+        scrollbarColor:
+          'var(--colors-background-tertiary) var(--colors-background-primary)',
 
-    .not-found {
-      height: 250px;
-    }
+        '&::-webkit-scrollbar': {
+          width: '5px',
+          backgroundColor: 'var(--colors-background-primary)'
+        },
 
-    .search-results-container {
-      padding: 6px 6px 6px 0;
-      width: 100%;
-      position: absolute;
-      top: 85px;
-      left: 0;
-      background-color: var(--color-darker);
-      border: 1px solid var(--color-light);
-      border-radius: 10px;
-
-      .search-results {
-        min-height: 20px;
-        max-height: calc(100vh - 185px);
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: var(--color-light) var(--color-darker);
-
-        ::-webkit-scrollbar {
-          width: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: var(--color-light);
-          border-radius: 5px;
+        '&::-webkit-scrollbar-thumb': {
+          background: 'var(--colors-background-tertiary)',
+          borderRadius: '5px'
         }
       }
     }
   }
-`
+})

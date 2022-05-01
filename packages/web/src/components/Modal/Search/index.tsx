@@ -24,7 +24,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ setSearchModalIsOpen }) => {
   }, [])
 
   return (
-    <Modal modalIsOpen={modalIsOpen}>
+    <Modal css={{ opacity: `${modalIsOpen ? '1' : '0'}` }}>
       <Container>
         <button
           type="button"

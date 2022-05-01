@@ -1,215 +1,210 @@
-import styled from 'styled-components'
+import { styled } from '../../../stitches.config'
 
-interface ContainerProps {
-  loggedIn: boolean
-  navigationVisibility: boolean
-  searchVisibility: boolean
-  searchPosition: boolean
-  searchContainerPadding: boolean
-}
+export const Container = styled('div', {
+  position: 'sticky',
+  top: '0',
+  left: '0',
+  right: '0',
+  zIndex: '100',
+  height: '80px',
+  background: 'var(--colors-background-primary)',
+  borderBottom: '1px solid var(--colors-background-tertiary)',
 
-export const Container = styled.div<ContainerProps>`
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  height: 80px;
-  background: var(--color-darker);
-  border-bottom: 1px solid var(--color-light);
+  '.main-wrapper': {
+    display: 'grid',
+    gap: '10px',
+    alignItems: 'center'
+  },
 
-  .main-wrapper {
-    display: grid;
-    grid-template-columns: ${props =>
-      props.loggedIn ? '1fr auto auto auto' : '1fr auto auto'};
-    gap: 10px;
-    align-items: center;
-  }
+  '.logo-container > a': {
+    '.logo': {
+      width: '28px',
+      height: '28px',
+      fontSize: '46px'
+    },
 
-  .search-button {
-    display: none;
-  }
-
-  .mobile-button,
-  .search-button {
-    width: 44px;
-    min-width: 44px;
-    height: 44px;
-    background-color: #232e43;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-
-    .fa {
-      font-size: 16px;
-      color: var(--color-regular);
+    h1: {
+      fontSize: '24px'
     }
+  },
 
-    .fa-bars {
-      font-size: 17px;
+  '.search-button': {
+    display: 'none'
+  },
+
+  '.mobile-button, .search-button': {
+    width: '44px',
+    minWidth: '44px',
+    height: '44px',
+    backgroundColor: '#232e43',
+    border: 'none',
+    borderRadius: '30px',
+    cursor: 'pointer',
+
+    '.fa': {
+      fontSize: 'var(--fontSizes-md)',
+      color: 'var(--colors-regular)'
+    },
+
+    '.fa-bars': {
+      fontSize: 'var(--fontSizes-lg)'
+    },
+
+    '.fa-times': {
+      fontSize: 'var(--fontSizes-lg)'
+    },
+
+    '&:hover .fa': {
+      color: 'var(--colors-white)'
     }
+  },
 
-    .fa-times {
-      font-size: 19px;
+  '.search-container': {
+    display: 'none'
+  },
+
+  '.navigation-container': {
+    display: 'none'
+  },
+
+  '.connect-wallet': {
+    display: 'none'
+  },
+
+  '.avatar-container': {
+    padding: '0',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+
+    '.avatar > img': {
+      width: '44px',
+      height: '44px',
+      borderRadius: '30px',
+      verticalAlign: 'bottom'
+    },
+
+    '&:hover': {
+      opacity: 'var(--opacity-semiOpaque)'
     }
+  },
 
-    &:hover .fa {
-      color: #ffffff;
-    }
-  }
+  '@bp1': {
+    '.logo-container > a': {
+      '.logo': {
+        width: '35px',
+        height: '35px',
+        fontSize: '52px'
+      },
 
-  .search-container {
-    display: none;
-  }
-
-  .navigation-container {
-    display: none;
-  }
-
-  .connect-wallet {
-    display: none;
-  }
-
-  .avatar-container {
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    .avatar > img {
-      width: 44px;
-      height: 44px;
-      border-radius: 30px;
-      vertical-align: bottom;
-    }
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-
-  @media screen and (max-width: 360px) {
-    .logo-container > a {
-      .logo {
-        width: 28px;
-        height: 28px;
-        font-size: 46px;
-      }
-
-      > h1 {
-        font-size: 24px;
-      }
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .main-wrapper {
-      grid-template-columns: 125px 43px 1fr auto;
-      gap: 25px;
-    }
-
-    .search-button {
-      display: flex;
-    }
-
-    .search-container {
-      display: initial;
-      position: ${props => (props.searchPosition ? 'relative' : 'absolute')};
-
-      > form {
-        width: ${props => (props.searchVisibility ? '100%' : '0px')};
-        padding: ${props => (props.searchContainerPadding ? '4px' : '0')};
-        margin: ${props => (props.searchContainerPadding ? '0' : '4px')};
-        transition: width 0.25s;
-        overflow: hidden;
+      h1: {
+        fontSize: '28px'
       }
     }
+  },
 
-    .navigation-button {
-      display: none;
-    }
+  '@bp3': {
+    '.main-wrapper': {
+      gridTemplateColumns: '125px 43px 1fr auto !important',
+      gap: '25px'
+    },
 
-    .navigation-container {
-      display: ${props => (props.navigationVisibility ? 'initial' : 'none')};
-      margin: 0 auto;
+    '.search-button': {
+      display: 'flex'
+    },
 
-      > ul {
-        display: flex;
-        align-items: center;
-        padding: 0;
-        margin: 0;
+    '.search-container': {
+      display: 'initial',
 
-        > li {
-          list-style: none;
+      form: {
+        transition: 'width 0.25s',
+        overflow: 'hidden'
+      }
+    },
 
-          > a {
-            padding: 32px 29px 31px;
-            border-right: 1px solid var(--color-light);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            color: var(--color-regular);
+    '.navigation-button': {
+      display: 'none'
+    },
 
-            &:hover {
-              color: #ffffff;
+    '.navigation-container': {
+      margin: '0 auto',
+
+      ul: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0',
+        margin: '0',
+
+        li: {
+          listStyle: 'none',
+
+          a: {
+            padding: '32px 29px 31px',
+            borderRight: '1px solid var(--colors-background-tertiary)',
+            fontSize: 'var(--fontSizes-sm)',
+            fontWeight: 'var(--fontWeights-medium)',
+            letterSpacing: '0.3px',
+            color: 'var(--colors-regular)',
+
+            '&:hover': {
+              color: 'var(--colors-white)'
             }
-          }
+          },
 
-          &:last-child > a {
-            border-right: none;
-          }
+          '&:last-child > a': {
+            borderRight: 'none'
+          },
 
-          &.active > a {
-            color: #ffffff;
+          '&.active > a': {
+            color: 'var(--colors-white)'
           }
         }
       }
+    },
+
+    '.connect-wallet': {
+      display: 'flex',
+      padding: '10px 19px 9px'
+    },
+
+    '.avatar-container .avatar': {
+      padding: '4px',
+      backgroundColor: 'var(--colors-background-tertiary)',
+      borderRadius: '30px',
+
+      img: {
+        width: '45px',
+        height: '45px'
+      }
     }
+  },
 
-    .connect-wallet {
-      display: flex;
-      padding: 10px 19px 9px;
-    }
+  '@bp4': {
+    '.main-wrapper': {
+      gridTemplateColumns: 'auto 1fr auto auto !important'
+    },
 
-    .avatar-container .avatar {
-      padding: 4px;
-      background-color: var(--color-light);
-      border-radius: 30px;
+    '.search-button': {
+      display: 'none'
+    },
 
-      > img {
-        width: 45px;
-        height: 45px;
+    '.search-container': {
+      width: '100%',
+      position: 'relative !important',
+      overflow: 'initial',
+
+      form: {
+        width: 'initial !important',
+        padding: '4px !important'
+      }
+    },
+
+    '.navigation-container': {
+      margin: '0 auto',
+
+      'ul > li > a': {
+        padding: '32px 32px 31px'
       }
     }
   }
-
-  @media screen and (min-width: 1280px) {
-    .main-wrapper {
-      grid-template-columns: auto 1fr auto auto;
-    }
-
-    .search-button {
-      display: none;
-    }
-
-    .search-container {
-      width: 100%;
-      display: initial;
-      position: relative;
-      overflow: initial;
-
-      > form {
-        width: initial;
-        padding: 4px;
-      }
-    }
-
-    .navigation-container {
-      margin: 0 auto;
-
-      > ul > li > a {
-        padding: 32px 32px 31px;
-      }
-    }
-  }
-`
+})

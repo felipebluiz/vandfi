@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import { styled } from '../../../stitches.config'
 
-export const Container = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 2000px;
-`
+export const Container = styled('div', {
+  paddingTop: '20px',
+  paddingBottom: '20px',
+  height: '2000px'
+})

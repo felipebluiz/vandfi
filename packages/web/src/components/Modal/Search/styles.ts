@@ -1,54 +1,49 @@
-import styled from 'styled-components'
+import { styled } from '../../../../stitches.config'
 
-interface ModalProps {
-  modalIsOpen: boolean
-}
+export const Modal = styled('div', {
+  backgroundColor: 'var(--colors-background-primary)',
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  right: '0',
+  bottom: '0',
+  zIndex: '9999',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  transition: 'opacity 0.2s ease-in-out'
+})
 
-export const Modal = styled.div<ModalProps>`
-  background-color: var(--color-darker);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  overflow-y: auto;
-  overflow-x: hidden;
-  opacity: ${props => (props.modalIsOpen ? '1' : '0')};
-  transition: opacity 0.2s ease-in-out;
-`
+export const Container = styled('div', {
+  height: '100%',
 
-export const Container = styled.div`
-  height: 100%;
+  '.mobile-button': {
+    position: 'absolute',
+    top: '15px',
+    left: '15px',
 
-  .mobile-button {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+    '.fa-angle-left': {
+      fontSize: '1.375rem',
+      color: 'var(--colors-regular)',
+      marginLeft: '-1px'
+    },
 
-    .fa-angle-left {
-      font-size: 22px;
-      color: var(--color-regular);
-      margin-left: -1px;
+    '&:hover .fa': {
+      color: 'var(--colors-white)'
     }
+  },
 
-    &:hover .fa {
-      color: #ffffff;
-    }
-  }
+  '.search-container': {
+    display: 'initial !important',
+    width: '100%',
+    height: '100%',
 
-  .search-container {
-    display: initial !important;
-    width: 100%;
-    height: 100%;
+    form: {
+      padding: '15px 15px 15px 75px',
+      borderBottom: '1px solid var(--colors-background-tertiary)'
+    },
 
-    > form {
-      padding: 15px 15px 15px 75px;
-      border-bottom: 1px solid var(--color-light);
-    }
-
-    .search-results {
-      margin-top: -1px;
+    '.search-results': {
+      marginTop: '-1px'
     }
   }
-`
+})

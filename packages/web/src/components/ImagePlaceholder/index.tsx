@@ -26,7 +26,7 @@ const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   const complete = !!imageRef.current
 
   return (
-    <Container width={width} height={height}>
+    <Container css={{ maxWidth: `${width}px`, maxHeight: `${height}px` }}>
       {!complete ? (
         <svg width="100%" height="100%" viewBox="0 0 100 100">
           <rect

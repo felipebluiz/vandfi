@@ -1,56 +1,40 @@
-import styled from 'styled-components'
+import { keyframes } from '@stitches/react'
+import { styled } from '../../../stitches.config'
 
-interface ContainerProps {
-  animation?: boolean
-}
+export const LogoAnimation = keyframes({
+  '0%': { transform: 'scale(1, 1)' },
+  '50%': { transform: 'scale(1.1, 1.1)' },
+  '100%': { transform: 'scale(1, 1)' }
+})
 
-export const Container = styled.div<ContainerProps>`
-  @keyframes zoomAnimation {
-    0% {
-      transform: scale(1, 1);
-    }
+export const Container = styled('div', {
+  a: {
+    width: 'fit-content',
+    display: 'flex',
+    alignItems: 'center',
+    userSelect: 'none',
+    MozUserSelect: 'none',
+    WebkitUserSelect: 'none',
+    MsUserSelect: 'none',
 
-    50% {
-      transform: scale(1.1, 1.1);
-    }
+    '.logo': {
+      width: '35px',
+      height: '35px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'var(--colors-primary)',
+      borderRadius: '5px',
+      fontSize: '52px',
+      fontWeight: 'var(--fontWeights-bold)',
+      color: 'var(--colors-white)',
+      marginRight: '10px',
+      overflow: 'hidden'
+    },
 
-    100% {
-      transform: scale(1, 1);
-    }
-  }
-
-  > a {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-    .logo {
-      width: 35px;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--color-primary);
-      border-radius: 5px;
-      font-size: 52px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-right: 10px;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 28px;
-      color: #ffffff;
-    }
-
-    &:hover {
-      animation: ${props =>
-        props.animation ? 'zoomAnimation 1s infinite' : 'none'};
+    h1: {
+      fontSize: '28px',
+      color: 'var(--colors-white)'
     }
   }
-`
+})

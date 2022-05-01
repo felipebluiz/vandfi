@@ -1,13 +1,6 @@
-import styled from 'styled-components'
+import { styled } from '../../../stitches.config'
 
-interface ContainerProps {
-  width: string
-  height: string
-}
-
-export const Container = styled.div<ContainerProps>`
-  width: 100%;
-  height: 100%;
-  max-width: ${props => `${props.width}px`};
-  max-height: ${props => `${props.height}px`};
-`
+export const Container = styled('div', {
+  width: '100%',
+  height: '100%'
+})

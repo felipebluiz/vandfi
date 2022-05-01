@@ -1,5 +1,5 @@
-import styled from 'styled-components'
+import { styled } from '../../../../stitches.config'
 
-export const Container = styled.div`
-  padding: 10px 0 9px;
-`
+export const Container = styled('div', {
+  padding: '10px 0 9px'
+})
