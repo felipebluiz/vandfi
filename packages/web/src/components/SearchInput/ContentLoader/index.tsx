@@ -1,5 +1,6 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
+import { theme } from '../../../../stitches.config'
 
 import { Container } from './styles'
 
@@ -13,13 +14,13 @@ const ContentLoaderComponent: React.FC = () => {
           <span>Items</span>
         </div>
         <Container>
-          {[...Array(3)].map((e, i) => (
+          {[...Array(3)].map((_, i) => (
             <ContentLoader
               key={i.toString()}
               speed={2}
               style={{ width: '100%', height: '40px', margin: '10px 0 5px' }}
-              backgroundColor="#232e43"
-              foregroundColor="#283348"
+              backgroundColor={theme.colors['background-tertiary'].value}
+              foregroundColor={theme.colors['background-quaternary'].value}
             >
               <rect x="20" y="0" rx="5" ry="5" width="40" height="40" />
               <rect
@@ -38,13 +39,13 @@ const ContentLoaderComponent: React.FC = () => {
           <span>Collections</span>
         </div>
         <Container>
-          {[...Array(3)].map((e, i) => (
+          {[...Array(3)].map((_, i) => (
             <ContentLoader
               key={i.toString()}
               speed={2}
               style={{ width: '100%', height: '40px', margin: '10px 0 5px' }}
-              backgroundColor="#232e43"
-              foregroundColor="#283348"
+              backgroundColor={theme.colors['background-tertiary'].value}
+              foregroundColor={theme.colors['background-quaternary'].value}
             >
               <rect x="20" y="0" rx="40" ry="40" width="40" height="40" />
               <rect
@@ -63,13 +64,13 @@ const ContentLoaderComponent: React.FC = () => {
           <span>Creators</span>
         </div>
         <Container>
-          {[...Array(3)].map((e, i) => (
+          {[...Array(3)].map((_, i) => (
             <ContentLoader
               key={i.toString()}
               speed={2}
               style={{ width: '100%', height: '40px', margin: '10px 0 5px' }}
-              backgroundColor="#232e43"
-              foregroundColor="#283348"
+              backgroundColor={theme.colors['background-tertiary'].value}
+              foregroundColor={theme.colors['background-quaternary'].value}
             >
               <rect x="20" y="0" rx="40" ry="40" width="40" height="40" />
               <rect

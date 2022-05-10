@@ -1,16 +1,24 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { FaWallet, FaSearch, FaTimes, FaBars } from 'react-icons/fa'
 import Link from 'next/link'
+import {
+  faWallet,
+  faBars,
+  faSearch,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons'
 
 import { Logo } from '@/components/Logo'
 import { SearchModal } from '@/components/Modal/Search'
-import SearchInput, { SearchInputHandle } from '@/components/SearchInput'
+import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
+import { Avatar } from '@/components/Avatar'
+import { IconButton } from '@/components/IconButton'
+import { Button } from '@/components/Button'
 
 import { Container } from './styles'
 
-const Header: React.FC = () => {
-  const [loggedIn] = useState(false)
+export const Header: React.FC = () => {
+  const [loggedIn] = useState(true)
   const [navigationVisibility, setNavigationVisibility] = useState(true)
   const [searchVisibility, setSearchVisibility] = useState(false)
   const [searchPosition, setSearchPosition] = useState(false)
@@ -27,7 +35,7 @@ const Header: React.FC = () => {
   }
 
   const hideSearch = () => {
-    searchInputRef.current.clearSearchInput()
+    searchInputRef.current?.clearSearchInput()
 
     setSearchVisibility(false)
     setSearchContainerPadding(false)
@@ -48,35 +56,21 @@ const Header: React.FC = () => {
 
   return (
     <Container
-      css={{
-        '.main-wrapper': {
-          gridTemplateColumns: loggedIn ? '1fr auto auto auto' : '1fr auto auto'
-        },
-        '@bp3': {
-          '.search-container': {
-            position: searchPosition ? 'relative' : 'absolute',
-            form: {
-              width: searchVisibility ? '100%' : '0px',
-              padding: searchContainerPadding ? '4px' : '0',
-              margin: searchContainerPadding ? '0' : '4px'
-            }
-          },
-          '.navigation-container': {
-            display: navigationVisibility ? 'initial' : 'none'
-          }
-        }
-      }}
+      loggedIn={loggedIn}
+      navigationVisibility={navigationVisibility}
+      searchVisibility={searchVisibility}
+      searchPosition={searchPosition}
+      searchContainerPadding={searchContainerPadding}
     >
       <div className="main-wrapper">
-        <Logo animation={true} />
-        <button
-          type="button"
+        <Logo />
+        <IconButton
+          icon={!searchVisibility ? faSearch : faTimes}
+          variant="secundary"
+          size="md"
           className="search-button"
           onClick={!searchVisibility ? showSearch : hideSearch}
-        >
-          {!searchVisibility && <FaSearch className="fa fa-search" />}
-          {searchVisibility && <FaTimes className="fa fa-times" />}
-        </button>
+        />
         <SearchInput
           ref={searchInputRef}
           setSearchModalIsOpen={hideSearch}
@@ -103,31 +97,36 @@ const Header: React.FC = () => {
             </li>
           </ul>
         </div>
-        <button
-          type="button"
+        <IconButton
+          icon={faSearch}
+          variant="secundary"
+          size="md"
           className="mobile-button navigation-button"
           onClick={() => setSearchModalIsOpen(!searchModalIsOpen)}
-        >
-          <FaSearch className="fa fa-search" />
-        </button>
-        <button type="button" className="mobile-button navigation-button">
-          <FaBars className="fa fa-bars" />
-        </button>
+        />
+        <IconButton
+          icon={faBars}
+          variant="secundary"
+          size="md"
+          className="navigation-button"
+        />
         {loggedIn && (
-          <button type="button" className="avatar-container">
-            <div className="avatar">
-              <img src="/images/avatar.png" alt="User Avatar" />
-            </div>
-          </button>
+          <Avatar
+            src="/images/avatar.png"
+            size="sm"
+            className="avatar"
+            verified
+          />
         )}
         {!loggedIn && (
-          <button
-            type="button"
-            className="button-medium button-primary connect-wallet"
+          <Button
+            variant="primary"
+            size="md"
+            icon={faWallet}
+            className="connect-wallet"
           >
-            <FaWallet className="fa fa-search" />
-            <span>Connect Wallet</span>
-          </button>
+            Connect Wallet
+          </Button>
         )}
       </div>
       {searchModalIsOpen && (
@@ -136,5 +135,3 @@ const Header: React.FC = () => {
     </Container>
   )
 }
-
-export { Header }

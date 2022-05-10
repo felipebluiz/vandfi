@@ -19,7 +19,8 @@ export const {
       black: '#000000',
       errorPrimary: '#FF0000',
       warningPrimary: '#FACA07',
-      'background-tertiary': '#2A3646',
+      'background-quaternary': '#2A3646',
+      'background-tertiary': '#232E43',
       'background-secundary': '#222C3A',
       'background-primary': '#1A2433'
     },

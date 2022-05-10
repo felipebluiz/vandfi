@@ -7,7 +7,9 @@ export const LogoAnimation = keyframes({
   '100%': { transform: 'scale(1, 1)' }
 })
 
-export const Container = styled('div', {
+export const StyledLogo = styled('div', {
+  width: 'fit-content',
+
   a: {
     width: 'fit-content',
     display: 'flex',
@@ -18,14 +20,11 @@ export const Container = styled('div', {
     MsUserSelect: 'none',
 
     '.logo': {
-      width: '35px',
-      height: '35px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: 'var(--colors-primary)',
       borderRadius: '5px',
-      fontSize: '52px',
       fontWeight: 'var(--fontWeights-bold)',
       color: 'var(--colors-white)',
       marginRight: '10px',
@@ -36,5 +35,46 @@ export const Container = styled('div', {
       fontSize: '28px',
       color: 'var(--colors-white)'
     }
+  },
+
+  variants: {
+    size: {
+      sm: {
+        a: {
+          '.logo': {
+            width: '28px',
+            height: '28px',
+            fontSize: '46px'
+          },
+          h1: {
+            fontSize: '24px'
+          }
+        }
+      },
+      md: {
+        a: {
+          '.logo': {
+            width: '35px',
+            height: '35px',
+            fontSize: '52px'
+          },
+          h1: {
+            fontSize: '28px'
+          }
+        }
+      }
+    },
+    animation: {
+      true: {
+        '&:hover': {
+          animation: `${LogoAnimation} 1s infinite`
+        }
+      }
+    }
+  },
+
+  defaultVariants: {
+    size: 'md',
+    animation: true
   }
 })

@@ -17,7 +17,7 @@ export const Container = styled('div', {
       button: {
         position: 'absolute',
         top: '1px',
-        right: '15px',
+        right: '16px',
         background: 'none',
         border: 'none',
         padding: '0',
@@ -29,7 +29,7 @@ export const Container = styled('div', {
         },
 
         '&:hover > .fa-times': {
-          color: 'var(--colors-white)'
+          opacity: 'var(--opacity-intense)'
         }
       },
 
@@ -39,8 +39,8 @@ export const Container = styled('div', {
         fontFamily: 'var(--fonts-default)',
         padding: '13px 42px 12px',
         color: 'var(--colors-white)',
-        backgroundColor: '#232e43',
-        border: '1px solid #232e43',
+        backgroundColor: 'var(--colors-background-tertiary)',
+        border: '1px solid var(--colors-background-tertiary)',
         borderRadius: '30px',
         outline: 'none',
 
@@ -87,13 +87,9 @@ export const Container = styled('div', {
             borderBottom: 'none'
           },
 
-          '.item-image, .collection-avatar, .creator-avatar': {
+          '.item-image': {
             width: 'inherit',
             height: 'inherit',
-            borderRadius: '40px'
-          },
-
-          '.item-image': {
             borderRadius: '6px'
           },
 
@@ -103,7 +99,7 @@ export const Container = styled('div', {
             width: '100%',
             paddingTop: '12px',
             paddingBottom: '12px',
-            borderBottom: '1px solid var(--colors-background-tertiary)',
+            borderBottom: '1px solid var(--colors-background-quaternary)',
 
             '.name': {
               fontSize: 'var(--fontSizes-sm)',
@@ -129,11 +125,7 @@ export const Container = styled('div', {
       },
 
       '.button-container': {
-        padding: '15px 20px 20px',
-
-        button: {
-          width: '100%'
-        }
+        padding: '15px 20px 20px'
       }
     }
   },
@@ -182,7 +174,7 @@ export const Container = styled('div', {
       top: '85px',
       left: '0',
       backgroundColor: 'var(--colors-background-primary)',
-      border: '1px solid var(--colors-background-tertiary)',
+      border: '1px solid var(--colors-background-quaternary)',
       borderRadius: '10px',
 
       '.search-results': {
@@ -191,7 +183,7 @@ export const Container = styled('div', {
         overflowY: 'auto',
         scrollbarWidth: 'thin',
         scrollbarColor:
-          'var(--colors-background-tertiary) var(--colors-background-primary)',
+          'var(--colors-background-quaternary) var(--colors-background-primary)',
 
         '&::-webkit-scrollbar': {
           width: '5px',
@@ -199,7 +191,7 @@ export const Container = styled('div', {
         },
 
         '&::-webkit-scrollbar-thumb': {
-          background: 'var(--colors-background-tertiary)',
+          background: 'var(--colors-background-quaternary)',
           borderRadius: '5px'
         }
       }

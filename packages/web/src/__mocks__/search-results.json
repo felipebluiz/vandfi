@@ -24,19 +24,22 @@
       "id": "0",
       "avatarUrl": "/images/crypto-punk.png",
       "name": "CryptoPunk",
-      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
     },
     {
       "id": "1",
       "avatarUrl": "/images/crypto-punk.png",
       "name": "Moonbirds",
-      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
     },
     {
       "id": "2",
       "avatarUrl": "/images/crypto-punk.png",
       "name": "Bored Ape Yatch Club",
-      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+      "creatorAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": false
     }
   ],
   "creators": [
@@ -44,19 +47,22 @@
       "id": "0",
       "avatarUrl": "/images/avatar.png",
       "name": "Bored Man",
-      "followersQtd": 500
+      "followersQtd": 500,
+      "verified": true
     },
     {
       "id": "1",
       "avatarUrl": "/images/avatar.png",
       "name": "Sci Moon",
-      "followersQtd": 1500
+      "followersQtd": 1500,
+      "verified": false
     },
     {
       "id": "2",
       "avatarUrl": "/images/avatar.png",
       "name": "kobplayer",
-      "followersQtd": 11500
+      "followersQtd": 11500,
+      "verified": false
     }
   ]
 }

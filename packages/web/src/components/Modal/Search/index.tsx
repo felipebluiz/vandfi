@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { FaAngleLeft } from 'react-icons/fa'
+import { IconButton } from '@/components/IconButton'
+import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
-import SearchInput, { SearchInputHandle } from '@/components/SearchInput'
+import { StyledModal, Container } from './styles'
 
-import { Modal, Container } from './styles'
-
-interface SearchModalProps {
+type SearchModalProps = React.ComponentProps<typeof StyledModal> & {
   setSearchModalIsOpen: (value: boolean) => void
 }
 
-const SearchModal: React.FC<SearchModalProps> = ({ setSearchModalIsOpen }) => {
+export const SearchModal: React.FC<SearchModalProps> = ({
+  setSearchModalIsOpen
+}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const searchInputRef = useRef<SearchInputHandle>(null)
 
@@ -19,28 +21,26 @@ const SearchModal: React.FC<SearchModalProps> = ({ setSearchModalIsOpen }) => {
   }
 
   useEffect(() => {
-    searchInputRef.current.setInputFocus()
+    searchInputRef.current?.setInputFocus()
     setModalIsOpen(true)
   }, [])
 
   return (
-    <Modal css={{ opacity: `${modalIsOpen ? '1' : '0'}` }}>
+    <StyledModal opacity={modalIsOpen}>
       <Container>
-        <button
-          type="button"
-          className="mobile-button back-button"
+        <IconButton
+          icon={faAngleLeft}
+          variant="secundary"
+          size="md"
+          className="back-button"
           onClick={closeModal}
-        >
-          <FaAngleLeft className="fa fa-angle-left" />
-        </button>
+        />
         <SearchInput
           ref={searchInputRef}
           setSearchModalIsOpen={setSearchModalIsOpen}
           placeholder="Items, collections or creators"
         />
       </Container>
-    </Modal>
+    </StyledModal>
   )
 }
-
-export { SearchModal }

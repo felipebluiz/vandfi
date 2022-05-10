@@ -1,32 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Container, LogoAnimation } from './styles'
+import { StyledLogo } from './styles'
 
-interface LogoProps {
-  animation: boolean
+type LogoProps = React.ComponentProps<typeof StyledLogo> & {
+  size?: string
+  animation?: boolean
 }
 
-const Logo: React.FC<LogoProps> = ({ animation }) => {
+export const Logo: React.FC<LogoProps> = props => {
   return (
-    <Container
-      className="logo-container"
-      css={{
-        '@bp3': {
-          '&:hover': {
-            animation: animation ? `${LogoAnimation} 1s infinite` : 'none'
-          }
-        }
-      }}
-    >
+    <StyledLogo className="logo-container" {...props}>
       <Link href="/">
         <a>
           <div className="logo">V</div>
           <h1>Vandfi</h1>
         </a>
       </Link>
-    </Container>
+    </StyledLogo>
   )
 }
-
-export { Logo }

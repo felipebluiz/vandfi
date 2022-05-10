@@ -8,10 +8,11 @@ export const Container = styled('div', {
   zIndex: '100',
   height: '80px',
   background: 'var(--colors-background-primary)',
-  borderBottom: '1px solid var(--colors-background-tertiary)',
+  borderBottom: '1px solid var(--colors-background-quaternary)',
 
   '.main-wrapper': {
     display: 'grid',
+    gridTemplateColumns: '1fr auto auto',
     gap: '10px',
     alignItems: 'center'
   },
@@ -32,33 +33,6 @@ export const Container = styled('div', {
     display: 'none'
   },
 
-  '.mobile-button, .search-button': {
-    width: '44px',
-    minWidth: '44px',
-    height: '44px',
-    backgroundColor: '#232e43',
-    border: 'none',
-    borderRadius: '30px',
-    cursor: 'pointer',
-
-    '.fa': {
-      fontSize: 'var(--fontSizes-md)',
-      color: 'var(--colors-regular)'
-    },
-
-    '.fa-bars': {
-      fontSize: 'var(--fontSizes-lg)'
-    },
-
-    '.fa-times': {
-      fontSize: 'var(--fontSizes-lg)'
-    },
-
-    '&:hover .fa': {
-      color: 'var(--colors-white)'
-    }
-  },
-
   '.search-container': {
     display: 'none'
   },
@@ -69,24 +43,6 @@ export const Container = styled('div', {
 
   '.connect-wallet': {
     display: 'none'
-  },
-
-  '.avatar-container': {
-    padding: '0',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-
-    '.avatar > img': {
-      width: '44px',
-      height: '44px',
-      borderRadius: '30px',
-      verticalAlign: 'bottom'
-    },
-
-    '&:hover': {
-      opacity: 'var(--opacity-semiOpaque)'
-    }
   },
 
   '@bp1': {
@@ -110,13 +66,21 @@ export const Container = styled('div', {
     },
 
     '.search-button': {
-      display: 'flex'
+      display: 'flex',
+
+      '.fa-times': {
+        fontSize: 'var(--fontSizes-lg)'
+      }
     },
 
     '.search-container': {
+      position: 'absolute',
       display: 'initial',
 
       form: {
+        width: '0px',
+        padding: '0',
+        margin: '4px',
         transition: 'width 0.25s',
         overflow: 'hidden'
       }
@@ -127,6 +91,7 @@ export const Container = styled('div', {
     },
 
     '.navigation-container': {
+      display: 'none',
       margin: '0 auto',
 
       ul: {
@@ -140,7 +105,7 @@ export const Container = styled('div', {
 
           a: {
             padding: '32px 29px 31px',
-            borderRight: '1px solid var(--colors-background-tertiary)',
+            borderRight: '1px solid var(--colors-background-quaternary)',
             fontSize: 'var(--fontSizes-sm)',
             fontWeight: 'var(--fontWeights-medium)',
             letterSpacing: '0.3px',
@@ -164,17 +129,22 @@ export const Container = styled('div', {
 
     '.connect-wallet': {
       display: 'flex',
-      padding: '10px 19px 9px'
+      padding: '10px 19px',
+
+      span: {
+        marginBottom: '-1px'
+      }
     },
 
-    '.avatar-container .avatar': {
-      padding: '4px',
-      backgroundColor: 'var(--colors-background-tertiary)',
-      borderRadius: '30px',
+    '.avatar': {
+      minWidth: '52px',
+      width: '52px',
+      height: '52px',
 
-      img: {
-        width: '45px',
-        height: '45px'
+      '.fa-check-circle': {
+        fontSize: 'var(--fontSizes-md)',
+        right: '2px',
+        bottom: '-2px'
       }
     }
   },
@@ -204,6 +174,53 @@ export const Container = styled('div', {
 
       'ul > li > a': {
         padding: '32px 32px 31px'
+      }
+    }
+  },
+
+  variants: {
+    loggedIn: {
+      true: {
+        '.main-wrapper': {
+          gridTemplateColumns: '1fr auto auto auto'
+        }
+      }
+    },
+    searchPosition: {
+      true: {
+        '@bp3': {
+          '.search-container': {
+            position: 'relative'
+          }
+        }
+      }
+    },
+    searchVisibility: {
+      true: {
+        '@bp3': {
+          '.search-container form': {
+            width: '100%'
+          }
+        }
+      }
+    },
+    searchContainerPadding: {
+      true: {
+        '@bp3': {
+          '.search-container form': {
+            padding: '4px',
+            margin: '0'
+          }
+        }
+      }
+    },
+    navigationVisibility: {
+      true: {
+        '@bp3': {
+          '.navigation-container': {
+            display: 'initial'
+          }
+        }
       }
     }
   }

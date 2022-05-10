@@ -8,14 +8,17 @@ import React, {
 } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { FaRocket, FaSearch, FaTimes } from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faRocket, faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { Image } from '@/components/Image'
+import { Avatar } from '@/components/Avatar'
+import { Button } from '@/components/Button'
 import { ContentLoader } from './ContentLoader'
 import { searchResults } from '../../__mocks__'
 import { truncateAddress, numberFormat } from '../../utils'
 
 import { Container } from './styles'
-import { ImagePlaceholder } from '../ImagePlaceholder'
 
 export interface SearchInputHandle {
   setInputFocus: () => void
@@ -23,7 +26,7 @@ export interface SearchInputHandle {
 }
 
 interface SearchInputProps {
-  setSearchModalIsOpen?: (value: boolean) => void
+  setSearchModalIsOpen: (value: boolean) => void
   placeholder: string
 }
 
@@ -39,6 +42,7 @@ interface CollectionProps {
   avatarUrl: string
   name: string
   creatorAddress: string
+  verified: boolean
 }
 
 interface CreatorProps {
@@ -46,20 +50,21 @@ interface CreatorProps {
   avatarUrl: string
   name: string
   followersQtd: number
+  verified: boolean
 }
 
-const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
+export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
   ({ setSearchModalIsOpen, placeholder }, ref) => {
     const router = useRouter()
     const { register, watch, resetField, setFocus, handleSubmit } = useForm()
-    const searchFormRef = useRef<HTMLFormElement>()
-    const searchResultsRef = useRef<HTMLDivElement>()
+    const searchFormRef = useRef<HTMLFormElement>(null)
+    const searchResultsRef = useRef<HTMLDivElement>(null)
     const searchValue = watch('searchValue')
     const [searchResultsIsOpen, setSearchResultsIsOpen] = useState(false)
-    const [items, setItems] = useState(undefined)
-    const [collections, setCollections] = useState(undefined)
-    const [creators, setCreators] = useState(undefined)
-    const [loading, setLoading] = useState(false)
+    const [items, setItems] = useState<ItemsProps[]>([])
+    const [collections, setCollections] = useState<CollectionProps[]>([])
+    const [creators, setCreators] = useState<CreatorProps[]>([])
+    const [loading, setLoading] = useState(true)
 
     const goToExplorePage = () => {
       router.replace('/explore')
@@ -81,9 +86,10 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
       e.preventDefault()
 
       resetField('searchValue')
-      setItems(undefined)
-      setCollections(undefined)
-      setCreators(undefined)
+      setItems([])
+      setCollections([])
+      setCreators([])
+      setLoading(true)
     }
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -92,8 +98,8 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
       if (
         searchResultsIsOpen &&
         searchResultsRef.current &&
-        !searchResultsRef.current.contains(target) &&
-        !searchFormRef.current.contains(target)
+        !searchResultsRef.current?.contains(target) &&
+        !searchFormRef.current?.contains(target)
       ) {
         setSearchResultsIsOpen(false)
       }
@@ -107,25 +113,22 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
           if (searchValue) {
             console.log(searchValue)
 
-            setItems(searchResults.items)
-            setCollections(searchResults.collections)
-            setCreators(searchResults.creators)
-            setLoading(false)
+            setTimeout(() => {
+              setItems(searchResults.items)
+              setCollections(searchResults.collections)
+              setCreators(searchResults.creators)
+              setLoading(false)
+            }, 500)
           }
         }, 500)
 
         return () => clearTimeout(timeout)
       } else {
-        setItems(undefined)
-        setCollections(undefined)
-        setCreators(undefined)
-        setLoading(false)
+        setItems([])
+        setCollections([])
+        setCreators([])
+        setLoading(true)
       }
-    }, [searchValue])
-
-    useEffect(() => {
-      if (searchValue && !searchResultsIsOpen) setSearchResultsIsOpen(true)
-      if (!searchValue && searchResultsIsOpen) setSearchResultsIsOpen(false)
     }, [searchValue])
 
     useEffect(() => {
@@ -140,9 +143,9 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
 
       clearSearchInput() {
         resetField('searchValue')
-        setItems(undefined)
-        setCollections(undefined)
-        setCreators(undefined)
+        setItems([])
+        setCollections([])
+        setCreators([])
       }
     }))
 
@@ -150,7 +153,7 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
       <Container className="search-container">
         <form ref={searchFormRef} onSubmit={handleSubmit(onSubmit)}>
           <label>
-            <FaSearch className="fa fa-search" />
+            <FontAwesomeIcon icon={faSearch} className="fa fa-search" />
             <input
               {...register('searchValue')}
               type="text"
@@ -159,16 +162,16 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
             />
             {searchValue && (
               <button type="button" onClick={clearSearchInput}>
-                <FaTimes className="fa fa-times" />
+                <FontAwesomeIcon icon={faTimes} className="fa fa-times" />
               </button>
             )}
           </label>
         </form>
-        {loading && <ContentLoader />}
-        {!loading && searchResultsIsOpen && (
+        {loading && searchValue && <ContentLoader />}
+        {!loading && searchValue && searchResultsIsOpen && (
           <div ref={searchResultsRef} className="search-results-container">
             <div className="search-results">
-              {items?.length > 0 && (
+              {items.length > 0 && (
                 <>
                   <div className="section-title">
                     <span>Items</span>
@@ -176,13 +179,12 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   <div className="section-list">
                     {items.map((item: ItemsProps, index: number) => (
                       <button type="button" key={item.id} className="list-item">
-                        <ImagePlaceholder
+                        <Image
                           width="40"
                           height="40"
                           src={item.avatarUrl}
                           alt="NFT item"
                           className="item-image"
-                          placeholderColor="#232e43"
                           borderRadius="6"
                         />
                         <div
@@ -197,7 +199,7 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   </div>
                 </>
               )}
-              {collections?.length > 0 && (
+              {collections.length > 0 && (
                 <>
                   <div className="section-title">
                     <span>Collections</span>
@@ -210,14 +212,11 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                           key={collection.id}
                           className="list-item"
                         >
-                          <ImagePlaceholder
-                            width="40"
-                            height="40"
+                          <Avatar
                             src={collection.avatarUrl}
                             alt="Collection avatar"
-                            className="collection-avatar"
-                            placeholderColor="#232e43"
-                            borderRadius="40"
+                            size="xs"
+                            verified={collection.verified}
                           />
                           <div
                             className="info-container"
@@ -236,7 +235,7 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   </div>
                 </>
               )}
-              {creators?.length > 0 && (
+              {creators.length > 0 && (
                 <>
                   <div className="section-title">
                     <span>Creators</span>
@@ -248,14 +247,11 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                         key={creator.id}
                         className="list-item"
                       >
-                        <ImagePlaceholder
-                          width="40"
-                          height="40"
+                        <Avatar
                           src={creator.avatarUrl}
                           alt="Creator avatar"
-                          className="creator-avatar"
-                          placeholderColor="#232e43"
-                          borderRadius="40"
+                          size="xs"
+                          verified={creator.verified}
                         />
                         <div
                           className="info-container"
@@ -271,29 +267,31 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   </div>
                 </>
               )}
-              {(items?.length > 0 ||
-                collections?.length > 0 ||
-                creators?.length > 0) && (
+              {(items.length > 0 ||
+                collections.length > 0 ||
+                creators.length > 0) && (
                 <div className="button-container">
-                  <button type="button" className="button-large button-outline">
-                    <span>See all results</span>
-                  </button>
+                  <Button variant="secundary" size="md" outlined full>
+                    See all results
+                  </Button>
                 </div>
               )}
-              {items?.length === 0 &&
-                collections?.length === 0 &&
-                creators?.length === 0 && (
+              {!loading &&
+                searchValue &&
+                items.length === 0 &&
+                collections.length === 0 &&
+                creators.length === 0 && (
                   <div className="not-found">
                     <h2>Sorry, no matches were found.</h2>
                     <p>Try a new search or explore our marketplace.</p>
-                    <button
-                      type="button"
-                      className="button-medium button-primary"
+                    <Button
+                      variant="primary"
+                      size="md"
+                      icon={faRocket}
                       onClick={goToExplorePage}
                     >
-                      <FaRocket className="fa fa-rocket" />
-                      <span>Explore now</span>
-                    </button>
+                      Explore now
+                    </Button>
                   </div>
                 )}
             </div>
@@ -303,5 +301,3 @@ const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
     )
   }
 )
-
-export default SearchInput
