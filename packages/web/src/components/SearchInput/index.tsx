@@ -178,7 +178,12 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   </div>
                   <div className="section-list">
                     {items.map((item: ItemsProps, index: number) => (
-                      <button type="button" key={item.id} className="list-item">
+                      <div
+                        key={item.id}
+                        tabIndex={0}
+                        role="button"
+                        className="list-item"
+                      >
                         <Image
                           width="40"
                           height="40"
@@ -194,7 +199,7 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                           <span className="name">{item.name}</span>
                           <span className="description">{item.saleType}</span>
                         </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </>
@@ -207,9 +212,10 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   <div className="section-list">
                     {collections.map(
                       (collection: CollectionProps, index: number) => (
-                        <button
-                          type="button"
+                        <div
                           key={collection.id}
+                          tabIndex={0}
+                          role="button"
                           className="list-item"
                         >
                           <Avatar
@@ -229,7 +235,7 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                               )}`}
                             </span>
                           </div>
-                        </button>
+                        </div>
                       )
                     )}
                   </div>
@@ -242,9 +248,10 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                   </div>
                   <div className="section-list">
                     {creators.map((creator: CreatorProps, index: number) => (
-                      <button
-                        type="button"
+                      <div
                         key={creator.id}
+                        tabIndex={0}
+                        role="button"
                         className="list-item"
                       >
                         <Avatar
@@ -262,7 +269,7 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                             {`${numberFormat(creator.followersQtd)} followers`}
                           </span>
                         </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </>

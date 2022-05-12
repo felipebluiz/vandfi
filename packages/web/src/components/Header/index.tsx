@@ -10,6 +10,7 @@ import {
 
 import { Logo } from '@/components/Logo'
 import { SearchModal } from '@/components/Modal/Search'
+import { NavigationModal } from '@/components/Modal/Navigation'
 import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
 import { Avatar } from '@/components/Avatar'
 import { IconButton } from '@/components/IconButton'
@@ -18,12 +19,13 @@ import { Button } from '@/components/Button'
 import { Container } from './styles'
 
 export const Header: React.FC = () => {
-  const [loggedIn] = useState(true)
+  const [loggedIn] = useState(false)
   const [navigationVisibility, setNavigationVisibility] = useState(true)
   const [searchVisibility, setSearchVisibility] = useState(false)
   const [searchPosition, setSearchPosition] = useState(false)
   const [searchContainerPadding, setSearchContainerPadding] = useState(false)
   const [searchModalIsOpen, setSearchModalIsOpen] = useState(false)
+  const [navigationModalIsOpen, setNavigationModalIsOpen] = useState(false)
   const searchInputRef = useRef<SearchInputHandle>(null)
   const router = useRouter()
 
@@ -109,6 +111,7 @@ export const Header: React.FC = () => {
           variant="secundary"
           size="md"
           className="navigation-button"
+          onClick={() => setNavigationModalIsOpen(!navigationModalIsOpen)}
         />
         {loggedIn && (
           <Avatar
@@ -131,6 +134,12 @@ export const Header: React.FC = () => {
       </div>
       {searchModalIsOpen && (
         <SearchModal setSearchModalIsOpen={setSearchModalIsOpen} />
+      )}
+      {navigationModalIsOpen && (
+        <NavigationModal
+          loggedIn={loggedIn}
+          setNavigationModalIsOpen={setNavigationModalIsOpen}
+        />
       )}
     </Container>
   )

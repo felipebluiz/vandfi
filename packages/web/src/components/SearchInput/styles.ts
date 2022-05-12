@@ -82,6 +82,7 @@ export const Container = styled('div', {
           background: 'none',
           border: 'none',
           textAlign: 'left',
+          cursor: 'pointer',
 
           '&:last-child': {
             borderBottom: 'none'

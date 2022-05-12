@@ -14,7 +14,11 @@ export const Container = styled('div', {
     display: 'grid',
     gridTemplateColumns: '1fr auto auto',
     gap: '10px',
-    alignItems: 'center'
+    alignItems: 'center',
+
+    '> .connect-wallet': {
+      display: 'none'
+    }
   },
 
   '.logo-container > a': {
@@ -41,10 +45,6 @@ export const Container = styled('div', {
     display: 'none'
   },
 
-  '.connect-wallet': {
-    display: 'none'
-  },
-
   '@bp1': {
     '.logo-container > a': {
       '.logo': {
@@ -62,7 +62,16 @@ export const Container = styled('div', {
   '@bp3': {
     '.main-wrapper': {
       gridTemplateColumns: '125px 43px 1fr auto !important',
-      gap: '25px'
+      gap: '25px',
+
+      '> .connect-wallet': {
+        display: 'flex',
+        padding: '10px 19px',
+
+        span: {
+          marginBottom: '-1px'
+        }
+      }
     },
 
     '.search-button': {
@@ -109,30 +118,17 @@ export const Container = styled('div', {
             fontSize: 'var(--fontSizes-sm)',
             fontWeight: 'var(--fontWeights-medium)',
             letterSpacing: '0.3px',
-            color: 'var(--colors-regular)',
-
-            '&:hover': {
-              color: 'var(--colors-white)'
-            }
+            color: 'var(--colors-regular)'
           },
 
           '&:last-child > a': {
             borderRight: 'none'
           },
 
-          '&.active > a': {
+          '&:hover > a, &.active > a': {
             color: 'var(--colors-white)'
           }
         }
-      }
-    },
-
-    '.connect-wallet': {
-      display: 'flex',
-      padding: '10px 19px',
-
-      span: {
-        marginBottom: '-1px'
       }
     },
 
