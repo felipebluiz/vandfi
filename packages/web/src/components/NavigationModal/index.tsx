@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { faWallet, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -7,57 +7,56 @@ import {
   faTwitter,
   faInstagram,
   faDiscord,
-  faYoutube,
-  faTiktok
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+
+import { Modal, ModalHandle } from '@/components/Modal'
 import { Logo } from '@/components/Logo'
 import { IconButton } from '@/components/IconButton'
 import { Button } from '@/components/Button'
 
-import { StyledModal, Container } from './styles'
+import { Container } from './styles'
 
-type SearchModalProps = React.ComponentProps<typeof StyledModal> & {
+interface NavigationModalProps {
   loggedIn: boolean
+  navigationModalIsOpen: boolean
   setNavigationModalIsOpen: (value: boolean) => void
 }
 
-export const NavigationModal: React.FC<SearchModalProps> = ({
+export const NavigationModal: React.FC<NavigationModalProps> = ({
   loggedIn,
+  navigationModalIsOpen,
   setNavigationModalIsOpen
 }) => {
+  const modalRef = useRef<ModalHandle>(null)
   const router = useRouter()
-  const [modalIsOpen, setModalIsOpen] = useState(false)
   const [socailLinks] = useState({
     facebook: 'https://www.facebook.com/vandfi',
     twitter: 'https://twitter.com/vandfi/',
     instagram: 'https://www.instagram.com/vandfi/',
     discord: 'https://discord.gg/FWFQvaXz',
-    youtube: 'https://www.youtube.com/channel/UCBRLq3Y7YkG5xb_j27V4Y6Q',
-    tiktok: 'https://www.tiktok.com/@vandfi.com'
+    youtube: 'https://www.youtube.com/channel/UCBRLq3Y7YkG5xb_j27V4Y6Q'
   })
 
-  const closeModal = () => {
-    setModalIsOpen(false)
-    setTimeout(() => setNavigationModalIsOpen(false), 200)
-  }
-
-  useEffect(() => {
-    setModalIsOpen(true)
-  }, [])
-
   return (
-    <StyledModal opacity={modalIsOpen}>
+    <Modal
+      ref={modalRef}
+      hideHeader
+      hideActions
+      modalIsOpen={navigationModalIsOpen}
+      setModalIsOpen={setNavigationModalIsOpen}
+    >
       <Container>
-        <div className="header">
+        <header>
           <Logo />
           <IconButton
             icon={faTimes}
             variant="secundary"
             size="md"
-            onClick={closeModal}
+            onClick={() => modalRef.current?.closeModal()}
           />
-        </div>
+        </header>
         <div className="content">
           <ul>
             <li className={router.pathname === '/explore' ? 'active' : ''}>
@@ -66,22 +65,28 @@ export const NavigationModal: React.FC<SearchModalProps> = ({
               </Link>
             </li>
             <li className={router.pathname === '/activity' ? 'active' : ''}>
-              <a href="/activity">Activity</a>
+              <Link href="/activity">
+                <a>Activity</a>
+              </Link>
             </li>
             <li className={router.pathname === '/how-it-works' ? 'active' : ''}>
-              <a href="/how-it-works">How it works</a>
+              <Link href="/how-it-works">
+                <a>How it works</a>
+              </Link>
             </li>
             <li className={router.pathname === '/blog' ? 'active' : ''}>
-              <a href="/blog">Blog</a>
+              <Link href="/blog">
+                <a>Blog</a>
+              </Link>
             </li>
             <li className={router.pathname === '/create' ? 'active' : ''}>
-              <a href="/create" className="highlight">
-                Create
-              </a>
+              <Link href="/create">
+                <a>Create</a>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="footer">
+        <footer>
           {!loggedIn && (
             <Button
               variant="primary"
@@ -129,16 +134,9 @@ export const NavigationModal: React.FC<SearchModalProps> = ({
               radius="semiRounded"
               onClick={() => window.open(socailLinks.youtube, '_blank')}
             />
-            <IconButton
-              icon={faTiktok as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socailLinks.tiktok, '_blank')}
-            />
           </div>
-        </div>
+        </footer>
       </Container>
-    </StyledModal>
+    </Modal>
   )
 }

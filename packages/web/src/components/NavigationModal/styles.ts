@@ -1,4 +1,4 @@
-import { styled, keyframes } from '../../../../stitches.config'
+import { styled, keyframes } from '../../../stitches.config'
 
 export const revealLinks = keyframes({
   from: { transform: 'translateY(20px)' },
@@ -8,40 +8,19 @@ export const revealLinks = keyframes({
   }
 })
 
-export const StyledModal = styled('div', {
-  backgroundColor: 'var(--colors-background-primary)',
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  right: '0',
-  bottom: '0',
-  zIndex: '9999',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-  opacity: 0,
-  transition: 'opacity 0.2s ease-in-out',
-
-  variants: {
-    opacity: {
-      true: {
-        opacity: 1
-      }
-    }
-  }
-})
-
 export const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  height: '100vh',
   paddingLeft: '20px',
   paddingRight: '20px',
 
-  '.header': {
+  header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '79px',
+    minHeight: '79px',
 
     '.fa-times': {
       fontSize: 'var(--fontSizes-lg)'
@@ -67,7 +46,7 @@ export const Container = styled('div', {
           paddingTop: '20px',
           paddingBottom: '20px',
           borderBottom: '1px solid var(--colors-background-quaternary)',
-          fontSize: 'var(--fontSizes-md)',
+          fontSize: 'var(--fontSizes-sm)',
           fontWeight: 'var(--fontWeights-medium)',
           letterSpacing: '0.3px',
           color: 'var(--colors-regular)'
@@ -84,7 +63,7 @@ export const Container = styled('div', {
     }
   },
 
-  '.footer': {
+  footer: {
     paddingTop: '20px',
     paddingBottom: '20px',
 

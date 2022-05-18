@@ -39,6 +39,11 @@ export const StyledButton = styled('button', {
         backgroundColor: 'var(--colors-background-quaternary)',
         border: 'none',
         color: 'var(--colors-regular)'
+      },
+      tertiary: {
+        backgroundColor: 'var(--colors-background-tertiary)',
+        border: 'none',
+        color: 'var(--colors-regular)'
       }
     },
     size: {

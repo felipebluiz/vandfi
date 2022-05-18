@@ -1,39 +1,43 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { IconButton } from '@/components/IconButton'
-import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
+import React, { useRef, useEffect } from 'react'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
-import { StyledModal, Container } from './styles'
+import { Modal, ModalHandle } from '@/components/Modal'
+import { IconButton } from '@/components/IconButton'
+import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
 
-type SearchModalProps = React.ComponentProps<typeof StyledModal> & {
+import { Container } from './styles'
+
+interface SearchModalProps {
+  searchModalIsOpen: boolean
   setSearchModalIsOpen: (value: boolean) => void
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
+  searchModalIsOpen,
   setSearchModalIsOpen
 }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const modalRef = useRef<ModalHandle>(null)
   const searchInputRef = useRef<SearchInputHandle>(null)
-
-  const closeModal = () => {
-    setModalIsOpen(false)
-    setTimeout(() => setSearchModalIsOpen(false), 200)
-  }
 
   useEffect(() => {
     searchInputRef.current?.setInputFocus()
-    setModalIsOpen(true)
   }, [])
 
   return (
-    <StyledModal opacity={modalIsOpen}>
+    <Modal
+      ref={modalRef}
+      hideHeader
+      hideActions
+      modalIsOpen={searchModalIsOpen}
+      setModalIsOpen={setSearchModalIsOpen}
+    >
       <Container>
         <IconButton
           icon={faAngleLeft}
           variant="secundary"
           size="md"
           className="back-button"
-          onClick={closeModal}
+          onClick={() => modalRef.current?.closeModal()}
         />
         <SearchInput
           ref={searchInputRef}
@@ -41,6 +45,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           placeholder="Items, collections or creators"
         />
       </Container>
-    </StyledModal>
+    </Modal>
   )
 }

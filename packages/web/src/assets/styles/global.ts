@@ -6,6 +6,14 @@ export const GlobalStyle = globalCss({
     boxSizing: 'border-box'
   },
 
+  html: {
+    overflowY: 'scroll',
+
+    '@media screen and (max-width: 1023px)': {
+      paddingRight: '0 !important'
+    }
+  },
+
   'html, body': {
     padding: '0',
     margin: '0',
@@ -14,7 +22,7 @@ export const GlobalStyle = globalCss({
     color: 'var(--colors-regular)',
     fontFamily: 'var(--fonts-default)',
 
-    '@bp2': {
+    '@bp3': {
       scrollbarColor:
         'var(--colors-background-quaternary) var(--colors-background-secundary)',
 

@@ -31,9 +31,21 @@ export const StyledIconButton = styled('button', {
       }
     },
     size: {
+      sm: {
+        width: '36px',
+        height: '36px',
+
+        '.fa-times': {
+          fontSize: 'var(--fontSizes-md)'
+        }
+      },
       md: {
         width: '44px',
-        height: '44px'
+        height: '44px',
+
+        '.fa-times': {
+          fontSize: 'var(--fontSizes-lg)'
+        }
       }
     },
     outlined: {

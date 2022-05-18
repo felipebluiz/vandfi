@@ -17,6 +17,8 @@ export const {
       white: '#FFFFFF',
       regular: '#8591A3',
       black: '#000000',
+      eth: '#6b8cef',
+      weth: '#cf373e',
       errorPrimary: '#FF0000',
       warningPrimary: '#FACA07',
       'background-quaternary': '#2A3646',
@@ -29,7 +31,7 @@ export const {
     },
     fontSizes: {
       xxs: '0.625rem',
-      xs: '0.75rem',
+      xs: '0.8rem',
       sm: '0.875rem',
       md: '1rem',
       lg: '1.125rem',

@@ -9,8 +9,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import { Logo } from '@/components/Logo'
-import { SearchModal } from '@/components/Modal/Search'
-import { NavigationModal } from '@/components/Modal/Navigation'
+import { SearchModal } from '@/components/SearchModal'
+import { NavigationModal } from '@/components/NavigationModal'
+import { ProfileModal } from '@/components/ProfileModal'
 import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
 import { Avatar } from '@/components/Avatar'
 import { IconButton } from '@/components/IconButton'
@@ -19,13 +20,14 @@ import { Button } from '@/components/Button'
 import { Container } from './styles'
 
 export const Header: React.FC = () => {
-  const [loggedIn] = useState(false)
+  const [loggedIn] = useState(true)
   const [navigationVisibility, setNavigationVisibility] = useState(true)
   const [searchVisibility, setSearchVisibility] = useState(false)
   const [searchPosition, setSearchPosition] = useState(false)
   const [searchContainerPadding, setSearchContainerPadding] = useState(false)
   const [searchModalIsOpen, setSearchModalIsOpen] = useState(false)
   const [navigationModalIsOpen, setNavigationModalIsOpen] = useState(false)
+  const [profileModalIsOpen, setProfileModalIsOpen] = useState(false)
   const searchInputRef = useRef<SearchInputHandle>(null)
   const router = useRouter()
 
@@ -52,7 +54,7 @@ export const Header: React.FC = () => {
     if (searchModalIsOpen) {
       document.documentElement.style.overflowY = 'hidden'
     } else {
-      document.documentElement.style.overflowY = 'auto'
+      document.documentElement.style.overflowY = 'scroll'
     }
   }, [searchModalIsOpen])
 
@@ -119,6 +121,7 @@ export const Header: React.FC = () => {
             size="sm"
             className="avatar"
             verified
+            onClick={() => setProfileModalIsOpen(true)}
           />
         )}
         {!loggedIn && (
@@ -133,12 +136,22 @@ export const Header: React.FC = () => {
         )}
       </div>
       {searchModalIsOpen && (
-        <SearchModal setSearchModalIsOpen={setSearchModalIsOpen} />
+        <SearchModal
+          searchModalIsOpen={searchModalIsOpen}
+          setSearchModalIsOpen={setSearchModalIsOpen}
+        />
       )}
       {navigationModalIsOpen && (
         <NavigationModal
           loggedIn={loggedIn}
+          navigationModalIsOpen={navigationModalIsOpen}
           setNavigationModalIsOpen={setNavigationModalIsOpen}
+        />
+      )}
+      {profileModalIsOpen && (
+        <ProfileModal
+          profileModalIsOpen={profileModalIsOpen}
+          setProfileModalIsOpen={setProfileModalIsOpen}
         />
       )}
     </Container>

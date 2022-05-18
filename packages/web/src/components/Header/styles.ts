@@ -1,6 +1,6 @@
 import { styled } from '../../../stitches.config'
 
-export const Container = styled('div', {
+export const Container = styled('header', {
   position: 'sticky',
   top: '0',
   left: '0',
@@ -16,7 +16,11 @@ export const Container = styled('div', {
     gap: '10px',
     alignItems: 'center',
 
-    '> .connect-wallet': {
+    '.navigation-container': {
+      display: 'none'
+    },
+
+    '.connect-wallet': {
       display: 'none'
     }
   },
@@ -41,10 +45,6 @@ export const Container = styled('div', {
     display: 'none'
   },
 
-  '.navigation-container': {
-    display: 'none'
-  },
-
   '@bp1': {
     '.logo-container > a': {
       '.logo': {
@@ -64,12 +64,57 @@ export const Container = styled('div', {
       gridTemplateColumns: '125px 43px 1fr auto !important',
       gap: '25px',
 
-      '> .connect-wallet': {
+      '.navigation-container': {
+        display: 'none',
+        margin: '0 auto',
+
+        ul: {
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0',
+          margin: '0',
+
+          li: {
+            listStyle: 'none',
+
+            a: {
+              padding: '32px 29px 31px',
+              borderRight: '1px solid var(--colors-background-quaternary)',
+              fontSize: 'var(--fontSizes-sm)',
+              fontWeight: 'var(--fontWeights-medium)',
+              letterSpacing: '0.3px',
+              color: 'var(--colors-regular)'
+            },
+
+            '&:last-child > a': {
+              borderRight: 'none'
+            },
+
+            '&:hover > a, &.active > a': {
+              color: 'var(--colors-white)'
+            }
+          }
+        }
+      },
+
+      '.connect-wallet': {
         display: 'flex',
         padding: '10px 19px',
 
         span: {
           marginBottom: '-1px'
+        }
+      },
+
+      '.avatar': {
+        minWidth: '52px',
+        width: '52px',
+        height: '52px',
+
+        '.fa-check-circle': {
+          fontSize: 'var(--fontSizes-md)',
+          right: '2px',
+          bottom: '-2px'
         }
       }
     },
@@ -97,57 +142,20 @@ export const Container = styled('div', {
 
     '.navigation-button': {
       display: 'none'
-    },
-
-    '.navigation-container': {
-      display: 'none',
-      margin: '0 auto',
-
-      ul: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0',
-        margin: '0',
-
-        li: {
-          listStyle: 'none',
-
-          a: {
-            padding: '32px 29px 31px',
-            borderRight: '1px solid var(--colors-background-quaternary)',
-            fontSize: 'var(--fontSizes-sm)',
-            fontWeight: 'var(--fontWeights-medium)',
-            letterSpacing: '0.3px',
-            color: 'var(--colors-regular)'
-          },
-
-          '&:last-child > a': {
-            borderRight: 'none'
-          },
-
-          '&:hover > a, &.active > a': {
-            color: 'var(--colors-white)'
-          }
-        }
-      }
-    },
-
-    '.avatar': {
-      minWidth: '52px',
-      width: '52px',
-      height: '52px',
-
-      '.fa-check-circle': {
-        fontSize: 'var(--fontSizes-md)',
-        right: '2px',
-        bottom: '-2px'
-      }
     }
   },
 
   '@bp4': {
     '.main-wrapper': {
-      gridTemplateColumns: 'auto 1fr auto auto !important'
+      gridTemplateColumns: 'auto 1fr auto auto !important',
+
+      '.navigation-container': {
+        margin: '0 auto',
+
+        'ul > li > a': {
+          padding: '32px 32px 31px'
+        }
+      }
     },
 
     '.search-button': {
@@ -162,14 +170,6 @@ export const Container = styled('div', {
       form: {
         width: 'initial !important',
         padding: '4px !important'
-      }
-    },
-
-    '.navigation-container': {
-      margin: '0 auto',
-
-      'ul > li > a': {
-        padding: '32px 32px 31px'
       }
     }
   },
@@ -213,7 +213,7 @@ export const Container = styled('div', {
     navigationVisibility: {
       true: {
         '@bp3': {
-          '.navigation-container': {
+          '.main-wrapper .navigation-container': {
             display: 'initial'
           }
         }

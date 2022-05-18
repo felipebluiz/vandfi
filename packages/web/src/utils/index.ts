@@ -1,5 +1,5 @@
-export const truncateAddress = (address: string): string => {
-  const firstSix = address.substring(0, 8)
+export const truncateAddress = (address: string, number = 8): string => {
+  const firstSix = address.substring(0, number)
   const lastFour = address.substring(address.length - 4)
 
   return `${firstSix}...${lastFour}`
