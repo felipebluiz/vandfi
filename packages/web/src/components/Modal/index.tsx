@@ -59,6 +59,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
         setModalIsOpen(false)
 
         document.documentElement.style.overflowY = 'scroll'
+        document.body.style.removeProperty('overflow-y')
 
         if (navigator.userAgent.indexOf('Firefox') === -1) {
           document.documentElement.style.paddingRight = '0'
@@ -84,6 +85,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
         setOpened(true)
 
         document.documentElement.style.overflowY = 'hidden'
+        document.body.style.overflowY = 'hidden'
 
         if (navigator.userAgent.indexOf('Firefox') === -1) {
           document.documentElement.style.paddingRight = '15px'

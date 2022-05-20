@@ -9,9 +9,9 @@ export const revealLinks = keyframes({
 })
 
 export const Container = styled('div', {
+  flex: '1',
   display: 'flex',
   flexDirection: 'column',
-  height: '100vh',
   paddingLeft: '20px',
   paddingRight: '20px',
 
@@ -46,7 +46,7 @@ export const Container = styled('div', {
           paddingTop: '20px',
           paddingBottom: '20px',
           borderBottom: '1px solid var(--colors-background-quaternary)',
-          fontSize: 'var(--fontSizes-sm)',
+          fontSize: 'var(--fontSizes-md)',
           fontWeight: 'var(--fontWeights-medium)',
           letterSpacing: '0.3px',
           color: 'var(--colors-regular)'

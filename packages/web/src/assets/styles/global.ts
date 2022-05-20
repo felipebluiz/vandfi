@@ -87,25 +87,8 @@ export const GlobalStyle = globalCss({
 
   'input, textarea, button, select, a, div': {
     WebkitTapHighlightColor: 'rgba(0,0,0,0)',
+    WebkitAppearance: 'none',
     outline: 'none'
-  },
-
-  input: {
-    width: '100%',
-    fontSize: 'var(--fontSizes-sm)',
-    fontFamily: 'var(--fonts-default)',
-    padding: '12px 20px 11px',
-    color: 'var(--colors-white)',
-    backgroundColor: 'transparent',
-    border: '1px solid var(--colors-background-quaternary)',
-    borderRadius: '30px',
-    outline: 'none',
-
-    '&:focus': {
-      border: '1px solid var(--colors-background-quaternary)',
-      backgroundColor: 'var(--colors-dark)',
-      boxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 4px'
-    }
   },
 
   '.fa': {

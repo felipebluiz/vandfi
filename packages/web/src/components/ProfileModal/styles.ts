@@ -1,9 +1,9 @@
 import { styled } from '../../../stitches.config'
 
 export const Container = styled('div', {
+  flex: '1',
   display: 'flex',
   flexDirection: 'column',
-  height: '100vh',
   padding: '20px',
 
   header: {
@@ -33,15 +33,6 @@ export const Container = styled('div', {
           lineHeight: 'var(--lineHeights-short)'
         }
       }
-    },
-
-    '.close-button': {
-      width: '44px',
-      height: '44px',
-
-      '.fa-times': {
-        fontSize: 'var(--fontSizes-lg)'
-      }
     }
   },
 
@@ -55,7 +46,7 @@ export const Container = styled('div', {
       display: 'flex',
       alignItems: 'center',
       gap: '12px',
-      marginBottom: '15px',
+      marginBottom: '12px',
 
       '&:last-child': {
         marginBottom: '0'
@@ -65,8 +56,8 @@ export const Container = styled('div', {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '40px',
-        height: '40px',
+        width: '44px',
+        height: '44px',
         backgroundColor: 'var(--colors-background-primary)',
         borderRadius: '100px',
 
@@ -84,7 +75,7 @@ export const Container = styled('div', {
       },
 
       p: {
-        lineHeight: 'var(--lineHeights-short)',
+        lineHeight: 'var(--lineHeights-shorter)',
 
         '&.amount': {
           color: 'var(--colors-white)'
@@ -107,11 +98,12 @@ export const Container = styled('div', {
         listStyle: 'none',
 
         a: {
-          display: 'block',
+          display: 'flex',
+          alignItems: 'center',
           paddingTop: '20px',
           paddingBottom: '20px',
           borderBottom: '1px solid var(--colors-background-quaternary)',
-          fontSize: 'var(--fontSizes-sm)',
+          fontSize: 'var(--fontSizes-md)',
           fontWeight: 'var(--fontWeights-medium)',
           letterSpacing: '0.3px',
           color: 'var(--colors-regular)',
@@ -119,6 +111,7 @@ export const Container = styled('div', {
           '.fa': {
             width: '18px',
             fontSize: 'var(--fontSizes-md)',
+            marginTop: '-1px',
             marginRight: '10px'
           }
         },
@@ -139,20 +132,39 @@ export const Container = styled('div', {
   },
 
   '@bp3': {
-    height: '100%',
     padding: '30px',
 
     header: {
       marginBottom: '30px',
 
-      '.close-button': {
-        width: '38px',
-        height: '38px',
+      '.profile-container p.link': {
+        fontSize: 'var(--fontSizes-xs)'
+      },
 
-        '.fa-times': {
-          fontSize: 'var(--fontSizes-md)'
+      '.close-button': {
+        width: '40px',
+        height: '40px'
+      }
+    },
+    '.crypto-container .item-container': {
+      '.eth, .weth': {
+        width: '40px',
+        height: '40px'
+      },
+
+      '.info-container': {
+        '.crypto': {
+          lineHeight: 'var(--lineHeights-short)',
+          fontSize: 'var(--fontSizes-xs)'
+        },
+
+        '.amount': {
+          fontSize: 'var(--fontSizes-sm)'
         }
       }
+    },
+    '.navigation-container ul li a': {
+      fontSize: 'var(--fontSizes-sm)'
     }
   }
 })

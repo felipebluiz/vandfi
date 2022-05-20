@@ -48,7 +48,7 @@ export const StyledButton = styled('button', {
     },
     size: {
       md: {
-        padding: '10px 22px'
+        padding: '12px 22px'
       },
       lg: {
         padding: '14px 26px'

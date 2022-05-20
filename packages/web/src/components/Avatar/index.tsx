@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import { theme } from '../../../stitches.config'
 
@@ -54,7 +54,9 @@ export const Avatar: React.FC<AvatarProps> = ({
         style={!loaded ? { visibility: 'hidden' } : {}}
         onLoad={handleLoad}
       />
-      <FontAwesomeIcon icon={faCheckCircle} className="fa" />
+      <div className="check-circle">
+        <FontAwesomeIcon icon={faCheck} className="fa" />
+      </div>
     </StyledAvatar>
   )
 }

@@ -12,7 +12,7 @@ export const StyledModal = styled('div', {
 
   '.modal-container': {
     width: '100vw',
-    minHeight: '100vh',
+    minHeight: '100%',
     backgroundColor: 'var(--colors-background-primary)',
     display: 'flex',
     flexDirection: 'column',
@@ -26,6 +26,8 @@ export const StyledModal = styled('div', {
 
     '.content-container': {
       flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
       paddingTop: '10px',
       paddingLeft: '20px',
       paddingRight: '20px',

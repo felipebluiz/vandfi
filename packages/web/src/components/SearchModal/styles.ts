@@ -25,7 +25,11 @@ export const Container = styled('div', {
     },
 
     '.search-results': {
-      marginTop: '-1px'
+      marginTop: '-1px',
+
+      '.section-title:first-child': {
+        paddingTop: '18px'
+      }
     }
   }
 })

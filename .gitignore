@@ -3,4 +3,5 @@ dist
 .next
 build
 yarn-error.log
+.vercel
 .env

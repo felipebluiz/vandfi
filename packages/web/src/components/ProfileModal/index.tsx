@@ -62,16 +62,18 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               verified
             />
             <div className="profile-info-container">
-              <Text weight="bold" className="wallet-address">
+              <Text size="md" weight="bold" className="wallet-address">
                 {truncateAddress(walletAddress, 12)}
               </Text>
-              <Text size="xs">View profile</Text>
+              <Text size="sm" className="link">
+                View profile
+              </Text>
             </div>
           </div>
           <IconButton
             icon={faTimes}
             variant="secundary"
-            size="sm"
+            size="md"
             className="close-button"
             onClick={() => modalRef.current?.closeModal()}
           />
@@ -82,8 +84,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <FontAwesomeIcon icon={faEthereum as IconProp} className="fa" />
             </div>
             <div className="info-container">
-              <Text size="xs">Ethereum</Text>
-              <Text size="sm" weight="bold" className="amount">
+              <Text size="sm" className="crypto">
+                Ethereum
+              </Text>
+              <Text size="md" weight="bold" className="amount">
                 0 ETH
               </Text>
             </div>
@@ -93,8 +97,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
               <FontAwesomeIcon icon={faEthereum as IconProp} className="fa" />
             </div>
             <div className="info-container">
-              <Text size="xs">Wrapped Ethereum</Text>
-              <Text size="sm" weight="bold" className="amount">
+              <Text size="sm" className="crypto">
+                Wrapped Ethereum
+              </Text>
+              <Text size="md" weight="bold" className="amount">
                 0 wETH
               </Text>
             </div>

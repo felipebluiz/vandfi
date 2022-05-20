@@ -66,8 +66,10 @@ export const StyledLogo = styled('div', {
     },
     animation: {
       true: {
-        '&:hover': {
-          animation: `${LogoAnimation} 1s infinite`
+        '@bp3': {
+          '&:hover': {
+            animation: `${LogoAnimation} 1s infinite`
+          }
         }
       }
     }

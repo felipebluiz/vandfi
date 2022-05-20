@@ -42,11 +42,12 @@ export const Container = styled('div', {
         backgroundColor: 'var(--colors-background-tertiary)',
         border: '1px solid var(--colors-background-tertiary)',
         borderRadius: '30px',
-        outline: 'none',
 
         '&:focus': {
           border: '1px solid #334154',
           backgroundColor: 'var(--colors-dark)',
+          WebkitBoxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px',
+          MozBoxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px',
           boxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px'
         }
       }
@@ -135,8 +136,7 @@ export const Container = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: 'calc(100vh - 75px)',
-    padding: '20px',
+    padding: '30px 20px',
     textAlign: 'center',
 
     h2: {
@@ -155,10 +155,6 @@ export const Container = styled('div', {
       marginRight: 'auto'
     }
   },
-
-  /* @media screen and (max-width: 1023px) {
-
-  } */
 
   '@bp3': {
     position: 'relative',
@@ -180,7 +176,7 @@ export const Container = styled('div', {
 
       '.search-results': {
         minHeight: '20px',
-        maxHeight: 'calc(100vh - 185px)',
+        maxHeight: 'calc(100vh - 180px)',
         overflowY: 'auto',
         scrollbarWidth: 'thin',
         scrollbarColor:

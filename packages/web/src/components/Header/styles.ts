@@ -111,10 +111,17 @@ export const Container = styled('header', {
         width: '52px',
         height: '52px',
 
-        '.fa-check-circle': {
-          fontSize: 'var(--fontSizes-md)',
+        '.check-circle': {
+          width: '16px',
+          height: '16px',
           right: '2px',
-          bottom: '-2px'
+          bottom: '-2px',
+
+          '.fa-check': {
+            width: '10px',
+            fontSize: '10px',
+            marginTop: '2px'
+          }
         }
       }
     },

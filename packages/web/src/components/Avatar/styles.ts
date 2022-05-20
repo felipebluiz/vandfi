@@ -32,12 +32,14 @@ export const StyledAvatar = styled('button', {
     radius: {
       rounded: {
         borderRadius: '100px',
+
         img: {
           borderRadius: '100px'
         }
       },
       semiRounded: {
         borderRadius: '8px',
+
         img: {
           borderRadius: '8px'
         }
@@ -46,6 +48,7 @@ export const StyledAvatar = styled('button', {
     clickable: {
       true: {
         cursor: 'pointer',
+
         '&:hover': {
           opacity: 'var(--opacity-semiOpaque)'
         }
@@ -57,17 +60,22 @@ export const StyledAvatar = styled('button', {
     verified: {
       true: {
         position: 'relative',
-        '.fa-check-circle': {
+
+        '.check-circle': {
           position: 'absolute',
-          color: 'var(--colors-primary)',
-          background: 'var(--colors-white)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'var(--colors-primary)',
           borderRadius: '100px',
-          outline: '2px solid var(--colors-primary)',
-          outlineOffset: '-1px'
+
+          '.fa-check': {
+            color: 'var(--colors-white)'
+          }
         }
       },
       false: {
-        '.fa-check-circle': {
+        '.check-circle': {
           display: 'none'
         }
       }
@@ -79,10 +87,17 @@ export const StyledAvatar = styled('button', {
       size: 'xs',
       verified: true,
       css: {
-        '.fa-check-circle': {
-          fontSize: 'var(--fontSizes-xs)',
-          right: '2px',
-          bottom: '-1px'
+        '.check-circle': {
+          width: '14px',
+          height: '14px',
+          right: '1px',
+          bottom: '-2px',
+
+          '.fa-check': {
+            width: '8px',
+            fontSize: '9px',
+            marginTop: '1px'
+          }
         }
       }
     },
@@ -90,10 +105,17 @@ export const StyledAvatar = styled('button', {
       size: 'sm',
       verified: true,
       css: {
-        '.fa-check-circle': {
-          fontSize: 'var(--fontSizes-sm)',
+        '.check-circle': {
+          width: '14px',
+          height: '14px',
           right: '2px',
-          bottom: '-2px'
+          bottom: '-2px',
+
+          '.fa-check': {
+            width: '8px',
+            fontSize: '9px',
+            marginTop: '1px'
+          }
         }
       }
     },
@@ -101,10 +123,17 @@ export const StyledAvatar = styled('button', {
       size: 'md',
       verified: true,
       css: {
-        '.fa-check-circle': {
-          fontSize: 'var(--fontSizes-md)',
+        '.check-circle': {
+          width: '16px',
+          height: '16px',
           right: '2px',
-          bottom: '-2px'
+          bottom: '-2px',
+
+          '.fa-check': {
+            width: '10px',
+            fontSize: '10px',
+            marginTop: '2px'
+          }
         }
       }
     }
