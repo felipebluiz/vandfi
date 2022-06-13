@@ -9,10 +9,6 @@ export const StyledIconButton = styled('button', {
     fontSize: 'var(--fontSizes-md)'
   },
 
-  '&:hover': {
-    opacity: 'var(--opacity-semiOpaque)'
-  },
-
   '.spinner': {
     display: 'none'
   },
@@ -22,12 +18,20 @@ export const StyledIconButton = styled('button', {
       primary: {
         backgroundColor: 'var(--colors-primary)',
         border: 'none',
-        color: 'var(--colors-white)'
+        color: 'var(--colors-white)',
+
+        '&:hover': {
+          backgroundColor: 'var(--colors-hover-primary)'
+        }
       },
       secundary: {
         backgroundColor: 'var(--colors-background-tertiary)',
         border: 'none',
-        color: 'var(--colors-regular)'
+        color: 'var(--colors-regular)',
+
+        '&:hover': {
+          backgroundColor: 'var(--colors-hover-background-tertiary)'
+        }
       }
     },
     size: {
@@ -50,8 +54,7 @@ export const StyledIconButton = styled('button', {
     },
     outlined: {
       true: {
-        backgroundColor: 'transparent',
-        border: '2px solid'
+        backgroundColor: 'transparent !important'
       }
     },
     radius: {
@@ -66,6 +69,7 @@ export const StyledIconButton = styled('button', {
       true: {
         opacity: 'var(--opacity-intense)',
         cursor: 'not-allowed',
+
         '&:hover': {
           opacity: 'var(--opacity-intense)'
         }
@@ -77,6 +81,7 @@ export const StyledIconButton = styled('button', {
           display: 'initial',
           position: 'absolute'
         },
+
         '.fa': {
           visibility: 'hidden'
         }
@@ -90,7 +95,11 @@ export const StyledIconButton = styled('button', {
       outlined: true,
       css: {
         color: 'var(--colors-white)',
-        borderColor: 'var(--colors-primary)'
+        boxShadow: 'inset 0 0 0px 2px var(--colors-primary)',
+
+        '&:hover': {
+          boxShadow: 'inset 0 0 0px 2px var(--colors-hover-primary)'
+        }
       }
     },
     {
@@ -98,7 +107,11 @@ export const StyledIconButton = styled('button', {
       outlined: true,
       css: {
         color: 'var(--colors-regular)',
-        borderColor: 'var(--colors-background-tertiary)'
+        boxShadow: 'inset 0 0 0px 2px var(--colors-background-tertiary)',
+
+        '&:hover': {
+          boxShadow: 'inset 0 0 0px 2px var(--colors-hover-background-tertiary)'
+        }
       }
     }
   ],

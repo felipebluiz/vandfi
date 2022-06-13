@@ -127,7 +127,11 @@ export const Container = styled('div', {
       },
 
       '.button-container': {
-        padding: '15px 20px 20px'
+        padding: '15px 20px 20px',
+
+        button: {
+          padding: '14px 22px'
+        }
       }
     }
   },
@@ -156,7 +160,7 @@ export const Container = styled('div', {
     }
   },
 
-  '@bp3': {
+  '@bp990': {
     position: 'relative',
 
     '.not-found': {

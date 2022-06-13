@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
-
 import { theme } from '../../../stitches.config'
+
+import { VerifiedIcon } from '@/components/VerifiedIcon'
 
 import { StyledAvatar } from './styles'
 
@@ -19,7 +18,9 @@ type AvatarProps = React.ComponentProps<typeof StyledAvatar> & {
 export const Avatar: React.FC<AvatarProps> = ({
   src,
   alt,
+  size,
   radius,
+  verified,
   placeholderColor = theme.colors['background-tertiary'].value,
   ...props
 }) => {
@@ -35,7 +36,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   }, [])
 
   return (
-    <StyledAvatar radius={radius} {...props}>
+    <StyledAvatar radius={radius} size={size} verified={verified} {...props}>
       {!loaded ? (
         <svg width="100%" height="100%" viewBox="0 0 100 100">
           <rect
@@ -54,9 +55,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         style={!loaded ? { visibility: 'hidden' } : {}}
         onLoad={handleLoad}
       />
-      <div className="check-circle">
-        <FontAwesomeIcon icon={faCheck} className="fa" />
-      </div>
+      {verified && <VerifiedIcon size={size} className="check-circle" />}
     </StyledAvatar>
   )
 }

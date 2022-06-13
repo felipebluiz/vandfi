@@ -107,7 +107,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
         hideActions={hideActions}
         {...props}
         css={{
-          '@bp3': {
+          '@bp990': {
             '.modal-container': {
               maxWidth: `${width}px`
             }

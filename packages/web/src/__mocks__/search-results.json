@@ -45,6 +45,7 @@
   "creators": [
     {
       "id": "0",
+      "walletAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
       "avatarUrl": "/images/avatar.png",
       "name": "Bored Man",
       "followersQtd": 500,
@@ -52,6 +53,7 @@
     },
     {
       "id": "1",
+      "walletAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
       "avatarUrl": "/images/avatar.png",
       "name": "Sci Moon",
       "followersQtd": 1500,
@@ -59,6 +61,7 @@
     },
     {
       "id": "2",
+      "walletAddress": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
       "avatarUrl": "/images/avatar.png",
       "name": "kobplayer",
       "followersQtd": 11500,

@@ -45,7 +45,7 @@ export const Container = styled('header', {
     display: 'none'
   },
 
-  '@bp1': {
+  '@bp360': {
     '.logo-container > a': {
       '.logo': {
         width: '35px',
@@ -59,7 +59,7 @@ export const Container = styled('header', {
     }
   },
 
-  '@bp3': {
+  '@bp990': {
     '.main-wrapper': {
       gridTemplateColumns: '125px 43px 1fr auto !important',
       gap: '25px',
@@ -99,10 +99,18 @@ export const Container = styled('header', {
 
       '.connect-wallet': {
         display: 'flex',
-        padding: '10px 19px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '44px',
+        height: '44px',
+        padding: '0',
+
+        '.fa': {
+          marginRight: '0'
+        },
 
         span: {
-          marginBottom: '-1px'
+          display: 'none'
         }
       },
 
@@ -118,7 +126,7 @@ export const Container = styled('header', {
           bottom: '-2px',
 
           '.fa-check': {
-            width: '10px',
+            width: '10px !important',
             fontSize: '10px',
             marginTop: '2px'
           }
@@ -152,7 +160,24 @@ export const Container = styled('header', {
     }
   },
 
-  '@bp4': {
+  '@bp1024': {
+    '.main-wrapper .connect-wallet': {
+      width: 'initial',
+      height: 'initial',
+      padding: '12px 19px',
+
+      '.fa': {
+        marginRight: '10px'
+      },
+
+      span: {
+        display: 'initial',
+        marginBottom: '-1px'
+      }
+    }
+  },
+
+  '@bp1280': {
     '.main-wrapper': {
       gridTemplateColumns: 'auto 1fr auto auto !important',
 
@@ -191,7 +216,7 @@ export const Container = styled('header', {
     },
     searchPosition: {
       true: {
-        '@bp3': {
+        '@bp990': {
           '.search-container': {
             position: 'relative'
           }
@@ -200,7 +225,7 @@ export const Container = styled('header', {
     },
     searchVisibility: {
       true: {
-        '@bp3': {
+        '@bp990': {
           '.search-container form': {
             width: '100%'
           }
@@ -209,7 +234,7 @@ export const Container = styled('header', {
     },
     searchContainerPadding: {
       true: {
-        '@bp3': {
+        '@bp990': {
           '.search-container form': {
             padding: '4px',
             margin: '0'
@@ -219,7 +244,7 @@ export const Container = styled('header', {
     },
     navigationVisibility: {
       true: {
-        '@bp3': {
+        '@bp990': {
           '.main-wrapper .navigation-container': {
             display: 'initial'
           }

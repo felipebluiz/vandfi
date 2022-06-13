@@ -7,6 +7,7 @@ export const StyledButton = styled('button', {
   borderRadius: '30px',
   cursor: 'pointer',
   position: 'relative',
+  border: 'none',
 
   '.fa': {
     fontSize: 'var(--fontSizes-md)',
@@ -20,10 +21,6 @@ export const StyledButton = styled('button', {
     letterSpacing: '0.3px'
   },
 
-  '&:hover': {
-    opacity: 'var(--opacity-semiOpaque)'
-  },
-
   '.spinner': {
     display: 'none'
   },
@@ -32,18 +29,27 @@ export const StyledButton = styled('button', {
     variant: {
       primary: {
         backgroundColor: 'var(--colors-primary)',
-        border: 'none',
-        color: 'var(--colors-white)'
+        color: 'var(--colors-white)',
+
+        '&:hover': {
+          backgroundColor: 'var(--colors-hover-primary)'
+        }
       },
       secundary: {
         backgroundColor: 'var(--colors-background-quaternary)',
-        border: 'none',
-        color: 'var(--colors-regular)'
+        color: 'var(--colors-regular)',
+
+        '&:hover': {
+          backgroundColor: 'var(--colors-hover-background-quaternary)'
+        }
       },
       tertiary: {
         backgroundColor: 'var(--colors-background-tertiary)',
-        border: 'none',
-        color: 'var(--colors-regular)'
+        color: 'var(--colors-regular)',
+
+        '&:hover': {
+          backgroundColor: 'var(--colors-hover-background-tertiary)'
+        }
       }
     },
     size: {
@@ -56,8 +62,7 @@ export const StyledButton = styled('button', {
     },
     outlined: {
       true: {
-        backgroundColor: 'transparent',
-        border: '2px solid'
+        backgroundColor: 'transparent !important'
       }
     },
     radius: {
@@ -72,6 +77,7 @@ export const StyledButton = styled('button', {
       true: {
         opacity: 'var(--opacity-intense)',
         cursor: 'not-allowed',
+
         '&:hover': {
           opacity: 'var(--opacity-intense)'
         }
@@ -88,6 +94,7 @@ export const StyledButton = styled('button', {
           display: 'initial',
           position: 'absolute'
         },
+
         '.fa, span': {
           visibility: 'hidden'
         }
@@ -101,7 +108,11 @@ export const StyledButton = styled('button', {
       outlined: true,
       css: {
         color: 'var(--colors-white)',
-        borderColor: 'var(--colors-primary)'
+        boxShadow: 'inset 0 0 0px 2px var(--colors-primary)',
+
+        '&:hover': {
+          boxShadow: 'inset 0 0 0px 2px var(--colors-hover-primary)'
+        }
       }
     },
     {
@@ -109,7 +120,24 @@ export const StyledButton = styled('button', {
       outlined: true,
       css: {
         color: 'var(--colors-regular)',
-        borderColor: 'var(--colors-background-quaternary)'
+        boxShadow: 'inset 0 0 0px 2px var(--colors-background-quaternary)',
+
+        '&:hover': {
+          boxShadow:
+            'inset 0 0 0px 2px var(--colors-hover-background-quaternary)'
+        }
+      }
+    },
+    {
+      variant: 'tertiary',
+      outlined: true,
+      css: {
+        color: 'var(--colors-regular)',
+        boxShadow: 'inset 0 0 0px 2px var(--colors-background-tertiary)',
+
+        '&:hover': {
+          boxShadow: 'inset 0 0 0px 2px var(--colors-hover-background-tertiary)'
+        }
       }
     }
   ],

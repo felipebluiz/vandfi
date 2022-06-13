@@ -24,6 +24,10 @@ export const Container = styled('div', {
         opacity: 'var(--opacity-semiOpaque)'
       },
 
+      '.avatar': {
+        opacity: '1 !important'
+      },
+
       '.profile-info-container': {
         '.wallet-address': {
           color: 'var(--colors-white)'
@@ -127,11 +131,15 @@ export const Container = styled('div', {
     }
   },
 
-  '.logout-button .fa': {
-    marginTop: '-1px'
+  '.logout-button': {
+    padding: '14px 22px',
+
+    '.fa': {
+      marginTop: '-1px'
+    }
   },
 
-  '@bp3': {
+  '@bp990': {
     padding: '30px',
 
     header: {
@@ -146,6 +154,7 @@ export const Container = styled('div', {
         height: '40px'
       }
     },
+
     '.crypto-container .item-container': {
       '.eth, .weth': {
         width: '40px',
@@ -163,6 +172,7 @@ export const Container = styled('div', {
         }
       }
     },
+
     '.navigation-container ul li a': {
       fontSize: 'var(--fontSizes-sm)'
     }

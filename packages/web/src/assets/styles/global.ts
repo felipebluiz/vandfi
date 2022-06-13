@@ -1,4 +1,4 @@
-import { globalCss } from '../../../stitches.config'
+import { globalCss, styled } from '../../../stitches.config'
 
 export const GlobalStyle = globalCss({
   '*': {
@@ -8,6 +8,7 @@ export const GlobalStyle = globalCss({
 
   html: {
     overflowY: 'scroll',
+    backgroundColor: 'var(--colors-background-primary)',
 
     '@media screen and (max-width: 1023px)': {
       paddingRight: '0 !important'
@@ -18,11 +19,10 @@ export const GlobalStyle = globalCss({
     padding: '0',
     margin: '0',
     height: '100%',
-    backgroundColor: 'var(--colors-background-primary)',
     color: 'var(--colors-regular)',
     fontFamily: 'var(--fonts-default)',
 
-    '@bp3': {
+    '@bp990': {
       scrollbarColor:
         'var(--colors-background-quaternary) var(--colors-background-secundary)',
 
@@ -95,10 +95,28 @@ export const GlobalStyle = globalCss({
     height: '1em'
   },
 
-  '@bp2': {
+  '@bp768': {
     '.main-wrapper': {
       paddingLeft: '25px',
       paddingRight: '25px'
     }
+  }
+})
+
+export const RadialEffect = styled('div', {
+  '@bp990': {
+    top: '0',
+    right: '0',
+    bottom: '0',
+    left: '0',
+    position: 'absolute',
+    zIndex: '-1',
+    background:
+      'radial-gradient(circle at 5% 60%, #163158, rgba(255, 255, 255, 0) 20%), radial-gradient(circle at 50% 58%, #163158, rgba(255, 255, 255, 0) 35%), radial-gradient(circle at 85% 50%, #163158, rgba(255, 255, 255, 0) 20%)'
+  },
+
+  '@bp1600': {
+    background:
+      'radial-gradient(circle at -10% 55%, #163158, rgba(255, 255, 255, 0) 22%), radial-gradient(circle at 52% 40%, #163158, rgba(255, 255, 255, 0) 25%), radial-gradient(circle at 70% 35%, #163158, rgba(255, 255, 255, 0) 18%), radial-gradient(circle at 110% 50%, #163158, rgba(255, 255, 255, 0) 20%)'
   }
 })

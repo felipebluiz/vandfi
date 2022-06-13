@@ -19,12 +19,17 @@ export const {
       black: '#000000',
       eth: '#6b8cef',
       weth: '#cf373e',
-      errorPrimary: '#FF0000',
-      warningPrimary: '#FACA07',
+      'error-primary': '#FF0000',
+      'warning-primary': '#FACA07',
       'background-quaternary': '#2A3646',
       'background-tertiary': '#232E43',
       'background-secundary': '#222C3A',
-      'background-primary': '#1A2433'
+      'background-primary': '#1A2433',
+      'hover-primary': 'rgb(51 102 239 / 90%)',
+      'hover-white': 'rgb(255 255 255 / 85%)',
+      'hover-background-quaternary': 'rgb(42 54 70 / 85%)',
+      'hover-background-tertiary': 'rgb(35 46 67 / 85%)',
+      'card-item-background': 'rgb(35 46 67 / 98%)'
     },
     fonts: {
       default: 'Fira Sans, sans-serif'
@@ -65,10 +70,15 @@ export const {
     }
   },
   media: {
-    bp1: '(min-width: 360px)',
-    bp2: '(min-width: 768px)',
-    bp3: '(min-width: 1024px)',
-    bp4: '(min-width: 1280px)'
+    bp360: '(min-width: 360px)',
+    bp390: '(min-width: 390px)',
+    bp460: '(min-width: 460px)',
+    bp768: '(min-width: 768px)',
+    bp990: '(min-width: 990px)',
+    bp1024: '(min-width: 1024px)',
+    bp1190: '(min-width: 1190px)',
+    bp1280: '(min-width: 1280px)',
+    bp1600: '(min-width: 1600px)'
   },
   utils: {
     marginY: (value: Stitches.ScaleValue<'space'>) => ({

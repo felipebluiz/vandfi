@@ -48,7 +48,7 @@ export const StyledModal = styled('div', {
     }
   },
 
-  '@bp2': {
+  '@bp768': {
     '.modal-container .actions-container': {
       flexDirection: 'row',
       gap: '20px',
@@ -59,7 +59,7 @@ export const StyledModal = styled('div', {
     }
   },
 
-  '@bp3': {
+  '@bp990': {
     display: 'grid',
     alignItems: 'center',
     padding: '20px',
@@ -88,7 +88,7 @@ export const StyledModal = styled('div', {
     },
     overlay: {
       true: {
-        '@bp3': {
+        '@bp990': {
           background: 'rgba(0, 0, 0, 0.3)',
           backdropFilter: 'blur(6px)',
           overflowY: 'auto'
@@ -97,24 +97,24 @@ export const StyledModal = styled('div', {
     },
     position: {
       left: {
-        '@bp3': {
+        '@bp990': {
           justifyContent: 'left'
         }
       },
       right: {
-        '@bp3': {
+        '@bp990': {
           justifyContent: 'right'
         }
       },
       center: {
-        '@bp3': {
+        '@bp990': {
           justifyContent: 'center'
         }
       }
     },
     full: {
       true: {
-        '@bp3': {
+        '@bp990': {
           '.modal-container': {
             height: '100%'
           }
