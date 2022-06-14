@@ -54,84 +54,80 @@ export const Container = styled('div', {
     }
   },
 
-  '.search-results-container': {
-    height: 'calc(100vh - 75px)',
+  '.search-results-container .search-results': {
+    '.section-title': {
+      paddingLeft: '20px',
 
-    '.search-results': {
-      '.section-title': {
-        paddingLeft: '20px',
+      '&:first-child': {
+        paddingTop: '12px'
+      },
 
-        '&:first-child': {
-          paddingTop: '12px'
+      span: {
+        fontSize: 'var(--fontSizes-sm)',
+        fontWeight: 'var(--fontWeights-medium)'
+      }
+    },
+
+    '.section-list': {
+      padding: '10px 20px',
+      display: 'flex',
+      flexDirection: 'column',
+
+      '.list-item': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+        background: 'none',
+        border: 'none',
+        textAlign: 'left',
+        cursor: 'pointer',
+
+        '&:last-child': {
+          borderBottom: 'none'
         },
 
-        span: {
-          fontSize: 'var(--fontSizes-sm)',
-          fontWeight: 'var(--fontWeights-medium)'
-        }
-      },
+        '.item-image': {
+          width: 'inherit',
+          height: 'inherit',
+          borderRadius: '6px'
+        },
 
-      '.section-list': {
-        padding: '10px 20px',
-        display: 'flex',
-        flexDirection: 'column',
+        '.info-container': {
+          display: 'grid',
+          gap: '3px',
+          width: '100%',
+          paddingTop: '12px',
+          paddingBottom: '12px',
+          borderBottom: '1px solid var(--colors-background-quaternary)',
 
-        '.list-item': {
-          display: 'flex',
-          alignItems: 'center',
-          gap: '20px',
-          background: 'none',
-          border: 'none',
-          textAlign: 'left',
-          cursor: 'pointer',
-
-          '&:last-child': {
-            borderBottom: 'none'
+          '.name': {
+            fontSize: 'var(--fontSizes-sm)',
+            fontWeight: 'var(--fontWeights-medium)',
+            letterSpacing: '0.3px',
+            color: 'var(--colors-white)',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden'
           },
 
-          '.item-image': {
-            width: 'inherit',
-            height: 'inherit',
-            borderRadius: '6px'
-          },
-
-          '.info-container': {
-            display: 'grid',
-            gap: '3px',
-            width: '100%',
-            paddingTop: '12px',
-            paddingBottom: '12px',
-            borderBottom: '1px solid var(--colors-background-quaternary)',
-
-            '.name': {
-              fontSize: 'var(--fontSizes-sm)',
-              fontWeight: 'var(--fontWeights-medium)',
-              letterSpacing: '0.3px',
-              color: 'var(--colors-white)',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis',
-              overflow: 'hidden'
-            },
-
-            '.description': {
-              fontSize: 'var(--fontSizes-xs)',
-              fontWeight: 'var(--fontWeights-regular)',
-              color: 'var(--colors-regular)'
-            }
-          },
-
-          '&:hover': {
-            opacity: 'var(--opacity-semiOpaque)'
+          '.description': {
+            fontSize: 'var(--fontSizes-xs)',
+            fontWeight: 'var(--fontWeights-regular)',
+            color: 'var(--colors-regular)'
           }
-        }
-      },
+        },
 
-      '.button-container': {
-        padding: '15px 20px 20px',
-
-        button: {
-          padding: '14px 22px'
+        '&:hover': {
+          opacity: 'var(--opacity-semiOpaque)'
         }
+      }
+    },
+
+    '.button-container': {
+      padding: '15px 20px 20px',
+
+      button: {
+        padding: '14px 22px'
       }
     }
   },

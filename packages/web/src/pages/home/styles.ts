@@ -71,6 +71,8 @@ export const Container = styled('div', {
           borderRadius: '10px',
 
           '.info': {
+            marginTop: '5px',
+
             '> p': {
               lineHeight: 'var(--lineHeights-short)'
             }
@@ -86,7 +88,6 @@ export const Container = styled('div', {
 
       '.image-container': {
         backgroundColor: 'var(--colors-card-item-background)',
-        border: '2px solid var(--colors-background-quaternary)',
         borderRadius: '15px',
 
         img: {
@@ -184,8 +185,7 @@ export const Container = styled('div', {
         },
 
         '.top-bid-container .bid': {
-          background: 'var(--colors-background-tertiary)',
-          border: '2px solid var(--colors-background-quaternary)'
+          background: 'var(--colors-background-tertiary)'
         }
       },
 
@@ -295,9 +295,8 @@ export const Container = styled('div', {
           left: '-20px',
           bottom: '-15px',
           maxWidth: '400px',
-          padding: '15px 20px',
+          padding: '18px 22px',
           backgroundColor: 'var(--colors-card-item-background)',
-          border: '2px solid var(--colors-background-quaternary)',
           borderRadius: '10px',
           zIndex: 10,
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import {
@@ -36,6 +36,8 @@ export const Header: React.FC = () => {
     setSearchVisibility(true)
     setSearchPosition(true)
     setSearchContainerPadding(true)
+
+    searchInputRef.current?.setInputFocus()
   }
 
   const hideSearch = () => {
@@ -49,14 +51,6 @@ export const Header: React.FC = () => {
       setSearchPosition(false)
     }, 350)
   }
-
-  useEffect(() => {
-    if (searchModalIsOpen) {
-      document.documentElement.style.overflowY = 'hidden'
-    } else {
-      document.documentElement.style.overflowY = 'scroll'
-    }
-  }, [searchModalIsOpen])
 
   return (
     <Container

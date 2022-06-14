@@ -7,7 +7,6 @@ export const GlobalStyle = globalCss({
   },
 
   html: {
-    overflowY: 'scroll',
     backgroundColor: 'var(--colors-background-primary)',
 
     '@media screen and (max-width: 1023px)': {
@@ -95,10 +94,20 @@ export const GlobalStyle = globalCss({
     height: '1em'
   },
 
+  '.modal-open': {
+    overflowY: 'hidden'
+  },
+
   '@bp768': {
     '.main-wrapper': {
       paddingLeft: '25px',
       paddingRight: '25px'
+    }
+  },
+
+  '@bp990': {
+    '.modal-open': {
+      overflowY: 'inherit'
     }
   }
 })

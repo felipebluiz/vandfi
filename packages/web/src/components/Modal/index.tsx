@@ -58,7 +58,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
       setTimeout(() => {
         setModalIsOpen(false)
 
-        document.documentElement.style.overflowY = 'scroll'
+        document.documentElement.classList.remove('modal-open')
         document.body.style.removeProperty('overflow-y')
 
         if (navigator.userAgent.indexOf('Firefox') === -1) {
@@ -84,7 +84,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
       if (modalIsOpen) {
         setOpened(true)
 
-        document.documentElement.style.overflowY = 'hidden'
+        document.documentElement.classList.add('modal-open')
         document.body.style.overflowY = 'hidden'
 
         if (navigator.userAgent.indexOf('Firefox') === -1) {
