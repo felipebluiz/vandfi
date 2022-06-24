@@ -13,11 +13,13 @@ export const StyledCountDown = styled('div', {
   },
 
   '.fa': {
-    marginRight: '3px'
+    marginRight: '3px',
+    marginTop: '-1px'
   },
 
   '.fa, span': {
-    fontSize: 'var(--fontSizes-sm)'
+    fontSize: 'var(--fontSizes-sm)',
+    color: 'var(--colors-regular)'
   },
 
   '.fa, .counter': {

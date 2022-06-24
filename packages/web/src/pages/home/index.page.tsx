@@ -1,13 +1,13 @@
 /* eslint-disable indent */
 import React from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faPlusCircle,
   faRocket,
   faShoppingBasket
 } from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Header } from '@/components/Header'
 import { Heading } from '@/components/Heading'
@@ -15,19 +15,23 @@ import { Text } from '@/components/Text'
 import { Button } from '@/components/Button'
 import { Avatar } from '@/components/Avatar'
 import { Link } from '@/components/Link'
+import { Carousel } from '@/components/Carousel'
+import { CardItem } from '@/components/CardItem'
+import { VerifiedIcon } from '@/components/VerifiedIcon'
+import { CountDown } from '@/components/Countdown'
 import { truncateAddress, currencyFormat } from 'src/utils'
 
 import { RadialEffect } from '@/assets/styles/global'
 import { Container } from './styles'
-import { VerifiedIcon } from '@/components/VerifiedIcon'
-import { CountDown } from '@/components/Countdown'
 
-interface Item {
+export interface Item {
   image: string
   name: string
   address: string
   creator: Creator
   collection: Collection
+  likes: number
+  liked: boolean
   onSale: boolean
   onAuction: boolean
   openOffers: boolean
@@ -71,6 +75,7 @@ interface Featured {
 interface HomeProps {
   currentBid: CurrentBid
   featured: Featured
+  editorsPick: Item[]
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -107,7 +112,177 @@ const Home: React.FC<HomeProps> = ({
         convertedAmount: 17688.27
       }
     }
-  }
+  },
+  editorsPick = [
+    {
+      image: '/images/bored-kennel-3.png',
+      name: 'BoredApeKennelClub #4423',
+      address: '0x06d4b27c936edd31cea4d41d4ecd8bea83e6e4239',
+      likes: 21,
+      onSale: true,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        name: 'Dima Krenskiy',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 17.15
+      }
+    },
+    {
+      image: '/images/bored-kennel-2.png',
+      name: 'BoredApeKennelClub #4221',
+      address: '0x06d4b27c1936edd3cea4d41d4ecd8bea83e6e4239',
+      countdownDate: '2022-06-29T02:01:16.088Z',
+      likes: 72,
+      onSale: false,
+      onAuction: true,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        name: 'felipeluiz.eth',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 3.65
+      }
+    },
+    {
+      image: '/images/avatar.png',
+      name: 'CloneX #2076',
+      address: '0x06d4b27c9326edd3cea4d41d4ecd8bea83e6e4239',
+      likes: 6,
+      liked: true,
+      onSale: true,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/crypto-punk.png',
+        name: 'gabusch',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239'
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 10
+      }
+    },
+    {
+      image: '/images/bored-kennel-3.png',
+      name: 'BoredApeKennelClub #4423',
+      address: '0x06d4b27c936ed551cea4d41d4ecd8bea83e6e4239',
+      likes: 21,
+      onSale: true,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        name: 'Dima Krenskiy',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 17.15
+      }
+    },
+    {
+      image: '/images/crypto-punk.png',
+      name: 'CryptoPunk #1143',
+      address: '0x06d43b27c9636d5d3cea4d41d4ecd8bea83e6e4239',
+      likes: 102,
+      onSale: false,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 15.65
+      }
+    },
+    {
+      image: '/images/crypto-punk.png',
+      name: 'CryptoPunk #1143',
+      address: '0x06d43b27c9636edd3cea4d41d4ecd8bea83e6e4239',
+      likes: 102,
+      onSale: false,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 15.65
+      }
+    },
+    {
+      image: '/images/crypto-punk.png',
+      name: 'CryptoPunk #1143',
+      address: '0x06d4b27c936e5dd3cea4d41d4ecd8bea83e6e4239',
+      likes: 102,
+      onSale: false,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 15.65
+      }
+    },
+    {
+      image: '/images/crypto-punk.png',
+      name: 'CryptoPunk #1143',
+      address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+      likes: 102,
+      onSale: false,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/avatar.png',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
+        verified: true
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 15.65
+      }
+    },
+    {
+      image: '/images/avatar.png',
+      name: 'CloneX #2076',
+      address: '0x05d4b27c9326edd3cea4d41d4ecd8bea83e6e4239',
+      likes: 6,
+      liked: true,
+      onSale: true,
+      onAuction: false,
+      openOffers: true,
+      creator: {
+        avatarUrl: '/images/crypto-punk.png',
+        name: 'gabusch',
+        address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239'
+      },
+      price: {
+        symbol: 'ETH',
+        amount: 10
+      }
+    }
+  ]
 }) => {
   return (
     <>
@@ -115,7 +290,7 @@ const Home: React.FC<HomeProps> = ({
       <Header />
       <div className="main-wrapper">
         <Container featuredItem={featured.type === 'item'}>
-          <div className="welcome">
+          <section className="welcome">
             <div>
               <Heading size="lg">
                 Create, Sell and Collect Digital NFT Items
@@ -147,7 +322,10 @@ const Home: React.FC<HomeProps> = ({
                     alt="Creator avatar"
                     size="sm"
                     verified={currentBid.creator.verified}
-                    title={truncateAddress(currentBid.creator.address)}
+                    title={
+                      currentBid.creator.name ||
+                      truncateAddress(currentBid.creator.address)
+                    }
                   />
                   <div className="info">
                     <Text size="xs">Current Bid</Text>
@@ -307,7 +485,15 @@ const Home: React.FC<HomeProps> = ({
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+          <section className="editors-pick">
+            <Heading size="md">Editors Pick For This Week</Heading>
+            <Carousel>
+              {editorsPick.map(item => (
+                <CardItem key={item.address} item={item as Item} />
+              ))}
+            </Carousel>
+          </section>
         </Container>
       </div>
     </>

@@ -91,7 +91,7 @@ export const Container = styled('div', {
         borderRadius: '15px',
 
         img: {
-          padding: '10px',
+          padding: '12px',
           borderRadius: '22px',
 
           '&.image-1': {
@@ -106,7 +106,7 @@ export const Container = styled('div', {
 
       '.card': {
         width: '100%',
-        padding: '5px 20px 20px',
+        padding: '0 20px 20px',
 
         '> div:first-child': {
           '.title, .creator': {
@@ -128,7 +128,7 @@ export const Container = styled('div', {
 
         '.countdown': {
           position: 'absolute',
-          bottom: '222px'
+          bottom: '216px'
         },
 
         '> div:last-child': {
@@ -156,6 +156,14 @@ export const Container = styled('div', {
       '.amount': {
         color: 'var(--colors-white)'
       }
+    }
+  },
+
+  '.editors-pick': {
+    marginTop: '80px',
+
+    '> h2': {
+      marginBottom: '30px'
     }
   },
 
@@ -194,7 +202,7 @@ export const Container = styled('div', {
 
         '.card': {
           '.countdown': {
-            bottom: '160px'
+            bottom: '155px'
           },
 
           '> div:last-child': {
@@ -295,7 +303,7 @@ export const Container = styled('div', {
           left: '-20px',
           bottom: '-15px',
           maxWidth: '400px',
-          padding: '18px 22px',
+          padding: '18px 20px',
           backgroundColor: 'var(--colors-card-item-background)',
           borderRadius: '10px',
           zIndex: 10,
@@ -307,6 +315,10 @@ export const Container = styled('div', {
           }
         }
       }
+    },
+
+    'section > h2': {
+      fontSize: '1.8rem'
     }
   },
 

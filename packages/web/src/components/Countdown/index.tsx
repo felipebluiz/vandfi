@@ -26,6 +26,7 @@ export const CountDown: React.FC<CountDownProps> = ({ date, ...props }) => {
     <StyledCountDown {...props}>
       {placeholder ? (
         <ContentLoader
+          uniqueKey="content-loader"
           speed={2}
           backgroundColor={theme.colors['background-tertiary'].value}
           foregroundColor={theme.colors['background-quaternary'].value}

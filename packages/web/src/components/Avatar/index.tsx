@@ -54,6 +54,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         alt={alt}
         style={!loaded ? { visibility: 'hidden' } : {}}
         onLoad={handleLoad}
+        draggable="false"
       />
       {verified && <VerifiedIcon size={size} className="check-circle" />}
     </StyledAvatar>

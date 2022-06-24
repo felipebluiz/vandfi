@@ -7,6 +7,7 @@ import { StyledButton } from './styles'
 
 type ButtonProps = React.ComponentProps<typeof StyledButton> & {
   children: React.ReactNode
+  custom?: boolean
   variant: string
   size: string
   outlined?: boolean
@@ -17,12 +18,23 @@ type ButtonProps = React.ComponentProps<typeof StyledButton> & {
   icon?: IconProp
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, icon, ...props }) => {
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  custom,
+  icon,
+  ...props
+}) => {
   return (
     <StyledButton {...props}>
-      {icon && <FontAwesomeIcon icon={icon} className="fa" />}
-      <span>{children}</span>
-      <Spinner className="spinner" />
+      {!custom ? (
+        <>
+          {icon && <FontAwesomeIcon icon={icon} className="fa" />}
+          <span>{children}</span>
+          <Spinner className="spinner" />
+        </>
+      ) : (
+        children
+      )}
     </StyledButton>
   )
 }
