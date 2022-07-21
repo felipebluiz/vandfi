@@ -1,0 +1,170 @@
+[
+  {
+    "image": "/images/bored-kennel-3.png",
+    "name": "BoredApeKennelClub #4423",
+    "address": "0x06d4b27c936edd31cea4d41d4ecd8bea83e6e4239",
+    "likes": 21,
+    "onSale": true,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "name": "Dima Krenskiy",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 17.15
+    }
+  },
+  {
+    "image": "/images/bored-kennel-2.png",
+    "name": "BoredApeKennelClub #4221",
+    "address": "0x06d4b27c1936edd3cea4d41d4ecd8bea83e6e4239",
+    "countdownDate": "2022-07-29T02:01:16.088Z",
+    "likes": 72,
+    "onSale": false,
+    "onAuction": true,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "name": "felipeluiz.eth",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 3.65
+    }
+  },
+  {
+    "image": "/images/avatar.png",
+    "name": "CloneX #2076",
+    "address": "0x06d4b27c9326edd3cea4d41d4ecd8bea83e6e4239",
+    "likes": 6,
+    "liked": true,
+    "onSale": true,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "gabusch",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 10
+    }
+  },
+  {
+    "image": "/images/bored-kennel-3.png",
+    "name": "BoredApeKennelClub #4423",
+    "address": "0x06d4b27c936ed551cea4d41d4ecd8bea83e6e4239",
+    "likes": 21,
+    "onSale": true,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "name": "Dima Krenskiy",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 17.15
+    }
+  },
+  {
+    "image": "/images/crypto-punk.png",
+    "name": "CryptoPunk #1143",
+    "address": "0x06d43b27c9636d5d3cea4d41d4ecd8bea83e6e4239",
+    "likes": 102,
+    "onSale": false,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 15.65
+    }
+  },
+  {
+    "image": "/images/crypto-punk.png",
+    "name": "CryptoPunk #1143",
+    "address": "0x06d43b27c9636edd3cea4d41d4ecd8bea83e6e4239",
+    "likes": 102,
+    "onSale": false,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 15.65
+    }
+  },
+  {
+    "image": "/images/crypto-punk.png",
+    "name": "CryptoPunk #1143",
+    "address": "0x06d4b27c936e5dd3cea4d41d4ecd8bea83e6e4239",
+    "likes": 102,
+    "onSale": false,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 15.65
+    }
+  },
+  {
+    "image": "/images/crypto-punk.png",
+    "name": "CryptoPunk #1143",
+    "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+    "likes": 102,
+    "onSale": false,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/avatar.png",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239",
+      "verified": true
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 15.65
+    }
+  },
+  {
+    "image": "/images/avatar.png",
+    "name": "CloneX #2076",
+    "address": "0x05d4b27c9326edd3cea4d41d4ecd8bea83e6e4239",
+    "likes": 6,
+    "liked": true,
+    "onSale": true,
+    "onAuction": false,
+    "openOffers": true,
+    "creator": {
+      "avatarUrl": "/images/crypto-punk.png",
+      "name": "gabusch",
+      "address": "0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239"
+    },
+    "price": {
+      "currencySymbol": "ETH",
+      "amount": 10
+    }
+  }
+]

@@ -17,14 +17,14 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
   const { width } = useWindowDimensions()
 
   const onScroll = () => {
-    if (carousel.current.scrollLeft === 0) {
+    if (carousel.current.scrollLeft <= 0) {
       setShowSlideLeft(false)
     } else {
       setShowSlideLeft(true)
     }
 
     if (
-      carousel.current.scrollWidth - carousel.current.offsetWidth ===
+      carousel.current.scrollWidth - carousel.current.offsetWidth <=
       carousel.current.scrollLeft
     ) {
       setShowSlideRight(false)

@@ -1,3 +1,5 @@
-import searchResults from './search-results.json'
+import searchResults from './searchResults.json'
+import editorsPick from './editorsPick.json'
+import popularCollections from './popularCollections.json'
 
-export { searchResults }
+export { searchResults, editorsPick, popularCollections }

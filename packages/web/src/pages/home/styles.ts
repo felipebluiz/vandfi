@@ -3,7 +3,6 @@ import { styled } from '../../../stitches.config'
 export const Container = styled('div', {
   paddingTop: '20px',
   paddingBottom: '20px',
-  height: '2000px',
 
   '.welcome': {
     display: 'flex',
@@ -68,7 +67,7 @@ export const Container = styled('div', {
           padding: '15px',
           background:
             'linear-gradient(to right, var(--colors-background-tertiary), transparent 100%)',
-          borderRadius: '10px',
+          borderRadius: '12px',
 
           '.info': {
             marginTop: '5px',
@@ -159,11 +158,146 @@ export const Container = styled('div', {
     }
   },
 
-  '.editors-pick': {
+  'section > h2': {
     marginTop: '80px',
+    marginBottom: '30px'
+  },
 
-    '> h2': {
-      marginBottom: '30px'
+  '.sale-tips .tips': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '30px',
+
+    '.tips-item': {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '10px',
+      maxWidth: '305px',
+      textAlign: 'center',
+
+      '.icon-container': {
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '80px',
+        height: '80px',
+        borderRadius: '100px',
+        backgroundColor: 'var(--colors-background-tertiary)',
+        marginBottom: '8px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+
+        '.fa': {
+          fontSize: '32px',
+          color: 'var(--colors-white)'
+        },
+
+        '.step, p': {
+          position: 'absolute',
+          left: '2px',
+          bottom: '2px',
+          padding: '0 7px',
+          backgroundColor: 'var(--colors-primary)',
+          borderRadius: '100px',
+          fontSize: '13px',
+          fontWeight: '700',
+          lineHeight: '20px',
+          color: 'var(--colors-white)'
+        }
+      },
+
+      '.title': {
+        color: 'var(--colors-white)'
+      },
+
+      '.description': {
+        lineHeight: 'var(--lineHeights-base)',
+        fontSize: '16px'
+      }
+    }
+  },
+
+  '.popular-collections': {
+    marginBottom: '80px',
+
+    '.collections': {
+      display: 'grid',
+      gap: '30px',
+
+      '.collection-item': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+        cursor: 'pointer',
+        borderRadius: '15px',
+
+        '.position': {
+          width: '18px',
+          textAlign: 'right'
+        },
+
+        '> div': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
+          flex: 1,
+
+          '.info-container': {
+            flex: 1,
+
+            '> div': {
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              alignItems: 'center',
+              gap: '10px',
+
+              '.name': {
+                color: 'var(--colors-white)',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden'
+              },
+
+              '.trading-volume-percent': {
+                lineHeight: 'var(--lineHeights-tall)',
+
+                '&.green': {
+                  color: 'var(--colors-sucess-primary)'
+                },
+
+                '&.red': {
+                  color: 'var(--colors-error-primary)'
+                }
+              },
+
+              '.crypto-amount': {
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+
+                '.fa-ethereum': {
+                  marginTop: '-2px',
+                  fontSize: '14px'
+                }
+              },
+
+              '.floor-price': {
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px'
+              }
+            }
+          }
+        }
+      }
+    },
+
+    '> button': {
+      marginTop: '40px',
+      marginX: 'auto'
     }
   },
 
@@ -305,7 +439,7 @@ export const Container = styled('div', {
           maxWidth: '400px',
           padding: '18px 20px',
           backgroundColor: 'var(--colors-card-item-background)',
-          borderRadius: '10px',
+          borderRadius: '12px',
           zIndex: 10,
 
           '.countdown': {
@@ -319,6 +453,42 @@ export const Container = styled('div', {
 
     'section > h2': {
       fontSize: '1.8rem'
+    },
+
+    '.sale-tips .tips': {
+      flexDirection: 'row',
+
+      '.tips-item': {
+        textAlign: 'left',
+
+        '.icon-container': {
+          marginLeft: '0',
+          marginRight: '0'
+        }
+      }
+    },
+
+    '.popular-collections': {
+      '.collections': {
+        gridTemplateRows: 'repeat(8, min-content)',
+        gridAutoFlow: 'column',
+        gridAutoColumns: '1fr',
+        gridColumnGap: '60px',
+        gridRowGap: '0px',
+
+        '.collection-item': {
+          padding: '20px 20px 20px 12px',
+          transition: 'all 0.15s ease-in-out 0s',
+
+          '&:hover': {
+            backgroundColor: 'var(--colors-background-tertiary)'
+          }
+        }
+      },
+
+      '> button': {
+        marginTop: '30px'
+      }
     }
   },
 
@@ -328,6 +498,16 @@ export const Container = styled('div', {
         fontSize: '3.25rem',
         lineHeight: 'var(--lineHeights-shorter)'
       }
+    },
+
+    '.popular-collections .collections': {
+      gridColumnGap: '60px'
+    }
+  },
+
+  '@bp1280': {
+    '.popular-collections .collections': {
+      gridTemplateRows: 'repeat(5, min-content)'
     }
   },
 

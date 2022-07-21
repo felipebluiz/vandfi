@@ -89,7 +89,7 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
             <div className="value">
               <FontAwesomeIcon icon={faEthereum as IconProp} className="fa" />
               <Text size="md" weight="medium" className="amount">
-                {`${item.price.amount} ${item.price.symbol}`}
+                {`${item.price.amount} ${item.price.currencySymbol}`}
               </Text>
             </div>
           </div>

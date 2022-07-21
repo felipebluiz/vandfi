@@ -19,6 +19,7 @@ export const {
       black: '#000000',
       eth: '#6b8cef',
       weth: '#cf373e',
+      'sucess-primary': '#28B833',
       'error-primary': '#FF0000',
       'warning-primary': '#FACA07',
       'background-quaternary': '#2A3646',
