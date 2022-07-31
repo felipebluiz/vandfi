@@ -23,7 +23,8 @@ import { truncateAddress, currencyFormat, numberFormat } from 'src/utils'
 import { saleTips } from '../../__mocks__/saleTips'
 import {
   editorsPick as editorsPickMock,
-  popularCollections as popularCollectionsMock
+  popularCollections as popularCollectionsMock,
+  featuredArticles as featuredArticlesMock
 } from '../../__mocks__'
 
 import { RadialEffect } from '@/assets/styles/global'
@@ -79,11 +80,18 @@ interface Featured {
   collection?: Collection
 }
 
+interface Article {
+  title: string
+  image: string
+  link: string
+}
+
 interface HomeProps {
   currentBid: CurrentBid
   featured: Featured
   editorsPick: Item[]
   popularCollections: Collection[]
+  featuredArticles: Article[]
 }
 
 const Home: React.FC<HomeProps> = ({
@@ -122,7 +130,8 @@ const Home: React.FC<HomeProps> = ({
     }
   },
   editorsPick = editorsPickMock,
-  popularCollections = popularCollectionsMock
+  popularCollections = popularCollectionsMock,
+  featuredArticles = featuredArticlesMock
 }) => {
   return (
     <>
@@ -207,7 +216,7 @@ const Home: React.FC<HomeProps> = ({
                     <img
                       key={image}
                       src={image}
-                      alt="Featured collection"
+                      alt="Featured collection item"
                       className={`image-${index + 1}`}
                     />
                   ))
@@ -352,7 +361,7 @@ const Home: React.FC<HomeProps> = ({
             </div>
           </section>
           <section className="popular-collections">
-            <Heading size="md">Popular collections</Heading>
+            <Heading size="md">Popular Collections</Heading>
             <div className="collections">
               {popularCollections.map((collection, index) => (
                 <div
@@ -415,6 +424,47 @@ const Home: React.FC<HomeProps> = ({
             <Button variant="primary" size="lg">
               Se all collections
             </Button>
+          </section>
+          <section className="featured-articles">
+            <Heading size="md">Featured Articles</Heading>
+            <Carousel className="article">
+              <>
+                {featuredArticles.map(article => (
+                  <a
+                    key={article.title}
+                    href={article.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    draggable="false"
+                    className="article"
+                  >
+                    <div className="image-container">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        draggable="false"
+                      />
+                    </div>
+                    <div className="content-container">
+                      <Text size="md" weight="medium">
+                        {article.title}
+                      </Text>
+                    </div>
+                  </a>
+                ))}
+                <a
+                  href="https://blog.vandfi.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  draggable="false"
+                  className="article read-more"
+                >
+                  <Button variant="primary" size="lg">
+                    Se all articles
+                  </Button>
+                </a>
+              </>
+            </Carousel>
           </section>
         </Container>
       </div>

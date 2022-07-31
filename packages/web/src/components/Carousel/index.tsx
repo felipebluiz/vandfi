@@ -7,10 +7,14 @@ import { IconButton } from '../IconButton'
 import { Container } from './styles'
 
 interface CarouselProps {
+  className?: string
   children: React.ReactNode
 }
 
-export const Carousel: React.FC<CarouselProps> = ({ children }) => {
+export const Carousel: React.FC<CarouselProps> = ({
+  className = 'item',
+  children
+}) => {
   const carousel = useRef() as React.MutableRefObject<HTMLDivElement>
   const [showSlideLeft, setShowSlideLeft] = useState(false)
   const [showSlideRight, setShowSlideRight] = useState(true)
@@ -83,17 +87,17 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
     carousel.current.addEventListener('mouseup', () => {
       isDown = false
 
-      const elements = document.getElementsByClassName('card-item')
+      const elements = document.getElementsByClassName(className)
 
       if (isDragged) {
         for (let i = 0; i < elements.length; i++) {
-          const element = elements[i] as HTMLDivElement
+          const element = elements[i] as HTMLElement
 
           element.addEventListener('click', preventClick)
         }
       } else {
         for (let i = 0; i < elements.length; i++) {
-          const element = elements[i] as HTMLDivElement
+          const element = elements[i] as HTMLElement
 
           element.removeEventListener('click', preventClick)
         }
@@ -115,6 +119,8 @@ export const Carousel: React.FC<CarouselProps> = ({ children }) => {
       carousel.current.scrollLeft = scrollLeft - walk
     })
   })
+
+  useEffect(() => onScroll(), [])
 
   return (
     <Container>

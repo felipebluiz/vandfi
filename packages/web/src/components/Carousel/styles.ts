@@ -33,6 +33,7 @@ export const Container = styled('div', {
   '.items': {
     display: 'flex',
     gap: '15px',
+    padding: '4px 0',
     overflowX: 'scroll',
     scrollbarWidth: 'none',
 
@@ -40,7 +41,7 @@ export const Container = styled('div', {
       display: 'none'
     },
 
-    '.card-item': {
+    '.item, .article': {
       width: '100%',
       minWidth: '100%',
       WebkitTouchCallout: 'none',
@@ -53,24 +54,40 @@ export const Container = styled('div', {
   },
 
   '@bp768': {
-    '.items .card-item': {
-      width: 'calc(50% - 9px)',
-      minWidth: 'calc(50% - 9px)',
-      maxWidth: 'initial'
+    '.items': {
+      '.item, .article': {
+        width: 'calc(50% - 9px)',
+        minWidth: 'calc(50% - 9px)',
+        maxWidth: 'initial'
+      }
     }
   },
 
   '@bp1024': {
-    '.items .card-item': {
-      width: 'calc(33.33% - 11px)',
-      minWidth: 'calc(33.33% - 11px)'
+    '.items': {
+      '.item, .article': {
+        width: 'calc(33.33% - 11px)',
+        minWidth: 'calc(33.33% - 11px)',
+        transition: 'all 0.15s ease-in-out 0s',
+
+        '&:hover': {
+          transform: 'translateY(-4px)'
+        }
+      }
     }
   },
 
   '@bp1280': {
-    '.items .card-item': {
-      width: 'calc(25% - 12px)',
-      minWidth: 'calc(25% - 12px)'
+    '.items': {
+      '.item': {
+        width: 'calc(25% - 12px)',
+        minWidth: 'calc(25% - 12px)'
+      },
+
+      '.article': {
+        width: 'calc(33.33% - 12px)',
+        minWidth: 'calc(33.33% - 12px)'
+      }
     }
   }
 })

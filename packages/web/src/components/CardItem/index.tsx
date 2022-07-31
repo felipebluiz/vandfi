@@ -25,7 +25,7 @@ type CardItemProps = React.ComponentProps<typeof StyledCard> & {
 
 export const CardItem: React.FC<CardItemProps> = ({ item }) => {
   return (
-    <StyledCard className="card-item">
+    <StyledCard className="item">
       <div className="image-container">
         <Button
           custom
@@ -44,13 +44,7 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
           <Spinner className="spinner" />
         </Button>
         <Link href="#">
-          <img
-            key={item.image}
-            src={item.image}
-            alt="Featured item"
-            className={'image-1'}
-            draggable="false"
-          />
+          <img src={item.image} alt={item.name} draggable="false" />
         </Link>
         {item.countdownDate && (
           <CountDown date={item.countdownDate} className="countdown" />

@@ -221,8 +221,6 @@ export const Container = styled('div', {
   },
 
   '.popular-collections': {
-    marginBottom: '80px',
-
     '.collections': {
       display: 'grid',
       gap: '30px',
@@ -298,6 +296,54 @@ export const Container = styled('div', {
     '> button': {
       marginTop: '40px',
       marginX: 'auto'
+    }
+  },
+
+  '.featured-articles': {
+    marginBottom: '80px',
+
+    '.article': {
+      display: 'inline-flex',
+      flexDirection: 'column',
+      backgroundColor: 'var(--colors-card-item-background)',
+      borderRadius: '15px',
+      userSelect: 'none',
+
+      '.image-container': {
+        padding: '12px 12px 0',
+
+        img: {
+          width: '100%',
+          borderRadius: '10px'
+        }
+      },
+
+      '.content-container': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        padding: '12px 20px 16px',
+
+        p: {
+          color: 'var(--colors-white)',
+          wordBreak: 'break-word',
+          overflow: 'hidden',
+          display: '-webkit-box',
+          WebkitLineClamp: '2',
+          WebkitBoxOrient: 'vertical'
+        }
+      }
+    },
+
+    '.read-more': {
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'none',
+      border: '2px solid var(--colors-card-item-background)',
+
+      'button:hover': {
+        backgroundColor: 'var(--colors-primary)'
+      }
     }
   },
 
