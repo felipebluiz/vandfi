@@ -19,6 +19,7 @@ import { Carousel } from '@/components/Carousel'
 import { CardItem } from '@/components/CardItem'
 import { VerifiedIcon } from '@/components/VerifiedIcon'
 import { CountDown } from '@/components/Countdown'
+import { Footer } from '@/components/Footer'
 import { truncateAddress, currencyFormat, numberFormat } from 'src/utils'
 import { saleTips } from '../../__mocks__/saleTips'
 import {
@@ -466,6 +467,7 @@ const Home: React.FC<HomeProps> = ({
               </>
             </Carousel>
           </section>
+          <Footer />
         </Container>
       </div>
     </>

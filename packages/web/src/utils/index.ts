@@ -26,3 +26,11 @@ export const countDownFormat = (countDown: number[]): string => {
     '0'
   )}:${String(countDown[3]).padStart(2, '0')}`
 }
+
+export const patterns = {
+  email: {
+    value:
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    message: 'Please enter a valid email'
+  }
+}

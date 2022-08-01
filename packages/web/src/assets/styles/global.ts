@@ -90,6 +90,11 @@ export const GlobalStyle = globalCss({
     outline: 'none'
   },
 
+  'form .error-message': {
+    marginTop: '8px',
+    marginLeft: '22px'
+  },
+
   '.fa': {
     height: '1em'
   },

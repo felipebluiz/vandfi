@@ -82,16 +82,28 @@ export const Header: React.FC = () => {
               </Link>
             </li>
             <li className={router.pathname === '/activity' ? 'active' : ''}>
-              <a href="/activity">Activity</a>
+              <Link href="/activity">
+                <a>Activity</a>
+              </Link>
             </li>
             <li className={router.pathname === '/how-it-works' ? 'active' : ''}>
-              <a href="/how-it-works">How it works</a>
+              <Link href="/how-it-works">
+                <a>How it works</a>
+              </Link>
             </li>
-            <li className={router.pathname === '/blog' ? 'active' : ''}>
-              <a href="/blog">Blog</a>
+            <li>
+              <a
+                href="https://blog.vandfi.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Blog
+              </a>
             </li>
             <li className={router.pathname === '/create' ? 'active' : ''}>
-              <a href="/create">Create</a>
+              <Link href="/create">
+                <a>Create</a>
+              </Link>
             </li>
           </ul>
         </div>

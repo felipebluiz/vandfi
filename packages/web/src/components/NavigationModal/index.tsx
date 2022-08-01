@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { faWallet, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -15,6 +15,7 @@ import { Modal, ModalHandle } from '@/components/Modal'
 import { Logo } from '@/components/Logo'
 import { IconButton } from '@/components/IconButton'
 import { Button } from '@/components/Button'
+import { socialLinks } from '../../__mocks__'
 
 import { Container } from './styles'
 
@@ -31,13 +32,6 @@ export const NavigationModal: React.FC<NavigationModalProps> = ({
 }) => {
   const modalRef = useRef<ModalHandle>(null)
   const router = useRouter()
-  const [socailLinks] = useState({
-    facebook: 'https://www.facebook.com/vandfi',
-    twitter: 'https://twitter.com/vandfi/',
-    instagram: 'https://www.instagram.com/vandfi/',
-    discord: 'https://discord.gg/FWFQvaXz',
-    youtube: 'https://www.youtube.com/channel/UCBRLq3Y7YkG5xb_j27V4Y6Q'
-  })
 
   return (
     <Modal
@@ -74,10 +68,14 @@ export const NavigationModal: React.FC<NavigationModalProps> = ({
                 <a>How it works</a>
               </Link>
             </li>
-            <li className={router.pathname === '/blog' ? 'active' : ''}>
-              <Link href="/blog">
-                <a>Blog</a>
-              </Link>
+            <li>
+              <a
+                href="https://blog.vandfi.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Blog
+              </a>
             </li>
             <li className={router.pathname === '/create' ? 'active' : ''}>
               <Link href="/create">
@@ -104,35 +102,35 @@ export const NavigationModal: React.FC<NavigationModalProps> = ({
               variant="secundary"
               size="md"
               radius="semiRounded"
-              onClick={() => window.open(socailLinks.facebook, '_blank')}
+              onClick={() => window.open(socialLinks.facebook, '_blank')}
             />
             <IconButton
               icon={faTwitter as IconProp}
               variant="secundary"
               size="md"
               radius="semiRounded"
-              onClick={() => window.open(socailLinks.twitter, '_blank')}
+              onClick={() => window.open(socialLinks.twitter, '_blank')}
             />
             <IconButton
               icon={faInstagram as IconProp}
               variant="secundary"
               size="md"
               radius="semiRounded"
-              onClick={() => window.open(socailLinks.instagram, '_blank')}
+              onClick={() => window.open(socialLinks.instagram, '_blank')}
             />
             <IconButton
               icon={faDiscord as IconProp}
               variant="secundary"
               size="md"
               radius="semiRounded"
-              onClick={() => window.open(socailLinks.discord, '_blank')}
+              onClick={() => window.open(socialLinks.discord, '_blank')}
             />
             <IconButton
               icon={faYoutube as IconProp}
               variant="secundary"
               size="md"
               radius="semiRounded"
-              onClick={() => window.open(socailLinks.youtube, '_blank')}
+              onClick={() => window.open(socialLinks.youtube, '_blank')}
             />
           </div>
         </footer>

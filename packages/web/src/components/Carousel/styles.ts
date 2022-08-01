@@ -44,12 +44,7 @@ export const Container = styled('div', {
     '.item, .article': {
       width: '100%',
       minWidth: '100%',
-      WebkitTouchCallout: 'none',
-      WebkitUserSelect: 'none',
-      KhtmlUserSelect: 'none',
-      MozUserSelect: 'none',
-      MsUserSelect: 'none',
-      userSelect: 'none'
+      MozUserSelect: 'none'
     }
   },
 
