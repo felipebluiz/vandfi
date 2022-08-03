@@ -10,24 +10,24 @@ export const saleTips = [
     icon: faWallet,
     title: 'Connect your wallet',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel viverra metus. Pellentesque sapien.'
+      'Once you’ve set up your wallet. You can connect by clicking the wallet connect button on the top right corner.'
   },
   {
     icon: faThLarge,
     title: 'Create your collection',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel viverra metus. Pellentesque sapien.'
+      'Create your nft collection by clicking the My Collections option on the profile menu.'
   },
   {
     icon: faClone,
     title: 'Create your nft',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel viverra metus. Pellentesque sapien.'
+      'Click on Create in the top menu, load your artwork, and give all the details you want about it.'
   },
   {
     icon: faTags,
     title: 'Put on sale',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel viverra metus. Pellentesque sapien.'
+      'Choose between fixed price, open for bids, timed auction and start earning for all NFTs that you sell.'
   }
 ]

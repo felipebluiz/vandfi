@@ -149,7 +149,8 @@ export const Container = styled('div', {
       gap: '6px',
 
       '.fa-ethereum': {
-        color: 'var(--colors-white)'
+        color: 'var(--colors-white)',
+        marginTop: '-1px'
       },
 
       '.amount': {

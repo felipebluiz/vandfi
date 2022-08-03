@@ -114,6 +114,10 @@ export const Container = styled('footer', {
 
       a: {
         fontSize: 'var(--fontSizes-xs)'
+      },
+
+      '.dot': {
+        paddingTop: '3px'
       }
     }
   },

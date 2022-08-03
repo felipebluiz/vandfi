@@ -48,8 +48,8 @@ export const Footer: React.FC = () => {
         <div className="company">
           <Logo animation={false} size="sm" />
           <Text size="sm">
-            Lorem ipsum dolor sit amet. Consectur adipiscing elit. Quis non,
-            fugit totam vel laboriosam vitae.
+            Vandfi is a decentralized marketplace for buying and selling NFTs.
+            Discover and collect from the best NFT marketplace.
           </Text>
           <div className="socials-container">
             <IconButton
@@ -130,6 +130,11 @@ export const Footer: React.FC = () => {
                 <a>Become a partner</a>
               </Link>
             </li>
+            <li>
+              <Link href="/bug-bounty">
+                <a>Bug bounty</a>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="newsletter">
@@ -177,7 +182,7 @@ export const Footer: React.FC = () => {
           <Link href="/">
             <a>Terms of service</a>
           </Link>
-          <Text>&#x2022;</Text>
+          <Text className="dot">&#x2022;</Text>
           <Link href="/">
             <a>Privacy policy</a>
           </Link>

@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 import React from 'react'
+import { GetStaticProps } from 'next'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -472,6 +473,13 @@ const Home: React.FC<HomeProps> = ({
       </div>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = () => {
+  return {
+    props: {},
+    revalidate: 60 * 60 * 4
+  }
 }
 
 export default Home
