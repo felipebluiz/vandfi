@@ -53,94 +53,98 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <Container
-      loggedIn={loggedIn}
-      navigationVisibility={navigationVisibility}
-      searchVisibility={searchVisibility}
-      searchPosition={searchPosition}
-      searchContainerPadding={searchContainerPadding}
-    >
-      <div className="main-wrapper">
-        <Logo />
-        <IconButton
-          icon={!searchVisibility ? faSearch : faTimes}
-          variant="secundary"
-          size="md"
-          className="search-button"
-          onClick={!searchVisibility ? showSearch : hideSearch}
-        />
-        <SearchInput
-          ref={searchInputRef}
-          setSearchModalIsOpen={hideSearch}
-          placeholder="Search items, collections or creators"
-        />
-        <div className="navigation-container">
-          <ul>
-            <li className={router.pathname === '/explore' ? 'active' : ''}>
-              <Link href="/explore">
-                <a>Explore</a>
-              </Link>
-            </li>
-            <li className={router.pathname === '/activity' ? 'active' : ''}>
-              <Link href="/activity">
-                <a>Activity</a>
-              </Link>
-            </li>
-            <li className={router.pathname === '/how-it-works' ? 'active' : ''}>
-              <Link href="/how-it-works">
-                <a>How it works</a>
-              </Link>
-            </li>
-            <li>
-              <a
-                href="https://blog.vandfi.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Blog
-              </a>
-            </li>
-            <li className={router.pathname === '/create' ? 'active' : ''}>
-              <Link href="/create">
-                <a>Create</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <IconButton
-          icon={faSearch}
-          variant="secundary"
-          size="md"
-          className="mobile-button navigation-button"
-          onClick={() => setSearchModalIsOpen(!searchModalIsOpen)}
-        />
-        <IconButton
-          icon={faBars}
-          variant="secundary"
-          size="md"
-          className="navigation-button"
-          onClick={() => setNavigationModalIsOpen(!navigationModalIsOpen)}
-        />
-        {loggedIn && (
-          <Avatar
-            src="/images/avatar.png"
-            size="sm"
-            className="avatar"
-            verified
-            onClick={() => setProfileModalIsOpen(true)}
-          />
-        )}
-        {!loggedIn && (
-          <Button
-            variant="primary"
+    <>
+      <Container
+        loggedIn={loggedIn}
+        navigationVisibility={navigationVisibility}
+        searchVisibility={searchVisibility}
+        searchPosition={searchPosition}
+        searchContainerPadding={searchContainerPadding}
+      >
+        <div className="main-wrapper">
+          <Logo />
+          <IconButton
+            icon={!searchVisibility ? faSearch : faTimes}
+            variant="secundary"
             size="md"
-            icon={faWallet}
-            className="connect-wallet"
-          >
-            Connect Wallet
-          </Button>
-        )}
-      </div>
+            className="search-button"
+            onClick={!searchVisibility ? showSearch : hideSearch}
+          />
+          <SearchInput
+            ref={searchInputRef}
+            setSearchModalIsOpen={hideSearch}
+            placeholder="Search items, collections or creators"
+          />
+          <div className="navigation-container">
+            <ul>
+              <li className={router.pathname === '/explore' ? 'active' : ''}>
+                <Link href="/explore">
+                  <a>Explore</a>
+                </Link>
+              </li>
+              <li className={router.pathname === '/activity' ? 'active' : ''}>
+                <Link href="/activity">
+                  <a>Activity</a>
+                </Link>
+              </li>
+              <li
+                className={router.pathname === '/how-it-works' ? 'active' : ''}
+              >
+                <Link href="/how-it-works">
+                  <a>How it works</a>
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://blog.vandfi.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Blog
+                </a>
+              </li>
+              <li className={router.pathname === '/create' ? 'active' : ''}>
+                <Link href="/create">
+                  <a>Create</a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <IconButton
+            icon={faSearch}
+            variant="secundary"
+            size="md"
+            className="mobile-button navigation-button"
+            onClick={() => setSearchModalIsOpen(!searchModalIsOpen)}
+          />
+          <IconButton
+            icon={faBars}
+            variant="secundary"
+            size="md"
+            className="navigation-button"
+            onClick={() => setNavigationModalIsOpen(!navigationModalIsOpen)}
+          />
+          {loggedIn && (
+            <Avatar
+              src="/images/avatar.png"
+              size="sm"
+              className="avatar"
+              verified
+              onClick={() => setProfileModalIsOpen(true)}
+            />
+          )}
+          {!loggedIn && (
+            <Button
+              variant="primary"
+              size="md"
+              icon={faWallet}
+              className="connect-wallet"
+            >
+              Connect Wallet
+            </Button>
+          )}
+        </div>
+      </Container>
       {searchModalIsOpen && (
         <SearchModal
           searchModalIsOpen={searchModalIsOpen}
@@ -160,6 +164,6 @@ export const Header: React.FC = () => {
           setProfileModalIsOpen={setProfileModalIsOpen}
         />
       )}
-    </Container>
+    </>
   )
 }

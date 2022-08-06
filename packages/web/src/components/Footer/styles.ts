@@ -104,7 +104,8 @@ export const Container = styled('footer', {
 
     '.brasil-icon': {
       width: '20px',
-      marginLeft: '8px'
+      marginLeft: '8px',
+      marginTop: '1px'
     },
 
     '.links': {
@@ -117,7 +118,7 @@ export const Container = styled('footer', {
       },
 
       '.dot': {
-        paddingTop: '3px'
+        paddingTop: '2px'
       }
     }
   },

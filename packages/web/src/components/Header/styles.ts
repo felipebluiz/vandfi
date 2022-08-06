@@ -7,7 +7,8 @@ export const Container = styled('header', {
   right: '0',
   zIndex: '100',
   height: '80px',
-  background: 'var(--colors-background-primary)',
+  backgroundColor: 'rgb(26 36 51 / 95%)',
+  backdropFilter: 'blur(20px)',
   borderBottom: '1px solid var(--colors-background-quaternary)',
 
   '.main-wrapper': {

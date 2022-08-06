@@ -9,6 +9,7 @@ export const StyledModal = styled('div', {
   opacity: 0,
   transition: 'opacity 0.2s ease-in-out',
   overflowY: 'auto',
+  zIndex: '9999',
 
   '.modal-container': {
     width: '100vw',
