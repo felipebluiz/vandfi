@@ -64,6 +64,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   }
 
   useEffect(() => {
+    let modalIsOpen = false
     let isDown = false
     let isDragged = false
     let startX = 0
@@ -75,6 +76,7 @@ export const Carousel: React.FC<CarouselProps> = ({
     }
 
     carousel.current.addEventListener('mousedown', e => {
+      modalIsOpen = document.documentElement.classList.contains('modal-open')
       isDown = true
       startX = e.pageX - carousel.current.offsetLeft
       scrollLeft = carousel.current.scrollLeft
@@ -107,7 +109,7 @@ export const Carousel: React.FC<CarouselProps> = ({
     })
 
     carousel.current.addEventListener('mousemove', e => {
-      if (!isDown) return
+      if (modalIsOpen || !isDown) return
 
       isDragged = true
 

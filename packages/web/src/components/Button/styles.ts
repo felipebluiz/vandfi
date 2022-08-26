@@ -95,7 +95,7 @@ export const StyledButton = styled('button', {
           position: 'absolute'
         },
 
-        '.fa, span': {
+        '.fa, span, img': {
           visibility: 'hidden'
         }
       }

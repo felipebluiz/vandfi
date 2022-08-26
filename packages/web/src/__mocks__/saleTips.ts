@@ -5,7 +5,7 @@ import {
   faTags
 } from '@fortawesome/free-solid-svg-icons'
 
-export const saleTips = [
+const saleTips = [
   {
     icon: faWallet,
     title: 'Connect your wallet',
@@ -31,3 +31,5 @@ export const saleTips = [
       'Choose between fixed price, open for bids, timed auction and start earning for all NFTs that you sell.'
   }
 ]
+
+export default saleTips

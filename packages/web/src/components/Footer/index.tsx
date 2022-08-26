@@ -16,7 +16,7 @@ import { IconButton } from '@/components/IconButton'
 import { TextField } from '@/components/TextField'
 import { Button } from '@/components/Button'
 import { socialLinks } from '../../__mocks__'
-import { patterns } from '../../utils'
+import { patterns } from '@/global/utils'
 
 import { Container } from './styles'
 

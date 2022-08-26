@@ -19,7 +19,7 @@ import { Avatar } from '@/components/Avatar'
 import { IconButton } from '@/components/IconButton'
 import { Text } from '@/components/Text'
 import { Button } from '@/components/Button'
-import { truncateAddress } from '../../utils'
+import { truncateAddress } from '@/global/utils'
 
 import { Container } from './styles'
 
@@ -53,7 +53,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             tabIndex={0}
             role="button"
             className="profile-container"
-            onClick={() => router.replace('/profile')}
+            onClick={() => router.push('/profile')}
           >
             <Avatar
               src="/images/avatar.png"

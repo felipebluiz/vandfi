@@ -5,7 +5,7 @@ import ContentLoader from 'react-content-loader'
 import { theme } from '../../../stitches.config'
 
 import { useCountdown } from '@/hooks/useCountdown'
-import { countDownFormat } from 'src/utils'
+import { countDownFormat } from '@/global/utils'
 
 import { StyledCountDown } from './styles'
 

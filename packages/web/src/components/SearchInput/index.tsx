@@ -16,7 +16,7 @@ import { Avatar } from '@/components/Avatar'
 import { Button } from '@/components/Button'
 import { ContentLoader } from './ContentLoader'
 import { searchResults } from '../../__mocks__'
-import { truncateAddress, numberFormat } from '../../utils'
+import { truncateAddress, numberFormat } from '@/global/utils'
 
 import { Container } from './styles'
 

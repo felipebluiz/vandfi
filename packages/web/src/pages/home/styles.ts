@@ -108,7 +108,7 @@ export const Container = styled('div', {
         padding: '0 20px 20px',
 
         '> div:first-child': {
-          '.title, .creator': {
+          '.title, .user': {
             display: 'flex',
             alignItems: 'center',
             gap: '5px',

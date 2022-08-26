@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { faWallet, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +18,7 @@ import { Button } from '@/components/Button'
 import { socialLinks } from '../../__mocks__'
 
 import { Container } from './styles'
+import { ConnectWalletModal } from '../ConnectWalletModal'
 
 interface NavigationModalProps {
   loggedIn: boolean
@@ -32,109 +33,124 @@ export const NavigationModal: React.FC<NavigationModalProps> = ({
 }) => {
   const modalRef = useRef<ModalHandle>(null)
   const router = useRouter()
+  const [connectWalletModalIsOpen, setConnectWalletModalIsOpen] =
+    useState(false)
 
   return (
-    <Modal
-      ref={modalRef}
-      hideHeader
-      hideActions
-      modalIsOpen={navigationModalIsOpen}
-      setModalIsOpen={setNavigationModalIsOpen}
-    >
-      <Container>
-        <header>
-          <Logo />
-          <IconButton
-            icon={faTimes}
-            variant="secundary"
-            size="md"
-            onClick={() => modalRef.current?.closeModal()}
-          />
-        </header>
-        <div className="content">
-          <ul>
-            <li className={router.pathname === '/explore' ? 'active' : ''}>
-              <Link href="/explore">
-                <a>Explore</a>
-              </Link>
-            </li>
-            <li className={router.pathname === '/activity' ? 'active' : ''}>
-              <Link href="/activity">
-                <a>Activity</a>
-              </Link>
-            </li>
-            <li className={router.pathname === '/how-it-works' ? 'active' : ''}>
-              <Link href="/how-it-works">
-                <a>How it works</a>
-              </Link>
-            </li>
-            <li>
-              <a
-                href="https://blog.vandfi.com"
-                target="_blank"
-                rel="noreferrer"
+    <>
+      <Modal
+        ref={modalRef}
+        closeOnClickOutside={false}
+        hideHeader
+        hideActions
+        modalIsOpen={navigationModalIsOpen}
+        setModalIsOpen={setNavigationModalIsOpen}
+      >
+        <Container>
+          <header>
+            <Logo />
+            <IconButton
+              icon={faTimes}
+              variant="secundary"
+              size="md"
+              onClick={() => modalRef.current?.closeModal()}
+            />
+          </header>
+          <div className="content">
+            <ul>
+              <li className={router.pathname === '/explore' ? 'active' : ''}>
+                <Link href="/explore">
+                  <a>Explore</a>
+                </Link>
+              </li>
+              <li className={router.pathname === '/activity' ? 'active' : ''}>
+                <Link href="/activity">
+                  <a>Activity</a>
+                </Link>
+              </li>
+              <li
+                className={router.pathname === '/how-it-works' ? 'active' : ''}
               >
-                Blog
-              </a>
-            </li>
-            <li className={router.pathname === '/create' ? 'active' : ''}>
-              <Link href="/create">
-                <a>Create</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <footer>
-          {!loggedIn && (
-            <Button
-              variant="primary"
-              size="lg"
-              icon={faWallet}
-              full
-              className="connect-wallet"
-            >
-              Connect Wallet
-            </Button>
-          )}
-          <div className="socials-container">
-            <IconButton
-              icon={faFacebookF as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socialLinks.facebook, '_blank')}
-            />
-            <IconButton
-              icon={faTwitter as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socialLinks.twitter, '_blank')}
-            />
-            <IconButton
-              icon={faInstagram as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socialLinks.instagram, '_blank')}
-            />
-            <IconButton
-              icon={faDiscord as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socialLinks.discord, '_blank')}
-            />
-            <IconButton
-              icon={faYoutube as IconProp}
-              variant="secundary"
-              size="md"
-              radius="semiRounded"
-              onClick={() => window.open(socialLinks.youtube, '_blank')}
-            />
+                <Link href="/how-it-works">
+                  <a>How it works</a>
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://blog.vandfi.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Blog
+                </a>
+              </li>
+              <li className={router.pathname === '/create' ? 'active' : ''}>
+                <Link href="/create">
+                  <a>Create</a>
+                </Link>
+              </li>
+            </ul>
           </div>
-        </footer>
-      </Container>
-    </Modal>
+          <footer>
+            {!loggedIn && (
+              <Button
+                variant="primary"
+                size="lg"
+                icon={faWallet}
+                full
+                className="connect-wallet"
+                onClick={() => setConnectWalletModalIsOpen(true)}
+              >
+                Connect Wallet
+              </Button>
+            )}
+            <div className="socials-container">
+              <IconButton
+                icon={faFacebookF as IconProp}
+                variant="secundary"
+                size="md"
+                radius="semiRounded"
+                onClick={() => window.open(socialLinks.facebook, '_blank')}
+              />
+              <IconButton
+                icon={faTwitter as IconProp}
+                variant="secundary"
+                size="md"
+                radius="semiRounded"
+                onClick={() => window.open(socialLinks.twitter, '_blank')}
+              />
+              <IconButton
+                icon={faInstagram as IconProp}
+                variant="secundary"
+                size="md"
+                radius="semiRounded"
+                onClick={() => window.open(socialLinks.instagram, '_blank')}
+              />
+              <IconButton
+                icon={faDiscord as IconProp}
+                variant="secundary"
+                size="md"
+                radius="semiRounded"
+                onClick={() => window.open(socialLinks.discord, '_blank')}
+              />
+              <IconButton
+                icon={faYoutube as IconProp}
+                variant="secundary"
+                size="md"
+                radius="semiRounded"
+                onClick={() => window.open(socialLinks.youtube, '_blank')}
+              />
+            </div>
+          </footer>
+        </Container>
+      </Modal>
+      {connectWalletModalIsOpen && (
+        <ConnectWalletModal
+          modalIsChildren
+          connectWalletModalIsOpen={connectWalletModalIsOpen}
+          setConnectWalletModalIsOpen={setConnectWalletModalIsOpen}
+        />
+      )}
+    </>
   )
 }

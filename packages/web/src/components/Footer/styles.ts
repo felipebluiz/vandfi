@@ -3,6 +3,7 @@ import { styled } from '../../../stitches.config'
 export const Container = styled('footer', {
   borderTop: '1px solid var(--colors-background-quaternary)',
   paddingTop: '80px',
+  paddingBottom: '20px',
 
   a: {
     fontSize: 'var(--fontSizes-sm)',

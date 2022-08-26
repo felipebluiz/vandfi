@@ -30,11 +30,11 @@ export const Button: React.FC<ButtonProps> = ({
         <>
           {icon && <FontAwesomeIcon icon={icon} className="fa" />}
           <span>{children}</span>
-          <Spinner className="spinner" />
         </>
       ) : (
         children
       )}
+      <Spinner className="spinner" />
     </StyledButton>
   )
 }

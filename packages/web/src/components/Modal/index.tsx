@@ -18,10 +18,12 @@ export interface ModalHandle {
 
 type ModalProps = React.ComponentProps<typeof StyledModal> & {
   modalIsOpen: boolean
+  modalIsChildren?: boolean
   width?: string
   overlay?: boolean
   position?: string
   full?: boolean
+  closeOnClickOutside?: boolean
   firefoxAgent?: boolean
   setModalIsOpen: (value: boolean) => void
   hideHeader?: boolean
@@ -36,9 +38,11 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
   (
     {
       modalIsOpen,
+      modalIsChildren = false,
       width,
       firefoxAgent = navigator.userAgent.indexOf('Firefox') !== -1,
       setModalIsOpen,
+      closeOnClickOutside = true,
       hideHeader = false,
       hideActions = false,
       title,
@@ -58,11 +62,13 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
       setTimeout(() => {
         setModalIsOpen(false)
 
-        document.documentElement.classList.remove('modal-open')
-        document.body.style.removeProperty('overflow-y')
+        if (!modalIsChildren) {
+          document.documentElement.classList.remove('modal-open')
+          document.body.style.removeProperty('overflow-y')
 
-        if (navigator.userAgent.indexOf('Firefox') === -1) {
-          document.documentElement.style.paddingRight = '0'
+          if (navigator.userAgent.indexOf('Firefox') === -1) {
+            document.documentElement.style.paddingRight = '0'
+          }
         }
       }, 200)
     }
@@ -76,8 +82,12 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
     }
 
     useEffect(() => {
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
+      if (closeOnClickOutside) {
+        document.addEventListener('mousedown', handleClickOutside)
+
+        return () =>
+          document.removeEventListener('mousedown', handleClickOutside)
+      }
     })
 
     useEffect(() => {

@@ -12,6 +12,7 @@ import { Logo } from '@/components/Logo'
 import { SearchModal } from '@/components/SearchModal'
 import { NavigationModal } from '@/components/NavigationModal'
 import { ProfileModal } from '@/components/ProfileModal'
+import { ConnectWalletModal } from '../ConnectWalletModal'
 import { SearchInput, SearchInputHandle } from '@/components/SearchInput'
 import { Avatar } from '@/components/Avatar'
 import { IconButton } from '@/components/IconButton'
@@ -20,7 +21,7 @@ import { Button } from '@/components/Button'
 import { Container } from './styles'
 
 export const Header: React.FC = () => {
-  const [loggedIn] = useState(true)
+  const [loggedIn] = useState(false)
   const [navigationVisibility, setNavigationVisibility] = useState(true)
   const [searchVisibility, setSearchVisibility] = useState(false)
   const [searchPosition, setSearchPosition] = useState(false)
@@ -28,6 +29,8 @@ export const Header: React.FC = () => {
   const [searchModalIsOpen, setSearchModalIsOpen] = useState(false)
   const [navigationModalIsOpen, setNavigationModalIsOpen] = useState(false)
   const [profileModalIsOpen, setProfileModalIsOpen] = useState(false)
+  const [connectWalletModalIsOpen, setConnectWalletModalIsOpen] =
+    useState(false)
   const searchInputRef = useRef<SearchInputHandle>(null)
   const router = useRouter()
 
@@ -139,6 +142,7 @@ export const Header: React.FC = () => {
               size="md"
               icon={faWallet}
               className="connect-wallet"
+              onClick={() => setConnectWalletModalIsOpen(true)}
             >
               Connect Wallet
             </Button>
@@ -162,6 +166,12 @@ export const Header: React.FC = () => {
         <ProfileModal
           profileModalIsOpen={profileModalIsOpen}
           setProfileModalIsOpen={setProfileModalIsOpen}
+        />
+      )}
+      {connectWalletModalIsOpen && (
+        <ConnectWalletModal
+          connectWalletModalIsOpen={connectWalletModalIsOpen}
+          setConnectWalletModalIsOpen={setConnectWalletModalIsOpen}
         />
       )}
     </>

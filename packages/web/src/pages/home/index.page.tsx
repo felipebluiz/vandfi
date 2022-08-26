@@ -1,5 +1,6 @@
 /* eslint-disable indent */
-import React from 'react'
+import React, { useState } from 'react'
+import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,58 +22,21 @@ import { CardItem } from '@/components/CardItem'
 import { VerifiedIcon } from '@/components/VerifiedIcon'
 import { CountDown } from '@/components/Countdown'
 import { Footer } from '@/components/Footer'
-import { truncateAddress, currencyFormat, numberFormat } from 'src/utils'
-import { saleTips } from '../../__mocks__/saleTips'
+import { ConnectWalletModal } from '@/components/ConnectWalletModal'
+import { truncateAddress, currencyFormat, numberFormat } from '@/global/utils'
+import { Item, User, Collection, Price } from '@/global/types'
 import {
   editorsPick as editorsPickMock,
   popularCollections as popularCollectionsMock,
-  featuredArticles as featuredArticlesMock
+  featuredArticles as featuredArticlesMock,
+  saleTips
 } from '../../__mocks__'
 
 import { RadialEffect } from '@/assets/styles/global'
 import { Container } from './styles'
 
-export interface Item {
-  image: string
-  name: string
-  address: string
-  creator: Creator
-  collection: Collection
-  likes: number
-  liked: boolean
-  onSale: boolean
-  onAuction: boolean
-  openOffers: boolean
-  countdownDate?: string
-  price: Price
-}
-
-interface Creator {
-  avatarUrl: string
-  name: string
-  address: string
-  verified: boolean
-}
-
-interface Collection {
-  avatarUrl: string
-  images: string[]
-  name: string
-  address: string
-  verified: boolean
-  creator: Creator
-  floorPrice: Price
-  tradingVolume: Price
-}
-
-interface Price {
-  currencySymbol: string
-  amount: number
-  convertedAmount: number
-}
-
 interface CurrentBid {
-  creator: Creator
+  user: User
   price: Price
 }
 
@@ -98,7 +62,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({
   currentBid = {
-    creator: {
+    user: {
       avatarUrl: '/images/avatar.png',
       address: '0x06d4b27c936edd3cea4d41d4ecd8bea83e6e4239',
       verified: true
@@ -135,8 +99,18 @@ const Home: React.FC<HomeProps> = ({
   popularCollections = popularCollectionsMock,
   featuredArticles = featuredArticlesMock
 }) => {
+  const [connectWalletModalIsOpen, setConnectWalletModalIsOpen] =
+    useState(false)
+
+  const handleCheckout = () => {
+    setConnectWalletModalIsOpen(true)
+  }
+
   return (
     <>
+      <Head>
+        <title>Vandfi</title>
+      </Head>
       <RadialEffect />
       <Header />
       <div className="main-wrapper">
@@ -169,13 +143,13 @@ const Home: React.FC<HomeProps> = ({
                 </Text>
                 <div className="bid">
                   <Avatar
-                    src={currentBid.creator.avatarUrl}
-                    alt="Creator avatar"
+                    src={currentBid.user.avatarUrl}
+                    alt="User avatar"
                     size="sm"
-                    verified={currentBid.creator.verified}
+                    verified={currentBid.user.verified}
                     title={
-                      currentBid.creator.name ||
-                      truncateAddress(currentBid.creator.address)
+                      currentBid.user.name ||
+                      truncateAddress(currentBid.user.address)
                     }
                   />
                   <div className="info">
@@ -235,21 +209,32 @@ const Home: React.FC<HomeProps> = ({
                         <VerifiedIcon size="xs" />
                       )}
                     </div>
-                    <div className="creator">
+                    <div className="user">
                       <Text size="xs">
-                        Created by{' '}
-                        <Link href="#">
-                          {featured.item &&
-                            (featured.item.creator.name ||
-                              truncateAddress(featured.item.creator.address))}
-                          {featured.collection &&
-                            (featured.collection.creator.name ||
-                              truncateAddress(
-                                featured.collection.creator.address
-                              ))}
-                        </Link>
+                        {featured.item && (
+                          <>
+                            Owned by{' '}
+                            <Link href="#">
+                              {featured.item &&
+                                (featured.item.owner.name ||
+                                  truncateAddress(featured.item.owner.address))}
+                            </Link>
+                          </>
+                        )}
+                        {featured.collection && (
+                          <>
+                            Created by{' '}
+                            <Link href="#">
+                              {featured.collection &&
+                                (featured.collection.creator.name ||
+                                  truncateAddress(
+                                    featured.collection.creator.address
+                                  ))}
+                            </Link>
+                          </>
+                        )}
                       </Text>
-                      {featured.item && featured.item.creator.verified && (
+                      {featured.item && featured.item.owner.verified && (
                         <VerifiedIcon size="xxs" className="verified-icon" />
                       )}
                       {featured.collection &&
@@ -308,6 +293,7 @@ const Home: React.FC<HomeProps> = ({
                         variant="primary"
                         size="md"
                         icon={faEthereum as IconProp}
+                        onClick={handleCheckout}
                       >
                         Buy now
                       </Button>
@@ -319,6 +305,7 @@ const Home: React.FC<HomeProps> = ({
                           variant="primary"
                           size="md"
                           icon={faShoppingBasket}
+                          onClick={handleCheckout}
                         >
                           Place bid
                         </Button>
@@ -328,6 +315,7 @@ const Home: React.FC<HomeProps> = ({
                         variant="primary"
                         size="md"
                         icon={faShoppingBasket}
+                        onClick={handleCheckout}
                       >
                         Place bid
                       </Button>
@@ -341,7 +329,10 @@ const Home: React.FC<HomeProps> = ({
             <Heading size="md">Editors Pick For This Week</Heading>
             <Carousel>
               {editorsPick.map(item => (
-                <CardItem key={item.address} item={item as Item} />
+                <CardItem
+                  key={`${item.collection.address}:${item.tokenId}`}
+                  item={item as Item}
+                />
               ))}
             </Carousel>
           </section>
@@ -468,9 +459,15 @@ const Home: React.FC<HomeProps> = ({
               </>
             </Carousel>
           </section>
-          <Footer />
         </Container>
+        <Footer />
       </div>
+      {connectWalletModalIsOpen && (
+        <ConnectWalletModal
+          connectWalletModalIsOpen={connectWalletModalIsOpen}
+          setConnectWalletModalIsOpen={setConnectWalletModalIsOpen}
+        />
+      )}
     </>
   )
 }

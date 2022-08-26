@@ -22,17 +22,14 @@ export const StyledModal = styled('div', {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '20px'
+      padding: '18px 20px'
     },
 
     '.content-container': {
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
-      paddingTop: '10px',
-      paddingLeft: '20px',
-      paddingRight: '20px',
-      paddingBottom: '20px'
+      padding: '10px 20px 20px'
     },
 
     '.actions-container': {
@@ -70,6 +67,14 @@ export const StyledModal = styled('div', {
       maxWidth: '580px',
       minHeight: 'initial',
       borderRadius: '20px',
+
+      '> header': {
+        padding: '30px'
+      },
+
+      '.content-container': {
+        padding: '0 30px 30px'
+      },
 
       '.actions-container': {
         flexDirection: 'row',
