@@ -1,5 +1,4 @@
 import { createStitches } from '@stitches/react'
-import type * as Stitches from '@stitches/react'
 
 export const {
   styled,
@@ -80,15 +79,5 @@ export const {
     bp1190: '(min-width: 1190px)',
     bp1280: '(min-width: 1280px)',
     bp1600: '(min-width: 1600px)'
-  },
-  utils: {
-    marginY: (value: Stitches.ScaleValue<'space'>) => ({
-      marginTop: value,
-      marginBottom: value
-    }),
-    marginX: (value: Stitches.ScaleValue<'space'>) => ({
-      marginLeft: value,
-      marginRight: value
-    })
   }
 })

@@ -5,8 +5,12 @@ export const truncateAddress = (address: string, number = 8): string => {
   return `${firstSix}...${lastFour}`
 }
 
-export const numberFormat = (number: number): string => {
-  return new Intl.NumberFormat('en', { notation: 'compact' }).format(number)
+export const numberFormat = (number: number, notation = 'compact'): string => {
+  return new Intl.NumberFormat('en', {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    notation
+  }).format(number)
 }
 
 export const currencyFormat = (amount: number): string => {

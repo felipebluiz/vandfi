@@ -1,17 +1,23 @@
 export interface Item {
-  image: string
-  name: string
   tokenId: string
+  name: string
+  description: string
+  image: string
   creator: User
   owner: User
   collection: Collection
+  tokenStandard: string
+  unlockableContent: boolean
+  owners?: number
+  editions?: number
   likes: number
   liked: boolean
   onSale: boolean
   onAuction: boolean
   openOffers: boolean
   countdownDate?: string
-  price: Price
+  price?: Price
+  bid?: Price
 }
 
 export interface User {

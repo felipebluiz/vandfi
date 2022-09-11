@@ -41,7 +41,8 @@ export const StyledModal = styled('div', {
       padding: '20px',
 
       button: {
-        minWidth: '100%'
+        minWidth: '100%',
+        color: 'var(--colors-white)'
       }
     }
   },
@@ -78,6 +79,7 @@ export const StyledModal = styled('div', {
 
       '.actions-container': {
         flexDirection: 'row',
+        padding: '0 30px 30px',
 
         button: {
           minWidth: '115px'

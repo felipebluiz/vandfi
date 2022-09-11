@@ -90,6 +90,27 @@ export const GlobalStyle = globalCss({
     outline: 'none'
   },
 
+  textarea: {
+    width: '100%',
+    minHeight: '120px',
+    padding: '15px',
+    backgroundColor: 'transparent',
+    border: '1px solid var(--colors-background-quaternary)',
+    borderRadius: '15px',
+    fontSize: 'var(--fontSizes-sm)',
+    fontFamily: 'var(--fonts-default)',
+    color: 'var(--colors-white)',
+    resize: 'none'
+  },
+
+  'textarea:focus': {
+    border: '1px solid #334154',
+    backgroundColor: 'var(--colors-dark) !important',
+    WebkitBoxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px',
+    MozBoxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px',
+    boxShadow: 'rgb(255 255 255 / 6%) 0px 0px 0px 3px'
+  },
+
   'form .error-message': {
     marginTop: '8px',
     marginLeft: '22px'
@@ -101,6 +122,16 @@ export const GlobalStyle = globalCss({
 
   '.modal-open': {
     overflowY: 'hidden'
+  },
+
+  '.toast-wrapper': {
+    position: 'fixed',
+    bottom: '40px',
+    right: '40px',
+    zIndex: '9999',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'end'
   },
 
   '@bp768': {

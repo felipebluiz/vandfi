@@ -27,7 +27,8 @@ module.exports = {
     'prettier/prettier': 'error',
     'space-before-function-paren': 'off',
     'react/prop-types': 'off',
-    'react/display-name': 'off'
+    'react/display-name': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     'import/resolver': {

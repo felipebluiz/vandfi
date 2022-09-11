@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import {
-  faHeart,
-  faHistory,
-  faShoppingBasket
-} from '@fortawesome/free-solid-svg-icons'
+import { faHistory, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
 import { Link } from '@/components/Link'
@@ -15,7 +11,7 @@ import { Spinner } from '@/components/Spinner'
 import { Avatar } from '@/components/Avatar'
 import { CountDown } from '@/components/Countdown'
 import { ConnectWalletModal } from '@/components/ConnectWalletModal'
-import { truncateAddress } from '@/global/utils'
+import { numberFormat, truncateAddress } from '@/global/utils'
 import { Item } from '@/global/types'
 
 import { StyledCard } from './styles'
@@ -36,23 +32,16 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
     <>
       <StyledCard className="item">
         <div className="image-container">
-          <Button
-            custom
-            variant="tertiary"
-            size="md"
-            radius="semiRounded"
-            icon={faHeart}
-            className="like-button"
-          >
+          <Button custom variant="tertiary" size="md" className="like-button">
             {item.liked ? (
               <img src="/icons/heart.svg" className="fa" />
             ) : (
               <img src="/icons/heart-outline.svg" className="fa" />
             )}
-            <span>{item.likes}</span>
-            <Spinner className="spinner" />
+            <span>{numberFormat(item.likes)}</span>
+            <Spinner className="spinner" size="sm" />
           </Button>
-          <Link href="#">
+          <Link href={`/item/${item.collection.address}:${item.tokenId}`}>
             <img src={item.image} alt={item.name} draggable="false" />
           </Link>
           {item.countdownDate && (
@@ -61,7 +50,9 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
         </div>
         <div className="content-container">
           <Text size="md" weight="medium">
-            <Link href="#">{item.name}</Link>
+            <Link href={`/item/${item.collection.address}:${item.tokenId}`}>
+              {item.name}
+            </Link>
           </Text>
           <div className="info">
             <div className="owner">
@@ -91,8 +82,10 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
               )}
               <div className="value">
                 <FontAwesomeIcon icon={faEthereum as IconProp} className="fa" />
-                <Text size="md" weight="medium" className="amount">
-                  {`${item.price.amount} ${item.price.currencySymbol}`}
+                <Text size="md" weight="bold" className="amount">
+                  {item.onSale
+                    ? `${item.price?.amount} ${item.price?.currencySymbol}`
+                    : `${item.bid?.amount} ${item.bid?.currencySymbol}`}
                 </Text>
               </div>
             </div>
@@ -115,7 +108,7 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
                 icon={faShoppingBasket}
                 onClick={handleCheckout}
               >
-                Place bid
+                Place a bid
               </Button>
             )}
             <Button

@@ -296,7 +296,8 @@ export const Container = styled('div', {
 
     '> button': {
       marginTop: '40px',
-      marginX: 'auto'
+      marginLeft: 'auto',
+      marginRight: 'auto'
     }
   },
 

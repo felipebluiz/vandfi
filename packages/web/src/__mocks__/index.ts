@@ -4,6 +4,7 @@ import popularCollections from './popularCollections.json'
 import featuredArticles from './featuredArticles.json'
 import socialLinks from './socialLinks.json'
 import saleTips from './saleTips'
+import creators from './creators.json'
 
 export {
   searchResults,
@@ -11,5 +12,6 @@ export {
   popularCollections,
   featuredArticles,
   socialLinks,
-  saleTips
+  saleTips,
+  creators
 }

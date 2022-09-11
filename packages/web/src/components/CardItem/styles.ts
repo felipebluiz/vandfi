@@ -15,7 +15,7 @@ export const StyledCard = styled('div', {
       position: 'absolute',
       right: '20px',
       top: '20px',
-      padding: '5px 10px',
+      padding: '6px 12px',
       transition: 'opacity 0.25s ease-in-out 0s',
 
       '.fa': {
@@ -30,7 +30,8 @@ export const StyledCard = styled('div', {
       span: {
         fontWeight: 'var(--fontWeights-regular)',
         fontVariantNumeric: 'tabular-nums',
-        color: 'var(--colors-white)'
+        color: 'var(--colors-white)',
+        marginTop: '1px'
       }
     },
 
@@ -100,7 +101,8 @@ export const StyledCard = styled('div', {
           },
 
           '.amount': {
-            whiteSpace: 'nowrap'
+            whiteSpace: 'nowrap',
+            letterSpacing: '0.5px'
           }
         }
       }

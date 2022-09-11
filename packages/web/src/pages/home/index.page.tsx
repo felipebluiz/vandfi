@@ -77,9 +77,9 @@ const Home: React.FC<HomeProps> = ({
     type: 'collection',
     collection: {
       images: [
-        '/images/bored-kennel-1.png',
-        '/images/bored-kennel-2.png',
-        '/images/bored-kennel-3.png'
+        'https://lh3.googleusercontent.com/FTAAPfa6MKr6XYbYVeeP_aJz32hh2U7m15M0fCkr1Vak5Ok8zYcNdVl6F5GjpTfr7YkmqnEwfsaiNgeB9TBkBZ5E4DdunGAqG6pFjg=s500',
+        'https://lh3.googleusercontent.com/bwkx4emeXN01xbh9bLgXTQWZAo1pFxnQSDO60vY4v8lIKYM3dx4k9l3MEuQBZ3AOkoMEhNKtYqEdWMxTnQw8o6RrvxtFiZh3DcWD6g=s500',
+        'https://lh3.googleusercontent.com/pISJ0ieQLyGnGmdGjkujsyfHmEVSpamFsiqW9kSISawBsgFG_riGFjPPouH8_LGmo16pEKu7GiSxuH-O1VfYa7P10NEyglueF8Kq=s500'
       ],
       name: 'BoredApeKennelClub',
       verified: true,
@@ -153,7 +153,7 @@ const Home: React.FC<HomeProps> = ({
                     }
                   />
                   <div className="info">
-                    <Text size="xs">Current Bid</Text>
+                    <Text size="xs">Current bid</Text>
                     <div className="value">
                       <FontAwesomeIcon
                         icon={faEthereum as IconProp}
@@ -272,14 +272,20 @@ const Home: React.FC<HomeProps> = ({
                         />
                         <Text size="lg" weight="bold" className="amount">
                           {featured.item &&
-                            `${featured.item.price.amount} ${featured.item.price.currencySymbol}`}
+                            featured.item.onSale &&
+                            `${featured.item.price?.amount} ${featured.item.price?.currencySymbol}`}
+                          {featured.item &&
+                            !featured.item.onSale &&
+                            `${featured.item.bid?.amount} ${featured.item.bid?.currencySymbol}`}
                           {featured.collection &&
                             `${featured.collection.floorPrice.amount} ${featured.collection.floorPrice.currencySymbol}`}
                         </Text>
                         <Text size="md" className="converted-amount">
                           {featured.item &&
                             `= ${currencyFormat(
-                              featured.item.price.convertedAmount
+                              featured.item.onSale
+                                ? featured.item.price?.convertedAmount || 0
+                                : featured.item.bid?.convertedAmount || 0
                             )}`}
                           {featured.collection &&
                             `= ${currencyFormat(
@@ -307,7 +313,7 @@ const Home: React.FC<HomeProps> = ({
                           icon={faShoppingBasket}
                           onClick={handleCheckout}
                         >
-                          Place bid
+                          Place a bid
                         </Button>
                       )}
                     {featured.collection && (
@@ -317,7 +323,7 @@ const Home: React.FC<HomeProps> = ({
                         icon={faShoppingBasket}
                         onClick={handleCheckout}
                       >
-                        Place bid
+                        Place a bid
                       </Button>
                     )}
                   </div>

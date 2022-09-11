@@ -4,6 +4,7 @@ import { Modal, ModalHandle } from '@/components/Modal'
 import { Text } from '@/components/Text'
 import { Button } from '@/components/Button'
 import { Link } from '@/components/Link'
+import { Spinner } from '@/components/Spinner'
 
 import { Container } from './styles'
 
@@ -40,10 +41,12 @@ export const ConnectWalletModal: React.FC<ConnectWalletModalProps> = ({
           <Button variant="tertiary" size="md" radius="semiRounded" custom>
             <img src="/icons/metamask.svg" className="fa wallet-icon" />
             <span>MetaMask</span>
+            <Spinner className="spinner" />
           </Button>
           <Button variant="tertiary" size="md" radius="semiRounded" custom>
             <img src="/icons/coinbase.svg" className="wallet-icon" />
             <span>Coinbase Wallet</span>
+            <Spinner className="spinner" />
           </Button>
           <Button variant="tertiary" size="md" radius="semiRounded" custom>
             <img
@@ -51,15 +54,18 @@ export const ConnectWalletModal: React.FC<ConnectWalletModalProps> = ({
               className="wallet-icon wallet-connect"
             />
             <span>WalletConnect</span>
+            <Spinner className="spinner" />
           </Button>
           <Text size="xs">Others</Text>
           <Button variant="tertiary" size="md" radius="semiRounded" custom>
             <img src="/icons/torus.svg" className="wallet-icon" />
             <span>Torus</span>
+            <Spinner className="spinner" />
           </Button>
           <Button variant="tertiary" size="md" radius="semiRounded" custom>
             <img src="/icons/portis.svg" className="wallet-icon portis" />
             <span>Portis</span>
+            <Spinner className="spinner" />
           </Button>
         </div>
       </Container>

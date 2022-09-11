@@ -32,8 +32,10 @@ type ModalProps = React.ComponentProps<typeof StyledModal> & {
   children: React.ReactNode
   cancelButtonText?: string
   submitButtonText?: string
+  submitLoading?: boolean
   submitButtonAction?: () => void
 }
+
 export const Modal = forwardRef<ModalHandle, ModalProps>(
   (
     {
@@ -50,6 +52,7 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
       cancelButtonText = 'Cancel',
       submitButtonText = 'Continue',
       submitButtonAction,
+      submitLoading,
       ...props
     },
     ref
@@ -142,7 +145,12 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
               <Button variant="tertiary" size="lg" onClick={closeModal}>
                 {cancelButtonText}
               </Button>
-              <Button variant="primary" size="lg" onClick={submitButtonAction}>
+              <Button
+                variant="primary"
+                size="lg"
+                loading={submitLoading}
+                onClick={submitButtonAction}
+              >
                 {submitButtonText}
               </Button>
             </div>

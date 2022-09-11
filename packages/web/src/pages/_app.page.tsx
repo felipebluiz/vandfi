@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import { GlobalStyle } from '@/assets/styles/global'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { ToastProvider } from '../providers/ToastProvider'
 
 config.autoAddCss = false
 
@@ -15,7 +16,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Component {...pageProps} />
+      <ToastProvider>
+        <Component {...pageProps} />
+      </ToastProvider>
     </>
   )
 }
