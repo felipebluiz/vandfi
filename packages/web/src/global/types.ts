@@ -6,6 +6,7 @@ export interface Item {
   creator: User
   owner: User
   collection: Collection
+  rarity?: Rarity
   tokenStandard: string
   unlockableContent: boolean
   owners?: number
@@ -42,4 +43,9 @@ export interface Price {
   currencySymbol: string
   amount: number
   convertedAmount: number
+}
+
+export interface Rarity {
+  position: number
+  total: number
 }

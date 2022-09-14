@@ -66,7 +66,8 @@ export const Container = styled('div', {
         transition: 'all 0.15s ease-in-out 0s',
 
         '&:hover': {
-          transform: 'translateY(-4px)'
+          transform: 'translateY(-4px)',
+          zIndex: '1'
         }
       }
     }

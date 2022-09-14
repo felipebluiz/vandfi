@@ -10,6 +10,7 @@ import { Button } from '@/components/Button'
 import { Spinner } from '@/components/Spinner'
 import { Avatar } from '@/components/Avatar'
 import { CountDown } from '@/components/Countdown'
+import { Tooltip } from '@/components/Tooltip'
 import { ConnectWalletModal } from '@/components/ConnectWalletModal'
 import { numberFormat, truncateAddress } from '@/global/utils'
 import { Item } from '@/global/types'
@@ -32,7 +33,28 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
     <>
       <StyledCard className="item">
         <div className="image-container">
-          <Button custom variant="tertiary" size="md" className="like-button">
+          {item.rarity && (
+            <Tooltip
+              direction="bottom"
+              content={`Rank ${numberFormat(
+                item.rarity.position,
+                'standard'
+              )} of ${numberFormat(
+                item.rarity.total,
+                'standard'
+              )} by Rarity Sniper`}
+              className="buttons rarity"
+            >
+              <Button custom variant="tertiary" size="md">
+                <img src="/icons/stars.svg" />
+                <span>{`${numberFormat(
+                  item.rarity.position,
+                  'standard'
+                )}`}</span>
+              </Button>
+            </Tooltip>
+          )}
+          <Button custom variant="tertiary" size="md" className="buttons like">
             {item.liked ? (
               <img src="/icons/heart.svg" className="fa" />
             ) : (

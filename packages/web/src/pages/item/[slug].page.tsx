@@ -82,7 +82,10 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
       </Head>
       <Header />
       <div className="main-wrapper">
-        <Container multipleOwners={item.tokenStandard === 'ERC-1155'}>
+        <Container
+          multipleOwners={item.tokenStandard === 'ERC-1155'}
+          rarity={!!item.rarity}
+        >
           <div className="image-container">
             <Button custom variant="tertiary" size="md" className="like-button">
               {item.liked ? (
@@ -103,9 +106,33 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
             />
           </div>
           <div className="content-container">
-            <Heading size="lg" weight="bold">
-              {item.name}
-            </Heading>
+            <div className="title">
+              <Heading size="lg" weight="bold">
+                {item.name}
+              </Heading>
+              {item.tokenStandard === 'ERC-1155' && item.rarity && (
+                <Tooltip
+                  direction="top"
+                  content={`Rank ${numberFormat(
+                    item.rarity.position,
+                    'standard'
+                  )} of ${numberFormat(
+                    item.rarity.total,
+                    'standard'
+                  )} by Rarity Sniper`}
+                >
+                  <div tabIndex={0} role="button" className="action rarity">
+                    <img src="/icons/stars.svg" />
+                    <span>
+                      {`${numberFormat(
+                        item.rarity.position,
+                        'standard'
+                      )} / ${numberFormat(item.rarity.total, 'standard')}`}
+                    </span>
+                  </div>
+                </Tooltip>
+              )}
+            </div>
             <div className="actions-container">
               {item.tokenStandard === 'ERC-1155' && (
                 <>
@@ -120,7 +147,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                     <div
                       tabIndex={0}
                       role="button"
-                      className="owners"
+                      className="action owners"
                       onClick={() => setItemOwnersModalIsOpen(true)}
                     >
                       <FontAwesomeIcon icon={faUsers} className="fa" />
@@ -135,7 +162,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                         : ''
                     }
                   >
-                    <div className="editions">
+                    <div className="action editions">
                       <FontAwesomeIcon icon={faClone} className="fa" />
                       <span>{`${numberFormat(
                         item?.editions || 0
@@ -143,6 +170,28 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                     </div>
                   </Tooltip>
                 </>
+              )}
+              {item.tokenStandard !== 'ERC-1155' && item.rarity && (
+                <Tooltip
+                  direction="top"
+                  content={`Rank ${numberFormat(
+                    item.rarity.position,
+                    'standard'
+                  )} of ${numberFormat(
+                    item.rarity.total,
+                    'standard'
+                  )} by Rarity Sniper`}
+                >
+                  <div tabIndex={0} role="button" className="action rarity">
+                    <img src="/icons/stars.svg" />
+                    <span>
+                      {`${numberFormat(
+                        item.rarity.position,
+                        'standard'
+                      )} / ${numberFormat(item.rarity.total, 'standard')}`}
+                    </span>
+                  </div>
+                </Tooltip>
               )}
               <Tooltip
                 direction="top"
@@ -152,7 +201,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                     : ''
                 }
               >
-                <div className="favorites">
+                <div className="action favorites">
                   <img src="/icons/heart-regular.svg" className="fa" />
                   <span>{`${numberFormat(item.likes)} Favorites`}</span>
                 </div>

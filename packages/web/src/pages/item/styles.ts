@@ -43,24 +43,40 @@ export const Container = styled('div', {
     flex: 1,
     gap: '25px',
 
+    '.title': {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '20px'
+    },
+
+    '.action': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '10px',
+      width: 'fit-content',
+      height: '44px',
+      padding: '0 15px',
+      border: '1px solid var(--colors-background-quaternary)',
+      borderRadius: '100px',
+      color: 'var(--colors-regular)'
+    },
+
+    '.rarity': {
+      backgroundColor: 'var(--colors-background-tertiary)',
+      borderColor: 'var(--colors-background-tertiary)',
+      cursor: 'pointer',
+
+      '&:hover': {
+        backgroundColor: 'var(--colors-hover-background-tertiary)'
+      }
+    },
+
     '.actions-container': {
       display: 'grid',
       gridTemplateColumns: '1fr auto auto',
       gap: '10px',
-      marginTop: '-5px',
-
-      '.owners, .editions, .favorites': {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '10px',
-        width: 'fit-content',
-        height: '44px',
-        padding: '0 15px',
-        border: '1px solid var(--colors-background-quaternary)',
-        borderRadius: '100px',
-        color: 'var(--colors-regular)'
-      }
+      marginTop: '-5px'
     },
 
     '.description': {
@@ -265,7 +281,7 @@ export const Container = styled('div', {
       true: {
         '.content-container': {
           '.actions-container': {
-            gridTemplateColumns: 'auto auto 1fr auto auto',
+            gridTemplateColumns: 'auto auto 1fr auto auto !important',
 
             '.owners': {
               backgroundColor: 'var(--colors-background-tertiary)',
@@ -283,6 +299,35 @@ export const Container = styled('div', {
           }
         }
       }
+    },
+    rarity: {
+      true: {
+        '.content-container .actions-container': {
+          gridTemplateColumns: 'auto 1fr auto auto'
+        }
+      }
     }
-  }
+  },
+
+  compoundVariants: [
+    {
+      multipleOwners: true,
+      rarity: true,
+      css: {
+        '.content-container .rarity': {
+          height: '30px',
+          padding: '0 10px',
+
+          img: {
+            marginTop: '-1px'
+          },
+
+          span: {
+            fontSize: 'var(--fontSizes-sm)',
+            whiteSpace: 'nowrap'
+          }
+        }
+      }
+    }
+  ]
 })

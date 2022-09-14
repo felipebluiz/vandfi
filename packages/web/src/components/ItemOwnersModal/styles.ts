@@ -1,24 +1,8 @@
 import { styled } from '../../../stitches.config'
 
 export const Container = styled('div', {
-  maxHeight: '329px',
   display: 'flex',
   flexDirection: 'column',
-  paddingRight: '20px',
-  overflowY: 'auto',
-  scrollbarWidth: 'thin',
-  scrollbarColor:
-    'var(--colors-background-quaternary) var(--colors-background-primary)',
-
-  '&::-webkit-scrollbar': {
-    width: '5px',
-    backgroundColor: 'var(--colors-background-primary)'
-  },
-
-  '&::-webkit-scrollbar-thumb': {
-    background: 'var(--colors-background-quaternary)',
-    borderRadius: '5px'
-  },
 
   '.list-item': {
     display: 'flex',
@@ -60,6 +44,25 @@ export const Container = styled('div', {
 
     '&:hover': {
       opacity: 'var(--opacity-semiOpaque)'
+    }
+  },
+
+  '@bp990': {
+    maxHeight: '329px',
+    paddingRight: '20px',
+    overflowY: 'auto',
+    scrollbarWidth: 'thin',
+    scrollbarColor:
+      'var(--colors-background-quaternary) var(--colors-background-primary)',
+
+    '&::-webkit-scrollbar': {
+      width: '5px',
+      backgroundColor: 'var(--colors-background-primary)'
+    },
+
+    '&::-webkit-scrollbar-thumb': {
+      background: 'var(--colors-background-quaternary)',
+      borderRadius: '5px'
     }
   }
 })

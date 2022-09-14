@@ -10,13 +10,39 @@ export const StyledCard = styled('div', {
     position: 'relative',
     padding: '12px 12px 0',
 
-    '.like-button': {
-      opacity: '0',
+    '.buttons': {
+      opacity: 0,
       position: 'absolute',
+      transition: 'opacity 0.25s ease-in-out 0s',
+
+      span: {
+        fontWeight: 'var(--fontWeights-regular)',
+        fontVariantNumeric: 'tabular-nums',
+        color: 'var(--colors-white)',
+        marginTop: '1px'
+      }
+    },
+
+    '.rarity': {
+      left: '20px',
+      top: '20px',
+
+      button: {
+        padding: '6px 12px',
+
+        img: {
+          filter: 'brightness(0) invert(1)',
+          marginLeft: '-2px',
+          marginTop: '-1px',
+          marginRight: '8px'
+        }
+      }
+    },
+
+    '.like': {
       right: '20px',
       top: '20px',
       padding: '6px 12px',
-      transition: 'opacity 0.25s ease-in-out 0s',
 
       '.fa': {
         fontSize: '14px',
@@ -24,13 +50,6 @@ export const StyledCard = styled('div', {
       },
 
       '.spinner': {
-        marginTop: '1px'
-      },
-
-      span: {
-        fontWeight: 'var(--fontWeights-regular)',
-        fontVariantNumeric: 'tabular-nums',
-        color: 'var(--colors-white)',
         marginTop: '1px'
       }
     },
@@ -132,7 +151,9 @@ export const StyledCard = styled('div', {
     }
   },
 
-  '&:hover .like-button': {
-    opacity: 'var(--opacity-semiOpaque)'
+  '&:hover': {
+    '.image-container > .buttons': {
+      opacity: 'var(--opacity-default)'
+    }
   }
 })
