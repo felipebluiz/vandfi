@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faPlusCircle,
   faRocket,
-  faShoppingBasket
+  faTag
 } from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
@@ -109,7 +109,21 @@ const Home: React.FC<HomeProps> = ({
   return (
     <>
       <Head>
-        <title>Vandfi</title>
+        <title>Vandfi - NFT Marketplace on Ethereum</title>
+        <meta
+          content="https://static.opensea.io/og-images/Metadata-Image.png"
+          property="og:image"
+        />
+        <meta
+          property="og:title"
+          content="Vandfi - NFT Marketplace on Ethereum"
+        />
+        <meta
+          name="description"
+          content="Discover and collect from the best NFT marketplace."
+        />
+        <meta property="og:url" content="https://vandfi.com/" />
+        <meta property="og:type" content="website" />
       </Head>
       <RadialEffect />
       <Header />
@@ -284,8 +298,8 @@ const Home: React.FC<HomeProps> = ({
                           {featured.item &&
                             `= ${currencyFormat(
                               featured.item.onSale
-                                ? featured.item.price?.convertedAmount || 0
-                                : featured.item.bid?.convertedAmount || 0
+                                ? featured.item.price?.convertedAmount
+                                : featured.item.bid?.convertedAmount
                             )}`}
                           {featured.collection &&
                             `= ${currencyFormat(
@@ -310,7 +324,7 @@ const Home: React.FC<HomeProps> = ({
                         <Button
                           variant="primary"
                           size="md"
-                          icon={faShoppingBasket}
+                          icon={faTag}
                           onClick={handleCheckout}
                         >
                           Place a bid
@@ -320,7 +334,7 @@ const Home: React.FC<HomeProps> = ({
                       <Button
                         variant="primary"
                         size="md"
-                        icon={faShoppingBasket}
+                        icon={faTag}
                         onClick={handleCheckout}
                       >
                         Place a bid

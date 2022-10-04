@@ -47,8 +47,12 @@ export const Container = styled('div', {
     }
   },
 
+  '.loading-container': {
+    margin: '10px 0'
+  },
+
   '@bp990': {
-    maxHeight: '329px',
+    maxHeight: '332px',
     paddingRight: '20px',
     overflowY: 'auto',
     scrollbarWidth: 'thin',

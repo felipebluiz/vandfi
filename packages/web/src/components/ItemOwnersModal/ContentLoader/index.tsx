@@ -13,7 +13,7 @@ const ContentLoaderComponent: React.FC = () => {
         <ContentLoader
           key={i.toString()}
           speed={2}
-          style={{ width: '100%', height: '40px', margin: '10px 0 11px' }}
+          style={{ width: '100%', height: '42px', margin: '11px 0 11px' }}
           backgroundColor={theme.colors['background-tertiary'].value}
           foregroundColor={theme.colors['background-quaternary'].value}
         >

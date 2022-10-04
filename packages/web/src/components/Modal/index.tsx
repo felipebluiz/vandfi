@@ -106,6 +106,10 @@ export const Modal = forwardRef<ModalHandle, ModalProps>(
       }
     }, [modalIsOpen])
 
+    useEffect(() => {
+      return () => closeModal()
+    }, [])
+
     useImperativeHandle(ref, () => ({
       closeModal() {
         closeModal()

@@ -23,7 +23,7 @@ export interface Item {
 
 export interface User {
   avatarUrl: string
-  name: string
+  name?: string
   address: string
   verified: boolean
 }
@@ -45,7 +45,48 @@ export interface Price {
   convertedAmount: number
 }
 
-export interface Rarity {
+interface Rarity {
   position: number
   total: number
+}
+
+export interface Listing {
+  tokenId: string
+  collectionAddress: string
+  id: string
+  date: string
+  expirationDate: string
+  user: User
+  quantity: number
+  price: Price
+}
+
+export interface Bid {
+  tokenId: string
+  collectionAddress: string
+  id: string
+  date: string
+  expirationDate: string
+  user: User
+  price: Price
+  quantity?: number
+  collectionFloorDifference: CollectionFloorDifference
+}
+
+interface CollectionFloorDifference {
+  percent: number
+  bellow: boolean
+}
+
+export interface History {
+  tokenId: string
+  collectionAddress: string
+  id: string
+  date: string
+  expired?: boolean
+  event: string
+  sourceUser?: User
+  targetUser?: User
+  quantity?: number
+  price?: Price
 }

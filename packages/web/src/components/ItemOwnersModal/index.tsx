@@ -3,6 +3,7 @@ import { Modal, ModalHandle } from '@/components/Modal'
 
 import { Container } from './styles'
 import { Avatar } from '@/components/Avatar'
+import { Spinner } from '@/components/Spinner'
 import { ContentLoader } from './ContentLoader'
 import { creators as creatorsMock } from '../../__mocks__'
 import { numberFormat } from '@/global/utils'
@@ -57,14 +58,15 @@ export const ItemOwnersModal: React.FC<ItemOwnersModalProps> = ({
 
       if (!data.length) {
         setHasEndingCreators(true)
+        setLoading(false)
         return
       }
 
       setCreators([...creators, ...data])
-      setTimeout(() => setLoading(false), 2000)
+      setLoading(false)
     }
 
-    if (!hasEndingCreators) handleResquest()
+    if (!hasEndingCreators) setTimeout(() => handleResquest(), 1000)
   }, [currentPage])
 
   return (
@@ -80,7 +82,7 @@ export const ItemOwnersModal: React.FC<ItemOwnersModalProps> = ({
         {loading && <ContentLoader />}
         {!loading && (
           <>
-            {creators.map((creator: CreatorProps, index: number) => (
+            {creators.map((creator, index: number) => (
               <div
                 key={index.toString()}
                 tabIndex={0}
@@ -98,7 +100,7 @@ export const ItemOwnersModal: React.FC<ItemOwnersModalProps> = ({
                   className="info-container"
                   style={
                     index === creators.length - 1
-                      ? { borderBottom: 'none' }
+                      ? { borderBottomColor: 'transparent' }
                       : {}
                   }
                 >
@@ -109,6 +111,11 @@ export const ItemOwnersModal: React.FC<ItemOwnersModalProps> = ({
                 </div>
               </div>
             ))}
+            {!hasEndingCreators && (
+              <div className="loading-container">
+                <Spinner />
+              </div>
+            )}
             <div ref={loaderRef} />
           </>
         )}

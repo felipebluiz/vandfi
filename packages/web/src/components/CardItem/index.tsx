@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faHistory, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import { faHistory, faTag } from '@fortawesome/free-solid-svg-icons'
 import { faEthereum } from '@fortawesome/free-brands-svg-icons'
 
 import { Link } from '@/components/Link'
 import { Text } from '@/components/Text'
 import { Button } from '@/components/Button'
-import { Spinner } from '@/components/Spinner'
 import { Avatar } from '@/components/Avatar'
 import { CountDown } from '@/components/Countdown'
 import { Tooltip } from '@/components/Tooltip'
@@ -22,6 +22,7 @@ type CardItemProps = React.ComponentProps<typeof StyledCard> & {
 }
 
 export const CardItem: React.FC<CardItemProps> = ({ item }) => {
+  const router = useRouter()
   const [connectWalletModalIsOpen, setConnectWalletModalIsOpen] =
     useState(false)
 
@@ -54,15 +55,6 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
               </Button>
             </Tooltip>
           )}
-          <Button custom variant="tertiary" size="md" className="buttons like">
-            {item.liked ? (
-              <img src="/icons/heart.svg" className="fa" />
-            ) : (
-              <img src="/icons/heart-outline.svg" className="fa" />
-            )}
-            <span>{numberFormat(item.likes)}</span>
-            <Spinner className="spinner" size="sm" />
-          </Button>
           <Link href={`/item/${item.collection.address}:${item.tokenId}`}>
             <img src={item.image} alt={item.name} draggable="false" />
           </Link>
@@ -127,7 +119,7 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
               <Button
                 variant="primary"
                 size="md"
-                icon={faShoppingBasket}
+                icon={faTag}
                 onClick={handleCheckout}
               >
                 Place a bid
@@ -138,6 +130,11 @@ export const CardItem: React.FC<CardItemProps> = ({ item }) => {
               size="md"
               icon={faHistory}
               className="history-button"
+              onClick={() =>
+                router.push(
+                  `/item/${item.collection.address}:${item.tokenId}?tab=history`
+                )
+              }
             >
               View history
             </Button>

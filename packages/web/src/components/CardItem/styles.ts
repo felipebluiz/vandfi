@@ -11,7 +11,6 @@ export const StyledCard = styled('div', {
     padding: '12px 12px 0',
 
     '.buttons': {
-      opacity: 0,
       position: 'absolute',
       transition: 'opacity 0.25s ease-in-out 0s',
 
@@ -36,21 +35,6 @@ export const StyledCard = styled('div', {
           marginTop: '-1px',
           marginRight: '8px'
         }
-      }
-    },
-
-    '.like': {
-      right: '20px',
-      top: '20px',
-      padding: '6px 12px',
-
-      '.fa': {
-        fontSize: '14px',
-        marginRight: '8px'
-      },
-
-      '.spinner': {
-        marginTop: '1px'
       }
     },
 
@@ -148,12 +132,6 @@ export const StyledCard = styled('div', {
           opacity: 'var(--opacity-semiOpaque)'
         }
       }
-    }
-  },
-
-  '&:hover': {
-    '.image-container > .buttons': {
-      opacity: 'var(--opacity-default)'
     }
   }
 })

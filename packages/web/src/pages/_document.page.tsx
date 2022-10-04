@@ -7,9 +7,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="application-name" content="Vandfi" />
-          <meta name="msapplication-TileColor" content="#FFFFFF" />
-          <meta name="theme-color" content="#3366EF" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

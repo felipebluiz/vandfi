@@ -1,23 +1,29 @@
-export const truncateAddress = (address: string, number = 8): string => {
-  const firstSix = address.substring(0, number)
-  const lastFour = address.substring(address.length - 4)
+export const truncateAddress = (
+  address: string | undefined,
+  number = 8
+): string => {
+  const firstSix = address?.substring(0, number)
+  const lastFour = address?.substring(address.length - 4)
 
   return `${firstSix}...${lastFour}`
 }
 
-export const numberFormat = (number: number, notation = 'compact'): string => {
+export const numberFormat = (
+  number: number | undefined,
+  notation = 'compact'
+): string => {
   return new Intl.NumberFormat('en', {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     notation
-  }).format(number)
+  }).format(number || 0)
 }
 
-export const currencyFormat = (amount: number): string => {
+export const currencyFormat = (amount: number | undefined): string => {
   return new Intl.NumberFormat('en', {
     style: 'currency',
     currency: 'USD'
-  }).format(amount)
+  }).format(amount || 0)
 }
 
 export const countDownFormat = (countDown: number[]): string => {

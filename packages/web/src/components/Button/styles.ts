@@ -11,7 +11,12 @@ export const StyledButton = styled('button', {
 
   '.fa': {
     fontSize: 'var(--fontSizes-md)',
-    marginRight: '10px'
+    marginRight: '10px',
+
+    '&.fa-tag': {
+      fontSize: 'var(--fontSizes-sm)',
+      marginBottom: '-2px'
+    }
   },
 
   span: {

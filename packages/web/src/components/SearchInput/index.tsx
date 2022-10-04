@@ -177,7 +177,7 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                     <span>Items</span>
                   </div>
                   <div className="section-list">
-                    {items.map((item: ItemsProps, index: number) => (
+                    {items.map((item, index: number) => (
                       <div
                         key={item.id}
                         tabIndex={0}
@@ -247,7 +247,7 @@ export const SearchInput = forwardRef<SearchInputHandle, SearchInputProps>(
                     <span>Creators</span>
                   </div>
                   <div className="section-list">
-                    {creators.map((creator: CreatorProps, index: number) => (
+                    {creators.map((creator, index: number) => (
                       <div
                         key={creator.id}
                         tabIndex={0}

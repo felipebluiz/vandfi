@@ -44,7 +44,7 @@ export const StyledLogo = styled('div', {
           '.logo': {
             width: '28px',
             height: '28px',
-            fontSize: '46px'
+            fontSize: '42px'
           },
           h1: {
             fontSize: '24px'

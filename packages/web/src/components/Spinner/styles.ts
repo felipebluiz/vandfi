@@ -8,8 +8,8 @@ const animation = keyframes({
 
 export const StyledSpinner = styled('div', {
   position: 'relative',
-  width: '10em',
-  height: '10em',
+  width: '20px',
+  height: '20px',
   margin: 'auto',
   borderTop: '1.3em solid',
   borderRight: '1.3em solid',
@@ -21,16 +21,16 @@ export const StyledSpinner = styled('div', {
 
   '&:after': {
     borderRadius: '50%',
-    width: '10em',
-    height: '10em'
+    width: '20px',
+    height: '20px'
   },
 
   variants: {
     size: {
-      sm: { fontSize: '0.1rem' },
-      md: { fontSize: '0.12rem' },
-      lg: { fontSize: '0.15rem' },
-      xl: { fontSize: '0.18rem' }
+      sm: { fontSize: '1.6px' },
+      md: { fontSize: '1.92px' },
+      lg: { fontSize: '2.4px' },
+      xl: { fontSize: '2.88px' }
     },
     color: {
       white: {

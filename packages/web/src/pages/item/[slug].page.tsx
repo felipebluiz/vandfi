@@ -1,18 +1,19 @@
 /* eslint-disable indent */
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faShareAlt,
   faEllipsisH,
-  faShoppingBasket,
   faCopy,
   faFlag,
   faSyncAlt,
   faUsers,
   faClone,
-  faLock
+  faLock,
+  faTag
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faEthereum,
@@ -45,6 +46,9 @@ import {
   truncateAddress
 } from '@/global/utils'
 import { editorsPick } from '../../__mocks__'
+import { ListingsTab } from './tabs/listings'
+import { BidsTab } from './tabs/bids'
+import { HistoryTab } from './tabs/history'
 
 import { Container } from './styles'
 
@@ -53,17 +57,20 @@ interface ItemProps {
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item }) => {
+  const router = useRouter()
+  const toast = useToast()
+  const timeLeft = useCountdown(item.countdownDate || '')
+  const tabRef = useRef<HTMLDivElement>(null)
   const [showShareDropdown, setShowShareDropdown] = useState(false)
   const [showMoreDropdown, setShowMoreDropdown] = useState(false)
   const [fullDescription, setFullDescription] = useState(false)
   const [showCountdown, setShowCountdown] = useState(false)
   const [reportModalIsOpen, setReportModalIsOpen] = useState(false)
   const [itemOwnersModalIsOpen, setItemOwnersModalIsOpen] = useState(false)
-  const timeLeft = useCountdown(item.countdownDate || '')
-  const toast = useToast()
+  const multipleOwners = item.tokenStandard === 'ERC-1155'
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(location.href)
+    navigator.clipboard.writeText(`${location.origin}${location.pathname}`)
     toast.success('Link copied successfully')
   }
 
@@ -71,9 +78,29 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
     toast.success('Refreshing Metadata... It may take a few minutes')
   }
 
+  const setTab = (key: string) => {
+    router.push(
+      {
+        pathname: `/item/${router.query.slug}`,
+        query: { tab: key }
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    )
+  }
+
   useEffect(() => {
     if (item.onAuction) setShowCountdown(true)
   }, [item.onAuction])
+
+  useEffect(() => {
+    if (!router.query.tab) {
+      if (multipleOwners) setTab('listings')
+      else setTab('bids')
+    } else if (router.query.tab === 'history') {
+      tabRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [])
 
   return (
     <>
@@ -82,12 +109,37 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
       </Head>
       <Header />
       <div className="main-wrapper">
-        <Container
-          multipleOwners={item.tokenStandard === 'ERC-1155'}
-          rarity={!!item.rarity}
-        >
+        <Container multipleOwners={multipleOwners} rarity={!!item.rarity}>
           <div className="image-container">
-            <Button custom variant="tertiary" size="md" className="like-button">
+            {multipleOwners && item.rarity && (
+              <Tooltip
+                direction="top"
+                content={`Rank ${numberFormat(
+                  item.rarity.position,
+                  'standard'
+                )} of ${numberFormat(
+                  item.rarity.total,
+                  'standard'
+                )} by Rarity Sniper`}
+                className="buttons rarity"
+              >
+                <Button variant="tertiary" size="md" custom>
+                  <img src="/icons/stars.svg" />
+                  <span>
+                    {`${numberFormat(
+                      item.rarity.position,
+                      'standard'
+                    )} / ${numberFormat(item.rarity.total, 'standard')}`}
+                  </span>
+                </Button>
+              </Tooltip>
+            )}
+            <Button
+              variant="tertiary"
+              size="md"
+              custom
+              className="buttons like"
+            >
               {item.liked ? (
                 <img src="/icons/heart.svg" className="fa" />
               ) : (
@@ -110,31 +162,9 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
               <Heading size="lg" weight="bold">
                 {item.name}
               </Heading>
-              {item.tokenStandard === 'ERC-1155' && item.rarity && (
-                <Tooltip
-                  direction="top"
-                  content={`Rank ${numberFormat(
-                    item.rarity.position,
-                    'standard'
-                  )} of ${numberFormat(
-                    item.rarity.total,
-                    'standard'
-                  )} by Rarity Sniper`}
-                >
-                  <div tabIndex={0} role="button" className="action rarity">
-                    <img src="/icons/stars.svg" />
-                    <span>
-                      {`${numberFormat(
-                        item.rarity.position,
-                        'standard'
-                      )} / ${numberFormat(item.rarity.total, 'standard')}`}
-                    </span>
-                  </div>
-                </Tooltip>
-              )}
             </div>
             <div className="actions-container">
-              {item.tokenStandard === 'ERC-1155' && (
+              {multipleOwners && (
                 <>
                   <Tooltip
                     direction="top"
@@ -151,7 +181,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                       onClick={() => setItemOwnersModalIsOpen(true)}
                     >
                       <FontAwesomeIcon icon={faUsers} className="fa" />
-                      <span>{`${numberFormat(item?.owners || 0)} Owners`}</span>
+                      <span>{`${numberFormat(item.owners)} Owners`}</span>
                     </div>
                   </Tooltip>
                   <Tooltip
@@ -164,14 +194,12 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                   >
                     <div className="action editions">
                       <FontAwesomeIcon icon={faClone} className="fa" />
-                      <span>{`${numberFormat(
-                        item?.editions || 0
-                      )} Editions`}</span>
+                      <span>{`${numberFormat(item.editions)} Editions`}</span>
                     </div>
                   </Tooltip>
                 </>
               )}
-              {item.tokenStandard !== 'ERC-1155' && item.rarity && (
+              {!multipleOwners && item.rarity && (
                 <Tooltip
                   direction="top"
                   content={`Rank ${numberFormat(
@@ -232,7 +260,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                       </li>
                       <li>
                         <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=${location.href}`}
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${location.origin}${location.pathname}`}
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -245,7 +273,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                       </li>
                       <li>
                         <a
-                          href={`http://twitter.com/intent/tweet?text=Check out this item on Vandfi&url=${location.href}&via=vandfi`}
+                          href={`http://twitter.com/intent/tweet?text=Check out this item on Vandfi&url=${location.origin}${location.pathname}&via=vandfi`}
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -258,7 +286,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                       </li>
                       <li>
                         <a
-                          href={`https://t.me/share/url?url=${location.href}&text=Check out this item on Vandfi`}
+                          href={`https://t.me/share/url?url=${location.origin}${location.pathname}&text=Check out this item on Vandfi`}
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -331,7 +359,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
               </Text>
             )}
             <div className="info-container">
-              {item.tokenStandard !== 'ERC-1155' && (
+              {!multipleOwners && (
                 <div tabIndex={0} role="button" className="owner">
                   <Avatar
                     src={item.owner.avatarUrl}
@@ -417,8 +445,8 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                   </Text>
                   <Text size="sm" className="convertedAmount">
                     {item.onSale
-                      ? `= ${currencyFormat(item.price?.convertedAmount || 0)}`
-                      : `= ${currencyFormat(item.bid?.convertedAmount || 0)}`}
+                      ? `= ${currencyFormat(item.price?.convertedAmount)}`
+                      : `= ${currencyFormat(item.bid?.convertedAmount)}`}
                   </Text>
                 </div>
               </div>
@@ -474,26 +502,80 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
                       : {}
                   }
                 >
-                  <div className="icon-container shopping-basket">
-                    <FontAwesomeIcon icon={faShoppingBasket} className="fa" />
+                  <div className="icon-container tag">
+                    <FontAwesomeIcon icon={faTag} className="fa" />
                   </div>
                   <span>Place a bid</span>
                 </Button>
               )}
             </div>
-            <div className="unlockable-content">
-              <FontAwesomeIcon icon={faLock} className="fa" />
-              <div>
-                <Text weight="medium" className="title">
-                  Unlockable Content
-                </Text>
-                <Text size="sm">
-                  This item has unlockable content that can only be accessible
-                  by the item owner.
-                </Text>
+            {item.unlockableContent && (
+              <div className="unlockable-content">
+                <FontAwesomeIcon icon={faLock} className="fa" />
+                <div>
+                  <Text weight="medium" className="title">
+                    Unlockable Content
+                  </Text>
+                  <Text size="sm">
+                    This item has unlockable content that can only be accessible
+                    by the item owner.
+                  </Text>
+                </div>
               </div>
-            </div>
+            )}
           </div>
+          <div ref={tabRef} className="tabs-container">
+            <ul className="tabs">
+              {multipleOwners && (
+                <li className={router.query.tab === 'listings' ? 'active' : ''}>
+                  <button onClick={() => setTab('listings')}>
+                    <span>Listings</span>
+                  </button>
+                </li>
+              )}
+              <li className={router.query.tab === 'bids' ? 'active' : ''}>
+                <button onClick={() => setTab('bids')}>
+                  <span>Bids</span>
+                </button>
+              </li>
+              <li className={router.query.tab === 'history' ? 'active' : ''}>
+                <button onClick={() => setTab('history')}>
+                  <span>History</span>
+                </button>
+              </li>
+              <li className={router.query.tab === 'properties' ? 'active' : ''}>
+                <button onClick={() => setTab('properties')}>
+                  <span>Properties</span>
+                </button>
+              </li>
+              <li className={router.query.tab === 'details' ? 'active' : ''}>
+                <button onClick={() => setTab('details')}>
+                  <span>Details</span>
+                </button>
+              </li>
+            </ul>
+            {router.query.tab === 'listings' && (
+              <ListingsTab
+                tokenId={item.tokenId}
+                collectionAddress={item.collection.address}
+              />
+            )}
+            {router.query.tab === 'bids' && (
+              <BidsTab
+                tokenId={item.tokenId}
+                collectionAddress={item.collection.address}
+                multipleOwners={multipleOwners}
+              />
+            )}
+            {router.query.tab === 'history' && (
+              <HistoryTab
+                tokenId={item.tokenId}
+                collectionAddress={item.collection.address}
+                multipleOwners={multipleOwners}
+              />
+            )}
+          </div>
+          <div className="more-items" />
         </Container>
         <Footer />
       </div>
@@ -524,6 +606,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
   }
 
   const item = editorsPick.find(e => e.tokenId === slug[1])
+
+  if (!item) {
+    return {
+      notFound: true
+    }
+  }
 
   return {
     props: {
