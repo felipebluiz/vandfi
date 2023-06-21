@@ -1,3 +1,23 @@
+# Vandfi NFT Marketplace
+
+### Built With
+
+- [React](https://pt-br.reactjs.org)
+- [Next.js](https://nextjs.org)
+- [Typescript](https://www.typescriptlang.org)
+- [Stitches](https://stitches.dev/)
+- [Font Awesome](https://fontawesome.com)
+- [React Hook Form](https://react-hook-form.com)
+- [Moment.js](https://momentjs.com)
+- [ESLint](https://eslint.org)
+- [Prettier](https://prettier.io)
+
+## Preview
+
+![Preview](/packages/web/public/screenshot.png)
+
+**[View Live Preview](https://vandfi-felipebluiz.vercel.app/)**
+
 ## Installation
 
 In the root project directory, run:
@@ -31,3 +51,5 @@ yarn dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+```
